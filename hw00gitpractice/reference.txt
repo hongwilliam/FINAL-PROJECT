@@ -1,0 +1,9 @@
+Here are some of the git commands that I learned so far
+
+git clone -> clones a repo
+
+git pull -> update your local repo
+git commit -> save this version
+git push -> update and sync with git website
+
+git add -> keep track of a file
