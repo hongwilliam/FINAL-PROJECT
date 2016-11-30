@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Github commands I learned
 
 git commit -> save this version
@@ -6,3 +7,14 @@ git add -> which files am I keeping track of
 
 
 
+=======
+Here are some of the git commands that I learned so far
+
+git clone -> clones a repo
+
+git pull -> update your local repo
+git commit -> save this version
+git push -> update and sync with git website
+
+git add -> keep track of a file
+>>>>>>> eb56e63f22aecfd3f02b6050f4bf8a62e3f33184
