@@ -1,0 +1,8 @@
+Github commands I learned
+
+git commit -> save this version
+git push -> update and sync with website
+git add -> which files am I keeping track of
+
+
+
