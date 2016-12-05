@@ -211,70 +211,8 @@ public class SuperArray implements Iterable<String>{
 					
 				return iter; } 
 	
-	//testing -> note: bulk of test cases from orignal SuperArray HW
+	//testing 
 	public static void main (String[] args){
-		
-		/**
-		//very basic cases
-		SuperArray basic1 = new SuperArray();
-		System.out.println( basic1.getDataLength() ); //10
-		
-		SuperArray basic2 = new SuperArray(39);
-		System.out.println( basic2.getDataLength() ); //39
-		
-		//SuperArray basic3 = new SuperArray(-10);
-		//System.out.println( basic3.getDataLength() ); //IllegalArgumentException
-		
-		SuperArray basic4 = new SuperArray(5);
-		basic4.add("Mr K");
-		basic4.add("Mr DW");
-		basic4.add("Mr Zamansky");
-		System.out.println( basic4.toStringDebug() );
-		// [Mr K, Mr DW, Mr Zamansky, _, _]
-		basic4.clear();
-		System.out.println( basic4.isEmpty() ); //true
-		System.out.println( basic4.toString() ); //[]
-		
-		//more "advanced" cases
-		String[] array = {"1999 Rams", "Warner", "Holt", "Bruce", "Faulk", "2004 Pats", "Brady", "Bruschi", "Harrison", "Law", "Dillon"};
-		SuperArray x = new SuperArray(array);
-		
-		System.out.println( x.toString() );
-		//[1999 Rams, Warner, Holt, Bruce, Faulk, 2004 Pats, Brady, Bruschi, Harrison, Law, Dillon]
-		System.out.println( x.getSize() ); //11
-		System.out.println( x.get(4) ); //Faulk
-		//System.out.println( x.get(-12) ); //IndexOutOfBoundsException
-		System.out.println( x.set(2, "Pace") ); // Holt
-		//System.out.println( x.set(12, "McGinest") ); //IndexOutOfBoundsException
-		x.add(7,"McGinest");
-		System.out.println( x.toString() );
-		//[1999 Rams, Warner, Pace, Bruce, Faulk, 2004 Pats, Brady, McGinest, Bruschi, Harrison, Law, Dillon]
-		System.out.println( x.getSize() ); //12
-		//x.add(7, 6); //IndexOutOfBoundsException
-		//x.add(-1,-1); //IndexOutOfBoundsException 
-		System.out.println( x.remove(2) ); //Pace
-		System.out.println( x.getSize() ); //11
-		System.out.println( x.toString() ); 
-		//[1999 Rams, Warner, Bruce, Faulk, 2004 Pats, Brady, McGinest, Bruschi, Harrison, Law, Dillon]
-		//System.out.println( x.remove(73) ); //IndexOutOfBoundsException 
-		x.toArray();
-		System.out.println(x); 
-		//[1999 Rams, Warner, Bruce, Faulk, 2004 Pats, Brady, McGinest, Bruschi, Harrison, Law, Dillon]
-	
-		System.out.println( x.indexOf("Brady") ); //5
-		System.out.println( x.indexOf("Belichek") ); //-1
-		System.out.println( x.lastIndexOf("Faulk") ); //3
-		System.out.println( x.lastIndexOf("Holt") ); //-1
-		
-		x.grow();
-		System.out.println( x.getDataLength() ); //22
-		System.out.println( x.getSize() ); //11
-		System.out.println( x.get(4) ); //2004 Pats
-		//System.out.println ( x.get(12) ); //IndexOutOfBoundsException
-		x.trimToSize();
-		System.out.println( x.getDataLength() ); //11
-		System.out.println( x.getSize() ); //11
-		System.out.println( x.get(4) ); //2004 Pats */
 		
 		//Mr. K's test case
 		SuperArray data = new SuperArray();
@@ -293,6 +231,14 @@ public class SuperArray implements Iterable<String>{
 		System.out.println("for-each loop:");
 		for(String s : data){
 			System.out.print(s+" "); } 
+			
+		/** expected output:
+		[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z]
+		Standard loop:
+		A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+		for-each loop:
+		A B C D E F G H I J K L M N O P Q R S T U V W X Y Z */
+		
 	}
 }
 
