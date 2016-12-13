@@ -150,21 +150,15 @@ public class BarCode implements Comparable<BarCode>{
 			else{
 				String answer = "|";
 				int i = 1;
-				while (i < 26){
-					String seq = code.substring(i, i+5){
+				while (i < 31){
+					String seq = code.substring(i, i+5);
 					int digit = dig(seq);
 					answer += digit;
 					i += 5; }
 				
-				String checkDig = code.substring(26, 31);
-				int mod10 = checkDigit(answer);
-				if (checkDig.equals(convert(mod10) ) ){
-					answer += checkDig; + "|";					
-					return answer; }
-				else{
-					throw new  IllegalArgumentException("invalid check digit!"); }
+				answer += "|"; 
+				return answer; } 
 			}
-		}
 	}
 	
 	public String toString(){

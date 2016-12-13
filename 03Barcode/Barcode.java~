@@ -6,9 +6,7 @@ public class BarCode implements Comparable<BarCode>{
    	private String _zip;
 	private int _checkDigit;
 
-	//IMPORTANT: know the difference between checkDigit and checkSum methods!!
-
-	//returns the check digit or the sum of the digits % 10
+	//returns sum of digits % 10 (check digit)
 	private static int checkDigit(String zip){
 		int i = 0, sumDigs = 0;
 		while (i < zip.length() ){
@@ -18,7 +16,7 @@ public class BarCode implements Comparable<BarCode>{
 		return sumDigs;
 	}
 	
-	//returns zip code + check digit at end as one big int
+	//this returns zip code + check digit at end
   	private static int checkSum(String zip){
 		String everything = zip;
 		int i = 0, sumDigs = 0, answer = 0;
@@ -31,7 +29,7 @@ public class BarCode implements Comparable<BarCode>{
 		return answer; }
 		
 		
-	//method: does the zip have only digits and a valid length? 
+	//method: does the zip have only digits?
 	private static boolean hasDigitsOnly(String zip){
 		int i = 0;
 		if (zip.length() != 5 || ! zip.matches("[0-9]+")){
@@ -50,7 +48,7 @@ public class BarCode implements Comparable<BarCode>{
 		}
 	
 	
-	//digit to bar code sequence method
+	//int to bar code method
 	private static String convert(int digit){
 		if (digit == 1){
 			return ":::||"; }
@@ -88,7 +86,7 @@ public class BarCode implements Comparable<BarCode>{
 		
 	}
 	
-	//bar code sequence to digit method
+	//sequence to digit method
 	private static int dig(String sequence){
 		if (sequence.equals(":::||") ){
 			return 1; }
@@ -125,7 +123,6 @@ public class BarCode implements Comparable<BarCode>{
 			
 	}
 	
-	//zip code to bar code sequence method
   	public static String toCode(String zip){
 		if (hasDigitsOnly(zip) == false){
 			throw new IllegalArgumentException("must be digits!"); }
@@ -139,8 +136,7 @@ public class BarCode implements Comparable<BarCode>{
 				i++; }
 			return answer; }
 	}
-	
-	//bar code sequence to zip code method	
+			
 	public static String toZip(String code){
 		if (code.length() != 32){
 			throw new IllegalArgumentException("invalid length!"); }
@@ -148,7 +144,7 @@ public class BarCode implements Comparable<BarCode>{
 			if (code.charAt(0) != '|' || code.charAt(code.length()-1)!='|'){
 				throw new IllegalArgumentException("start and end should be a bar!"); }
 			else{
-				String answer = "|";
+				String answer = "";
 				int i = 1;
 				while (i < 26){
 					String seq = code.substring(i, i+5){
@@ -159,7 +155,6 @@ public class BarCode implements Comparable<BarCode>{
 				String checkDig = code.substring(26, 31);
 				int mod10 = checkDigit(answer);
 				if (checkDig.equals(convert(mod10) ) ){
-					answer += checkDig; + "|";					
 					return answer; }
 				else{
 					throw new  IllegalArgumentException("invalid check digit!"); }
