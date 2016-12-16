@@ -47,6 +47,23 @@ public class Sorts{
 				adj--; }
 		}
 	}
+	
+	public static void bubbleSort(int[] data){
+		//the bubble sort terminates early if no swaps were made
+		boolean swapMade = true;
+		while (swapMade){
+			swapMade = false;
+			for (int i=0; i < data.length-1; i++){
+				//basic swapping occurs between adjacent elements
+				//however, if this if statement is not satisfied, the loop stops
+				if (data[i] > data[i+1]){
+					int larger = data[i], smaller = data[i+1];
+					data[i] = smaller;
+					data[i+1] = larger; 
+					swapMade = true; }
+			}
+		}
+	}
 		
 	//used a classmate's sample test cases
 	public static void main (String[] args){
@@ -56,37 +73,64 @@ public class Sorts{
 		
 		int[] aSelect = new int[] {6,3,1,7,5,9,4,0,2};
 		selectionSort(aSelect);
+		
 		int[] aInsert = new int[] {6,3,1,7,5,9,4,0,2};
 		insertionSort(aInsert);
+		
+		int[] aBubble = new int[] {6,3,1,7,5,9,4,0,2};
+		bubbleSort(aBubble);
+		
 		System.out.println(Arrays.toString(aSelect));
 		System.out.println(Arrays.toString(aInsert));
+		System.out.println(Arrays.toString(aBubble));
+		//[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 		//[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 		//[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 		
 		int[] bSelect = new int[] {};
 		selectionSort(bSelect);
+		
 		int[] bInsert = new int[] {};
 		insertionSort(bInsert);
+		
+		int[] bBubble = new int[] {};
+		bubbleSort(bBubble);
+		
 		System.out.println(Arrays.toString(bSelect));
 		System.out.println(Arrays.toString(bInsert));
+		System.out.println(Arrays.toString(bBubble));
 		//[]
 		//[]
 		
 		int[] cSelect = new int[] {10};
 		selectionSort(cSelect);
+		
 		int[] cInsert = new int[] {10};
 		insertionSort(cInsert);
+		
+		int[] cBubble = new int[] {10};
+		bubbleSort(cBubble);
+		
 		System.out.println(Arrays.toString(cSelect));
 		System.out.println(Arrays.toString(cInsert));
+		System.out.println(Arrays.toString(cBubble));
+		//[10]
 		//[10]
 		//[10]
 		
 		int[] dSelect = new int[] {400,303,1500,1759,1618,13,11,1436,2168,1172,5280,2016,38387};		
 		selectionSort(dSelect);
+		
 		int[] dInsert = new int[] {400,303,1500,1759,1618,13,11,1436,2168,1172,5280,2016,38387};
 		insertionSort(dInsert);
+		
+		int[] dBubble = new int[] {400,303,1500,1759,1618,13,11,1436,2168,1172,5280,2016,38387};
+		bubbleSort(dBubble);
+		
 		System.out.println(Arrays.toString(dSelect)); 
 		System.out.println(Arrays.toString(dInsert)); 
+		System.out.println(Arrays.toString(dBubble)); 
+		//[11, 13, 303, 400, 1172, 1436, 1500, 1618, 1759, 2016, 2168, 5280, 38387]
 		//[11, 13, 303, 400, 1172, 1436, 1500, 1618, 1759, 2016, 2168, 5280, 38387]
 		//[11, 13, 303, 400, 1172, 1436, 1500, 1618, 1759, 2016, 2168, 5280, 38387]
 	}
