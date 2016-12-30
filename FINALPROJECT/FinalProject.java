@@ -2,7 +2,6 @@ import java.util.*;
 
 public class FinalProject{
 
-	
 	/** Indexing format for the List<Integer> of stats
 	0: Turnover Differential
 	1: Point Differential
@@ -25,7 +24,7 @@ public class FinalProject{
 	18: D-Line Pass Rushing
 	19: D-Line Run Stuffing */
 
-	/** Point distrubtion for key stats (sum rounded to hundredth)
+	/** Point distrubtion for key stats (sum rounded to nearest hundredth)
 	20 points: Turnover Differential
 	15 points: Point Differential
 	15 points: Pass Rating Against
@@ -37,8 +36,6 @@ public class FinalProject{
 	5 points: Red Zone TD%
 	5 points: Passing Yards Per Attempt	*/
 	
-	
-	//formulas go here
 	
 	public static double convertRankToRaw(int r){
 		return (32 - (r-1) ) / 32.0; }
@@ -59,6 +56,78 @@ public class FinalProject{
 		return totalRounded;
 	}
 	
+	
+	public static double matchupAdvantage(List<Integer> teamA, List<Integer> teamB){
+		double advantageA = 0.0, advantageB = 0.0;
+		
+		//TeamA's offensive stats
+		int AOeff = teamA.get(10);
+		int AOpe = teamA.get(11);
+		int AOre = teamA.get(12);
+		int AOolp = teamA.get(13);
+		int AOolr = teamA.get(14);
+		
+		//TeamA's defensive stats
+		int ADeff = teamA.get(15);
+		int ADpe = teamA.get(16);
+		int ADre = teamA.get(17);
+		int ADdlp = teamA.get(18);
+		int ADdlr = teamA.get(19);
+		
+		//TeamB's offensive stats
+		int BOeff = teamB.get(10);
+		int BOpe = teamB.get(11);
+		int BOre = teamB.get(12);
+		int BOolp = teamB.get(13);
+		int BOolr = teamB.get(14);
+		
+		//TeamB's defensive stats
+		int BDeff = teamB.get(15);
+		int BDpe = teamB.get(16);
+		int BDre = teamB.get(17);
+		int BDdlp = teamB.get(18);
+		int BDdlr = teamB.get(19);
+	
+		double marginAeff = ((BDeff - AOeff)/ 31.0) * 50;
+		double marginApe = ((BDpe - AOpe)/ 31.0) * 25;
+		double marginAre = ((BDre - AOre)/ 31.0) * 15;
+		double marginAolp = ((BDdlp - AOolp)/ 31.0) * 5;
+		double marginAolr = ((BDdlr - AOolr)/ 31.0) * 5;
+		double finalAOvsBD = marginAeff + marginApe+ marginAre + marginAolp + marginAolr;
+		
+		//TeamB's offense vs TeamA's defense
+		double marginBeff = ((ADeff - BOeff)/ 31.0) * 50;
+		double marginBpe = ((ADpe - BOpe)/ 31.0) * 25;
+		double marginBre = ((ADre - BOre)/ 31.0) * 15;
+		double marginBolp = ((ADdlp - BOolp)/ 31.0) * 5;
+		double marginBolr = ((ADdlr - BOolr)/ 31.0) * 5;
+		double finalBOvsAD = marginBeff + marginBpe+ marginBre + marginBolp + marginBolr;
+		
+		if (finalAOvsBD < 0){
+			advantageB += -1 *finalAOvsBD; }
+		else{
+			advantageA += finalAOvsBD; }
+		
+		if (finalBOvsAD < 0){
+			advantageA += -1 * finalBOvsAD; }
+		else{
+			advantageB += finalBOvsAD; }
+
+		//if teamA has the matchup advantage, the return value will be pos
+		//if teamB has the matchup advantage, the return value will be neg
+		double advantage = advantageA - advantageB;
+		double advantageRounded = Math.round(advantage * 100.0) / 100.0; 
+		return advantageRounded;
+	}
+	
+	public static double statAdvantage(List<Integer> teamA, List<Integer> teamB){
+		//if teamA has the stat advantage, the return value will be pos
+		//if teamB has the stat advantage, the return value will be neg
+		double advantage = convertRawToScore(teamA) - convertRawToScore(teamB);
+		double advantageRounded = Math.round(advantage * 100.0) / 100.0; 
+		return advantageRounded;
+	}
+	
 	public static void main (String[] args){
 		List<Integer> NewEnglandPatriots = Arrays.asList(4, 1, 7, 2, 8, 2, 5, 1, 8, 3, 3, 2, 19, 8, 8, 16, 22, 5, 23, 12);
 		List<Integer> OaklandRaiders = Arrays.asList(1, 7, 18, 8, 32, 8, 3, 19, 13, 14, 7, 4, 12, 1, 10, 22, 23, 21, 27, 27);
@@ -74,7 +143,7 @@ public class FinalProject{
 		List<Integer> NewYorkGiants = Arrays.asList(25, 16, 2, 12, 5, 20, 25, 3, 17, 20, 21, 21, 24, 4, 25, 2,  3, 4, 29, 17); 
 		List<Integer> DetroitLions = Arrays.asList(17, 21, 32, 27, 25, 14, 21, 13, 19, 16, 17, 13, 26, 18, 31, 32, 32, 22, 21, 19); 
 		
-		System.out.println(convertRawToScore(NewEnglandPatriots)); //90.47
+		/**System.out.println(convertRawToScore(NewEnglandPatriots)); //90.47
 		System.out.println(convertRawToScore(OaklandRaiders)); //68.13
 		System.out.println(convertRawToScore(PittsburghSteelers)); //70.0
 		System.out.println(convertRawToScore(HoustonTexans)); //46.72
@@ -86,8 +155,51 @@ public class FinalProject{
 		System.out.println(convertRawToScore(SeattleSeahawks)); //65.31
 		System.out.println(convertRawToScore(GreenBayPackers)); //59.38
 		System.out.println(convertRawToScore(NewYorkGiants)); //57.34
-		System.out.println(convertRawToScore(DetroitLions)); //36.25 
+		System.out.println(convertRawToScore(DetroitLions)); //36.25 */
 	
+		//Playoffs based solely on similarites shared with past Super Bowl champions
+		//note: small gaps indicate a closely contested game, large gaps indicate a blowout
+		
+		//wild card round
+		System.out.println(statAdvantage(PittsburghSteelers, MiamiDolphins)); //6.41 (winner: Pittsburgh)
+		System.out.println(statAdvantage(HoustonTexans, KansasCityChiefs)); //-30.31 (winner: Kansas City)
+		System.out.println(statAdvantage(SeattleSeahawks, DetroitLions)); //29.06 (winner: Seattle)
+		System.out.println(statAdvantage(GreenBayPackers, NewYorkGiants)); //1.88 (winner: Green Bay)
+		
+		//divisional round
+		System.out.println(statAdvantage(NewEnglandPatriots, KansasCityChiefs)); //13.44 (winner: New England)
+		System.out.println(statAdvantage(OaklandRaiders, PittsburghSteelers)); //-1.87 (winner: Pittsburgh)
+		System.out.println(statAdvantage(DallasCowboys, GreenBayPackers)); //19.22 (winner: Dallas)
+		System.out.println(statAdvantage(AtlantaFalcons, SeattleSeahawks)); //13.44 (winner: Atlanta)
+		
+		//conference championships
+		System.out.println(statAdvantage(NewEnglandPatriots, PittsburghSteelers)); //20.47 (winner: New England)
+		System.out.println(statAdvantage(DallasCowboys, AtlantaFalcons)); //-0.31 (winner: Atlanta)
+		
+		//suoer bowl LI
+		System.out.println(statAdvantage(NewEnglandPatriots, AtlantaFalcons)); //11.72 (super bowl champion: New England!)
+	
+		//Playoffs based solely on matchup advantages
+		
+		//wild card round
+		System.out.println(matchupAdvantage(PittsburghSteelers, MiamiDolphins)); //49.68 (winner: Pittsburgh)
+		System.out.println(matchupAdvantage(HoustonTexans, KansasCityChiefs)); //-42.42 (winner: Kansas City)
+		System.out.println(matchupAdvantage(SeattleSeahawks, DetroitLions)); //72.58 (winner: Seattle)
+		System.out.println(matchupAdvantage(GreenBayPackers, NewYorkGiants)); //0.32 (winner: Green Bay)
+		
+		//divisional round
+		System.out.println(matchupAdvantage(NewEnglandPatriots, KansasCityChiefs)); //17.1 (winner: New England)
+		System.out.println(matchupAdvantage(OaklandRaiders, PittsburghSteelers)); //-37.1 (winner: Pittsburgh)
+		System.out.println(matchupAdvantage(DallasCowboys, GreenBayPackers)); //21.29 (winner: Dallas)
+		System.out.println(matchupAdvantage(AtlantaFalcons, SeattleSeahawks)); //-14.84 (winner: Seattle)
+		
+		//conference championships
+		System.out.println(matchupAdvantage(NewEnglandPatriots, PittsburghSteelers)); //-11.94 (winner: Pitsburgh)
+		System.out.println(matchupAdvantage(DallasCowboys, SeattleSeahawks)); //19.84 (winner: Dallas)
+		
+		//super bowl LI
+		System.out.println(matchupAdvantage(PittsburghSteelers, DallasCowboys)); //2.58 (super bowl champion: Pittsburgh)
+		
 	}
 	
 }
