@@ -208,7 +208,7 @@ public class FinalProject{
 		if ( Math.abs(matchup) >= 0 && Math.abs(matchup) <= 10){
 			A += 0.5 * 25; }
 			
-		//good matchup 60-40
+		//close matchup 60-40
 		if ( Math.abs(matchup) > 10 && Math.abs(matchup) <= 15){
 			if (adv == 0){
 				A += 0.6 * 25; }
@@ -226,7 +226,7 @@ public class FinalProject{
 				A += 0.35 * 25; }
 		}
 		
-		//good matchup 75-25
+		//heavy favorite 75-25
 		if ( Math.abs(matchup) > 20 && Math.abs(matchup) <= 30){
 			if (adv == 0){
 				A += 0.75 * 25; }
@@ -235,7 +235,7 @@ public class FinalProject{
 				A += 0.25 * 25; }
 		}
 		
-		//good matchup 85-15
+		//change the channel 85-15
 		if ( Math.abs(matchup) > 30 && Math.abs(matchup) <= 40){
 			if (adv == 0){
 				A += 0.85 * 25; }
@@ -244,7 +244,7 @@ public class FinalProject{
 				A += 0.15 * 25; }
 		}
 		
-		//good matchup 90-10
+		//jv vs. varsity 90-10
 		if ( Math.abs(matchup) > 40 && Math.abs(matchup) <= 50){
 			if (adv == 0){
 				A += 0.9 * 25; }
@@ -253,7 +253,7 @@ public class FinalProject{
 				A += 0.1 * 25; }
 		}
 		
-		//good matchup 95-15
+		//do you believe in miracles? 95-15
 		if ( Math.abs(matchup) > 50){
 			if (adv == 0){
 				A += 0.95 * 25; }
@@ -265,6 +265,16 @@ public class FinalProject{
 		Math.round(A);
 		return A;	
 			
+	}
+	
+	public static int determineWinner (List<Integer> teamA, List<Integer> teamB){
+		//the function will return 0 if team A wins, 1 if team B wins
+		int probabilityA = probabilityGame(teamA, teamB);
+		double chance = Math.random() * 100;
+		if (chance < probabilityA){
+			return 0; }
+		else{
+			return 1; }
 	}
 	
 	
@@ -283,7 +293,7 @@ public class FinalProject{
 		List<Integer> NewYorkGiants = Arrays.asList(25, 16, 2, 12, 5, 20, 25, 3, 17, 20, 21, 21, 24, 4, 25, 2,  3, 4, 29, 17); 
 		List<Integer> DetroitLions = Arrays.asList(17, 21, 32, 27, 25, 14, 21, 13, 19, 16, 17, 13, 26, 18, 31, 32, 32, 22, 21, 19); 
 		
-		/**System.out.println(convertRawToScore(NewEnglandPatriots)); //90.47
+		/** System.out.println(convertRawToScore(NewEnglandPatriots)); //90.47
 		System.out.println(convertRawToScore(OaklandRaiders)); //68.13
 		System.out.println(convertRawToScore(PittsburghSteelers)); //70.0
 		System.out.println(convertRawToScore(HoustonTexans)); //46.72
@@ -297,6 +307,30 @@ public class FinalProject{
 		System.out.println(convertRawToScore(NewYorkGiants)); //57.34
 		System.out.println(convertRawToScore(DetroitLions)); //36.25 */
 	
+		//sample playoffs based on un-adjusted probability
+		//wild card round
+		System.out.println(determineWinner(PittsburghSteelers, MiamiDolphins)); // 0 -> Pittsburgh 
+		System.out.println(determineWinner(HoustonTexans, KansasCityChiefs)); // 1 -> Kansas City 
+		System.out.println(determineWinner(SeattleSeahawks, DetroitLions)); // 0 -> Seattle 
+		System.out.println(determineWinner(GreenBayPackers, NewYorkGiants)); // 1 -> Green Bay
+		
+		//divisional round
+		System.out.println(determineWinner(NewEnglandPatriots, KansasCityChiefs)); // 0 -> New England
+		System.out.println(determineWinner(OaklandRaiders, PittsburghSteelers)); // 1 -> Pittsburgh
+		System.out.println(determineWinner(DallasCowboys, GreenBayPackers)); // 1 -> Green Bay
+		System.out.println(determineWinner(AtlantaFalcons, SeattleSeahawks)); // 1 -> Seattle
+		
+		//conference championships
+		System.out.println(determineWinner(NewEnglandPatriots, PittsburghSteelers)); // 0 -> New England
+		System.out.println(determineWinner(SeattleSeahawks, GreenBayPackers)); // 1 -> Green Bay
+		
+		//super bowl LI
+		System.out.println(determineWinner(NewEnglandPatriots, GreenBayPackers)); //0 -> New England
+		
+		//super bowl champion: New England Patriots!
+		
+		/** 
+		//playoffs if the favored team wins every time
 		//wild card round
 		System.out.println(probabilityGame(PittsburghSteelers, MiamiDolphins)); // Pittsburgh 67%
 		System.out.println(probabilityGame(HoustonTexans, KansasCityChiefs)); // Kansas City 91%
@@ -314,14 +348,11 @@ public class FinalProject{
 		System.out.println(probabilityGame(DallasCowboys, AtlantaFalcons)); // Dallas 58%
 		
 		//super bowl LI
-		System.out.println(probabilityGame(NewEnglandPatriots, DallasCowboys)); // New England 60%
-	
+		System.out.println(probabilityGame(NewEnglandPatriots, DallasCowboys)); // New England 60% (super bowl champion: New England)
+		*/
 	
 		/** 
-		//Playoffs based solely on similarites shared with past Super Bowl champions
-		//note: small gaps indicate a closely contested game, large gaps indicate a blowout
-		
-		
+		//Playoffs based solely on stat grades
 		//wild card round
 		System.out.println(statAdvantage(PittsburghSteelers, MiamiDolphins)); //6.41 (winner: Pittsburgh)
 		System.out.println(statAdvantage(HoustonTexans, KansasCityChiefs)); //-30.31 (winner: Kansas City)
@@ -340,11 +371,10 @@ public class FinalProject{
 		
 		//suoer bowl LI
 		System.out.println(statAdvantage(NewEnglandPatriots, AtlantaFalcons)); //11.72 (super bowl champion: New England!)
-	
+		*/
 
 		/**
-		//Playoffs based solely on matchup advantages
-		
+		//Playoffs based solely on matchup grades
 		//wild card round
 		System.out.println(matchupAdvantage(PittsburghSteelers, MiamiDolphins)); //49.68 (winner: Pittsburgh)
 		System.out.println(matchupAdvantage(HoustonTexans, KansasCityChiefs)); //-42.42 (winner: Kansas City)
@@ -364,6 +394,7 @@ public class FinalProject{
 		//super bowl LI
 		System.out.println(matchupAdvantage(PittsburghSteelers, DallasCowboys)); //2.58 (super bowl champion: Pittsburgh)
 		*/
+		
 	}
 	
 }
