@@ -128,6 +128,146 @@ public class FinalProject{
 		return advantageRounded;
 	}
 	
+	public static int probabilityGame(List<Integer> teamA, List<Integer> teamB){
+		//the return value will be teamA's probability of winning against teamB
+		int A = 0; 
+		
+		//statAdvantage accounts for 75% of the probability points
+		double stat = statAdvantage(teamA, teamB);
+		int sign = 0;
+		if (stat < 0){
+			sign = 1; } //if teamB has the advantage, then the sign will be 1 to signify so
+			
+		//very evenly matched 50-50
+		if ( Math.abs(stat) >= 0 && Math.abs(stat) <= 5){
+			A += 0.5 * 75; }
+			
+		//close game 60-40
+		if ( Math.abs(stat) > 5 && Math.abs(stat) <= 10){
+			if (sign == 0){
+				A += 0.6 * 75; }
+			else{
+				A += 0.4 * 75; }
+		}	
+		
+		//slight favorite 65-35
+		if ( Math.abs(stat) > 10 && Math.abs(stat) <= 15){
+			if (sign == 0){
+				A += 0.65 * 75; }
+			else{
+				A += 0.35 * 75; }
+		}	
+		
+		//strong favorite 70-30
+		if ( Math.abs(stat) > 15 && Math.abs(stat) <= 20){
+			if (sign == 0){
+				A += 0.7 * 75; }
+			else{
+				A += 0.3 * 75; }
+		}
+		
+		//clear favorite 75-25
+		if ( Math.abs(stat) > 20 && Math.abs(stat) <= 25){
+			if (sign == 0){
+				A += 0.75 * 75; }
+			else{
+				A += 0.25 * 75; }
+		}
+		
+		//one-sided affair 80-20
+		if ( Math.abs(stat) > 25 && Math.abs(stat) <= 30){
+			if (sign == 0){
+				A += 0.8 * 75; }
+			else{
+				A += 0.2 * 75; }
+		}
+		
+		//utter humiliation 90-10
+		if ( Math.abs(stat) > 30 && Math.abs(stat) <= 40){
+			if (sign == 0){
+				A += 0.9 * 75; }
+			else{
+				A += 0.1 * 75; }
+		}
+		
+		//oh dear 95-5
+		if ( Math.abs(stat) > 40){
+			if (sign == 0){
+				A += 0.95 * 75; }
+			else{
+				A += 0.05 * 75; }
+		}
+		
+		//matchupAdvantage accounts for 25% of the probability points
+		double matchup = matchupAdvantage(teamA, teamB);
+		int adv = 0;
+		if (matchup < 0){
+			adv = 1; } 
+			
+		//very evenly matched 50-50
+		if ( Math.abs(matchup) >= 0 && Math.abs(matchup) <= 10){
+			A += 0.5 * 25; }
+			
+		//good matchup 60-40
+		if ( Math.abs(matchup) > 10 && Math.abs(matchup) <= 15){
+			if (adv == 0){
+				A += 0.6 * 25; }
+				
+			else{
+				A += 0.4 * 25; }
+		}
+
+		//good matchup 65-35
+		if ( Math.abs(matchup) > 15 && Math.abs(matchup) <= 20){
+			if (adv == 0){
+				A += 0.65 * 25; }
+				
+			else{
+				A += 0.35 * 25; }
+		}
+		
+		//good matchup 75-25
+		if ( Math.abs(matchup) > 20 && Math.abs(matchup) <= 30){
+			if (adv == 0){
+				A += 0.75 * 25; }
+				
+			else{
+				A += 0.25 * 25; }
+		}
+		
+		//good matchup 85-15
+		if ( Math.abs(matchup) > 30 && Math.abs(matchup) <= 40){
+			if (adv == 0){
+				A += 0.85 * 25; }
+				
+			else{
+				A += 0.15 * 25; }
+		}
+		
+		//good matchup 90-10
+		if ( Math.abs(matchup) > 40 && Math.abs(matchup) <= 50){
+			if (adv == 0){
+				A += 0.9 * 25; }
+				
+			else{
+				A += 0.1 * 25; }
+		}
+		
+		//good matchup 95-15
+		if ( Math.abs(matchup) > 50){
+			if (adv == 0){
+				A += 0.95 * 25; }
+				
+			else{
+				A += 0.05 * 25; }
+		}
+		
+		Math.round(A);
+		return A;	
+			
+	}
+	
+	
 	public static void main (String[] args){
 		List<Integer> NewEnglandPatriots = Arrays.asList(4, 1, 7, 2, 8, 2, 5, 1, 8, 3, 3, 2, 19, 8, 8, 16, 22, 5, 23, 12);
 		List<Integer> OaklandRaiders = Arrays.asList(1, 7, 18, 8, 32, 8, 3, 19, 13, 14, 7, 4, 12, 1, 10, 22, 23, 21, 27, 27);
@@ -157,8 +297,30 @@ public class FinalProject{
 		System.out.println(convertRawToScore(NewYorkGiants)); //57.34
 		System.out.println(convertRawToScore(DetroitLions)); //36.25 */
 	
+		//wild card round
+		System.out.println(probabilityGame(PittsburghSteelers, MiamiDolphins)); // Pittsburgh 67%
+		System.out.println(probabilityGame(HoustonTexans, KansasCityChiefs)); // Kansas City 91%
+		System.out.println(probabilityGame(SeattleSeahawks, DetroitLions)); // Seattle 83%
+		System.out.println(probabilityGame(GreenBayPackers, NewYorkGiants)); // New York 51%
+		
+		//divisional round
+		System.out.println(probabilityGame(NewEnglandPatriots, KansasCityChiefs)); // New England 64%
+		System.out.println(probabilityGame(OaklandRaiders, PittsburghSteelers)); // Pittsburgh 60%
+		System.out.println(probabilityGame(DallasCowboys, NewYorkGiants)); // Dallas 74%
+		System.out.println(probabilityGame(AtlantaFalcons, SeattleSeahawks)); // Atlanta 58% 
+	
+		//conference championships
+		System.out.println(probabilityGame(NewEnglandPatriots, PittsburghSteelers)); // New England 66%
+		System.out.println(probabilityGame(DallasCowboys, AtlantaFalcons)); // Dallas 58%
+		
+		//super bowl LI
+		System.out.println(probabilityGame(NewEnglandPatriots, DallasCowboys)); // New England 60%
+	
+	
+		/** 
 		//Playoffs based solely on similarites shared with past Super Bowl champions
 		//note: small gaps indicate a closely contested game, large gaps indicate a blowout
+		
 		
 		//wild card round
 		System.out.println(statAdvantage(PittsburghSteelers, MiamiDolphins)); //6.41 (winner: Pittsburgh)
@@ -179,6 +341,8 @@ public class FinalProject{
 		//suoer bowl LI
 		System.out.println(statAdvantage(NewEnglandPatriots, AtlantaFalcons)); //11.72 (super bowl champion: New England!)
 	
+
+		/**
 		//Playoffs based solely on matchup advantages
 		
 		//wild card round
@@ -199,7 +363,7 @@ public class FinalProject{
 		
 		//super bowl LI
 		System.out.println(matchupAdvantage(PittsburghSteelers, DallasCowboys)); //2.58 (super bowl champion: Pittsburgh)
-		
+		*/
 	}
 	
 }
