@@ -552,67 +552,67 @@ public class FinalProject{
 	}
 	
 	public static void main (String[] args){
-		List<Integer> NewEnglandPatriots = Arrays.asList(4, 1, 7, 2, 8, 2, 5, 1, 8, 3, 3, 2, 19, 8, 8, 16, 22, 5, 23, 12, 0);
-		List<Integer> OaklandRaiders = Arrays.asList(1, 7, 18, 8, 32, 8, 3, 19, 13, 14, 7, 4, 12, 1, 10, 22, 23, 21, 27, 27, 0);
-		List<Integer> PittsburghSteelers = Arrays.asList(13, 4, 13, 3, 16, 12, 12, 9, 14, 12, 9, 8, 4, 3, 2, 9, 13, 9, 17, 13, 0); 
-		List<Integer> HoustonTexans = Arrays.asList(7, 26, 9, 29, 4, 30, 29, 10, 31, 32, 30, 30, 27, 9, 15, 11, 9, 17, 25, 16, 0);
-		List<Integer> KansasCityChiefs = Arrays.asList(2, 5, 3, 7, 13, 15, 15, 5, 27, 18, 13, 11, 20, 16, 17, 12,  4, 23, 24, 28, 0); 
-		List<Integer> MiamiDolphins = Arrays.asList(11, 18, 12, 15, 10, 9, 16, 14, 15, 6, 14, 18, 15, 23, 21, 17, 14, 19, 31, 20, 0);
+		List<Integer> NewEnglandPatriots = Arrays.asList(3, 1, 8, 2, 7, 2, 3, 1, 8, 3, 3, 2, 19, 8, 8, 16, 22, 5, 23, 12);
+		List<Integer> KansasCityChiefs = Arrays.asList(2, 4, 3, 7, 15, 15, 13, 7, 30, 15, 13, 11, 20, 16, 17, 12, 4, 23, 24, 28); 
+		List<Integer> PittsburghSteelers = Arrays.asList(9, 5, 14, 3, 13, 11, 11, 10, 12, 11, 9, 8, 4, 3, 2, 9, 13, 9, 17, 13); 
+		List<Integer> HoustonTexans = Arrays.asList(26, 26, 7, 29, 4, 30, 29, 11, 31, 32, 30, 30, 27, 9, 15, 11, 9, 17, 25, 16);
+		List<Integer> OaklandRaiders = Arrays.asList(1, 11, 19, 8, 32, 9, 7, 20, 14, 16, 7, 4, 12, 1, 10, 22, 23, 21, 27, 27);
+		List<Integer> MiamiDolphins = Arrays.asList(13, 24, 17, 15, 12, 8, 17, 18, 15, 6, 14, 18, 15, 23, 21, 17, 14, 19, 31, 20);
 		
-		List<String> NewEnglandPatriotsInfo = Arrays.asList("New England Patriots", " (14-2)", "5th", "1st", " (1)");
-		List<String> OaklandRaidersInfo = Arrays.asList("Oakland Raiders", " (13-3)", "3rd", "19th", " (2)");
-		List<String> PittsburghSteelersInfo = Arrays.asList("Pittsburgh Steelers", " (11-5)", "12th", "9th", " (3)");
-		List<String> HoustonTexansInfo = Arrays.asList("Houston Texans", " (9-7)", "29th", "10th", " (4)");
-		List<String> KansasCityChiefsInfo = Arrays.asList("Kansas City Chiefs", " (12-4)", "15th", "5th", " (5)");
-		List<String> MiamiDolphinsInfo = Arrays.asList("Miami Dolphins", " (10-6)", "16th", "14th", " (6)");
+		List<String> NewEnglandPatriotsInfo = Arrays.asList("New England Patriots", " (14-2)", "3rd", "1st", " (1)");
+		List<String> KansasCityChiefsInfo = Arrays.asList("Kansas City Chiefs", " (12-4)", "13th", "7th", " (2)");
+		List<String> PittsburghSteelersInfo = Arrays.asList("Pittsburgh Steelers", " (11-5)", "11th", "10th", " (3)");
+		List<String> HoustonTexansInfo = Arrays.asList("Houston Texans", " (9-7)", "29th", "11th", " (4)");
+		List<String> OaklandRaidersInfo = Arrays.asList("Oakland Raiders", " (12-4)", "7th", "20th", " (5)");
+		List<String> MiamiDolphinsInfo = Arrays.asList("Miami Dolphins", " (10-6)", "17th", "18th", " (6)");
 		
-		List<Integer> DallasCowboys = Arrays.asList(7, 2, 24, 1, 15, 3, 4, 4, 2, 4, 2, 3, 2, 11, 3, 18, 19, 8, 10, 11, 1);
-		List<Integer> AtlantaFalcons = Arrays.asList(3, 3, 22, 4, 11, 1, 1, 25, 10, 1, 1, 1, 8, 22, 9, 27, 24, 28, 22, 24, 1);
-		List<Integer> SeattleSeahawks = Arrays.asList(20, 6, 5, 10, 14, 13, 20, 2, 26, 7, 18, 16, 21, 25, 26, 4, 11, 2, 13, 10, 1);
-		List<Integer> GreenBayPackers = Arrays.asList(8, 10, 26, 6, 31, 5, 6, 22, 12, 17, 6, 9, 9, 14, 22, 19, 20, 12, 4, 9, 1); 
-		List<Integer> NewYorkGiants = Arrays.asList(25, 16, 2, 12, 5, 20, 25, 3, 17, 20, 21, 21, 24, 4, 25, 2,  3, 4, 29, 17, 1); 
-		List<Integer> DetroitLions = Arrays.asList(17, 21, 32, 27, 25, 14, 21, 13, 19, 16, 17, 13, 26, 18, 31, 32, 32, 22, 21, 19, 1); 
+		List<Integer> DallasCowboys = Arrays.asList(10, 3, 24, 1, 14, 3, 5, 5, 3, 5, 2, 3, 2, 11, 3, 18, 19, 8, 10, 11);
+		List<Integer> AtlantaFalcons = Arrays.asList(4, 2, 22, 4, 11, 1, 1, 27, 9, 1, 1, 1, 8, 22, 9, 27, 24, 28, 22, 24);
+		List<Integer> SeattleSeahawks = Arrays.asList(16, 6, 9, 10, 16, 13, 18, 3, 27, 7, 18, 16, 21, 25, 26, 4, 11, 2, 13, 10);
+		List<Integer> GreenBayPackers = Arrays.asList(6, 8, 26, 6, 31, 5, 4, 21, 10, 18, 6, 9, 9, 14, 22, 19, 20, 12, 4, 9);
+		List<Integer> NewYorkGiants = Arrays.asList(22, 12, 2, 12, 6, 20, 26, 2, 19, 21, 21, 21, 24, 4, 25, 2, 3, 4, 29, 17); 
+		List<Integer> DetroitLions = Arrays.asList(20, 21, 32, 27, 26, 14, 20, 13, 17, 14, 17, 13, 26, 18, 31, 32, 32, 22, 21, 19); 
 		
-		List<String> DallasCowboysInfo = Arrays.asList("Dallas Cowboys", " (13-3)", "4th", "4th", " (1)");
-		List<String> AtlantaFalconsInfo = Arrays.asList("Atlanta Falcons", " (11-5)", "1st", "25th", " (2)");
-		List<String> SeattleSeahawksInfo = Arrays.asList("Seattle Seahawks", " (10-5-1)", "20th", "2nd", " (3)");
-		List<String> GreenBayPackersInfo = Arrays.asList("Green Bay Packers", " (10-6)", "6th", "22nd", " (4)");
-		List<String> NewYorkGiantsInfo = Arrays.asList("New York Giants", " (11-5)", "25th", "3rd", " (5)");
-		List<String> DetroitLionsInfo = Arrays.asList("Detroit Lions", " (9-7)", "21st", "13th", " (6)");
+		List<String> DallasCowboysInfo = Arrays.asList("Dallas Cowboys", " (13-3)", "5th", "5th", " (1)");
+		List<String> AtlantaFalconsInfo = Arrays.asList("Atlanta Falcons", " (11-5)", "1st", "27th", " (2)");
+		List<String> SeattleSeahawksInfo = Arrays.asList("Seattle Seahawks", " (10-5-1)", "18th", "3rd", " (3)");
+		List<String> GreenBayPackersInfo = Arrays.asList("Green Bay Packers", " (10-6)", "4th", "21st", " (4)");
+		List<String> NewYorkGiantsInfo = Arrays.asList("New York Giants", " (11-5)", "26th", "2nd", " (5)");
+		List<String> DetroitLionsInfo = Arrays.asList("Detroit Lions", " (9-7)", "20th", "13th", " (6)");
 		
-		/** System.out.println(convertRawToScore(NewEnglandPatriots)); //90.47
-		System.out.println(convertRawToScore(OaklandRaiders)); //68.13
-		System.out.println(convertRawToScore(PittsburghSteelers)); //70.0
-		System.out.println(convertRawToScore(HoustonTexans)); //46.72
-		System.out.println(convertRawToScore(KansasCityChiefs)); //77.03
-		System.out.println(convertRawToScore(MiamiDolphins)); //63.59
+		System.out.println(convertRawToScore(NewEnglandPatriots)); //91.25
+		System.out.println(convertRawToScore(KansasCityChiefs)); //76.88
+		System.out.println(convertRawToScore(PittsburghSteelers)); //73.28
+		System.out.println(convertRawToScore(HoustonTexans)); //35.63
+		System.out.println(convertRawToScore(OaklandRaiders)); //64.22
+		System.out.println(convertRawToScore(MiamiDolphins)); //56.09
 		
-		System.out.println(convertRawToScore(DallasCowboys)); //78.44
-		System.out.println(convertRawToScore(AtlantaFalcons)); //78.75
+		System.out.println(convertRawToScore(DallasCowboys)); //75.78
+		System.out.println(convertRawToScore(AtlantaFalcons)); //78.44
 		System.out.println(convertRawToScore(SeattleSeahawks)); //65.31
-		System.out.println(convertRawToScore(GreenBayPackers)); //59.38
-		System.out.println(convertRawToScore(NewYorkGiants)); //57.34
-		System.out.println(convertRawToScore(DetroitLions)); //36.25 */
+		System.out.println(convertRawToScore(GreenBayPackers)); //62.03
+		System.out.println(convertRawToScore(NewYorkGiants)); //60.31
+		System.out.println(convertRawToScore(DetroitLions)); //34.84
 	
 		/** this is using the default playoff tournament; the feature to customize will come later
 			AFC 				NFC
 		1) Patriots				Cowboys
-		2) Raiders				Falcons
+		2) Chiefs				Falcons
 		3) Steelers				Seahawks
 		4) Texans				Packers
-		5) Chiefs				Giants
+		5) Raiders				Giants
 		6) Dolphins				Lions */
 		
 		AFCseed1 = NewEnglandPatriots;
 		AFCseed1info= NewEnglandPatriotsInfo;
-		AFCseed2 = OaklandRaiders;
-		AFCseed2info= OaklandRaidersInfo;
+		AFCseed2 = KansasCityChiefs;
+		AFCseed2info= KansasCityChiefsInfo;
 		AFCseed3 = PittsburghSteelers;
 		AFCseed3info= PittsburghSteelersInfo;
 		AFCseed4 = HoustonTexans;
 		AFCseed4info= HoustonTexansInfo;
-		AFCseed5 = KansasCityChiefs;
-		AFCseed5info= KansasCityChiefsInfo;
+		AFCseed5 = OaklandRaiders;
+		AFCseed5info= OaklandRaidersInfo;
 		AFCseed6 = MiamiDolphins;
 		AFCseed6info= MiamiDolphinsInfo;
 		
@@ -631,50 +631,51 @@ public class FinalProject{
 		NFCseed6info= DetroitLionsInfo;
 		
 		System.out.println(playoffPicture());
+		
 		/** Sample playoff picture
 		ROUND: Wild Card Round
 
 		AFC
 		1) New England Patriots (14-2)
-		Offense: 5th     Defense: 1st
+		Offense: 3rd     Defense: 1st
 
-		2) Oakland Raiders (13-3)
-		Offense: 3rd     Defense: 19th
+		2) Kansas City Chiefs (12-4)
+		Offense: 13th     Defense: 7th
 
 		3) Pittsburgh Steelers (11-5)
-		Offense: 12th     Defense: 9th
+		Offense: 11th     Defense: 10th
 
 		4) Houston Texans (9-7)
-		Offense: 29th     Defense: 10th
+		Offense: 29th     Defense: 11th
 
-		5) Kansas City Chiefs (12-4)
-		Offense: 15th     Defense: 5th
+		5) Oakland Raiders (12-4)
+		Offense: 7th     Defense: 20th
 
 		6) Miami Dolphins (10-6)
-		Offense: 16th     Defense: 14th
+		Offense: 17th     Defense: 18th
 
 		NFC
 		1) Dallas Cowboys (13-3)
-		Offense: 4th     Defense: 4th
+		Offense: 5th     Defense: 5th
 
 		2) Atlanta Falcons (11-5)
-		Offense: 1st     Defense: 25th
+		Offense: 1st     Defense: 27th
 
 		3) Seattle Seahawks (10-5-1)
-		Offense: 20th     Defense: 2nd
+		Offense: 18th     Defense: 3rd
 
 		4) Green Bay Packers (10-6)
-		Offense: 6th     Defense: 22nd
+		Offense: 4th     Defense: 21st
 
 		5) New York Giants (11-5)
-		Offense: 25th     Defense: 3rd
+		Offense: 26th     Defense: 2nd
 
 		6) Detroit Lions (9-7)
-		Offense: 21st     Defense: 13th
+		Offense: 20th     Defense: 13th
 
 		Upcoming games:
 		Pittsburgh Steelers (3) vs. Miami Dolphins (6)
-		Houston Texans (4) vs. Kansas City Chiefs (5)
+		Houston Texans (4) vs. Oakland Raiders (5)
 		Seattle Seahawks (3) vs. Detroit Lions (6)
 		Green Bay Packers (4) vs. New York Giants (5) */
 		
@@ -683,37 +684,37 @@ public class FinalProject{
 		System.out.println(simResults(round));
 		System.out.println(simResults(round)); 
 		
-		/** Sample playoffs
+		/** Sample playoff simulation
 		Results:
 		Pittsburgh Steelers (3) vs. Miami Dolphins (6)
 		Winner: Pittsburgh Steelers
-		Houston Texans (4) vs. Kansas City Chiefs (5)
-		Winner: Kansas City Chiefs
+		Houston Texans (4) vs. Oakland Raiders (5)
+		Winner: Oakland Raiders
 		Seattle Seahawks (3) vs. Detroit Lions (6)
 		Winner: Seattle Seahawks
 		Green Bay Packers (4) vs. New York Giants (5)
 		Winner: New York Giants
 
 		Results:
-		New England Patriots (1) vs. Kansas City Chiefs (5)
+		New England Patriots (1) vs. Oakland Raiders (5)
 		Winner: New England Patriots
-		Oakland Raiders (2) vs. Pittsburgh Steelers (3)
-		Winner: Oakland Raiders
+		Kansas City Chiefs (2) vs. Pittsburgh Steelers (3)
+		Winner: Kansas City Chiefs
 		Dallas Cowboys (1) vs. New York Giants (5)
 		Winner: Dallas Cowboys
 		Atlanta Falcons (2) vs. Seattle Seahawks (3)
-		Winner: Seattle Seahawks
+		Winner: Atlanta Falcons
 
 		Results:
-		New England Patriots  (1) vs. Oakland Raiders(2)
+		New England Patriots (1) vs. Kansas City Chiefs (2)
 		Winner: New England Patriots
-		Dallas Cowboys  (1) vs. Seattle Seahawks(3)
-		Winner: Seattle Seahawks
+		Dallas Cowboys (1) vs. Atlanta Falcons (2)
+		Winner: Dallas Cowboys
 
 		Results:
-		New England Patriots   (1) vs. Seattle Seahawks(3)
-		Super Bowl Champion: New England Patriots */ 
-	
+		New England Patriots (1) vs. Dallas Cowboys (1)
+		Super Bowl Champion: New England Patriots */
+		
 	}
 	
 }
