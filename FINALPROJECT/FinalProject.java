@@ -404,6 +404,79 @@ public class FinalProject{
 		round = 0;
 	}
 
+	public static int offensePrelim (List<Integer> team){
+		int rank = team.get(6), answer = 0;
+		if (rank == 1){
+			answer = 35;}
+		if (rank == 2){
+			answer = 31;}
+		if (rank >= 3 && rank <= 7){
+			answer = 28;}
+		if (rank >= 8 && rank <= 15){
+			answer = 24;}
+		if (rank >= 16 && rank <= 24){
+			answer = 21;}
+		if (rank >= 25 && rank <= 31){
+			answer = 17;}
+		if (rank == 32){
+			answer = 14;}
+		return answer;
+	}
+
+	public static int defensePrelim (List<Integer> team){
+		int rank = team.get(7), answer = 0;
+		if (rank >= 1 && rank <= 4){
+			answer = -10; }
+		if (rank >= 5 && rank <= 8){
+			answer = -7; }
+		if (rank >= 9 && rank <= 12){
+			answer = -3; }
+		if (rank >= 13 && rank <= 16){
+			answer = 0; }
+		if (rank >= 17 && rank <= 20){
+			answer = 3; }
+		if (rank >= 21 && rank <= 24){
+			answer = 7; }
+		if (rank >= 25 && rank <= 28){
+			answer = 10; }
+		if (rank >= 29 && rank <= 32){
+			answer = 14; }
+		return answer;
+	}
+	
+	//the winning score is displayed first! ex: New England wins 28-14
+	public static String simScore (List<Integer> teamA, List<Integer> teamB, int win){
+		int Aoff = offensePrelim(teamA), Boff = offensePrelim(teamB), 
+			Adef = defensePrelim(teamA), Bdef = defensePrelim(teamB), finalA, finalB; 
+		String score = ""; 
+		//when team A wins, input 0		
+		if (win == 0){
+			int bScore = Boff - Adef;
+			finalA = Aoff;
+			finalB = bScore;
+			if (finalA < finalB){
+				finalA += 10; }
+			if (finalA == finalB){
+				finalA += 3; }
+		}
+		//when team B wins
+		else{
+			int aScore = Aoff - Bdef; 
+			finalB = Boff;
+			finalA = aScore;
+			if (finalB < finalA){
+				finalB += 10; }
+			if (finalB == finalA){
+				finalB += 3; }
+		 }
+
+		if (finalA > finalB){
+			score += Integer.toString(finalA) + "-" + Integer.toString(finalB); }
+		else{
+			score += Integer.toString(finalB) + "-" + Integer.toString(finalA); }
+
+		return score; 
+	}
 	
 	/** Indexing format for the List<String> of info
 	0: Team name
@@ -430,8 +503,8 @@ public class FinalProject{
 		
 		if (round == 2){
 			currentRound += "Conference Championships \n\n"; 
-			upcoming += AFCchampionship1info.get(0) + AFCchampionship1info.get(4) + " vs. " + AFCchampionship2info.get(0) + AFCchampionship2info.get(4) + "\n";
-			upcoming += NFCchampionship1info.get(0) + NFCchampionship1info.get(4) + " vs. " + NFCchampionship2info.get(0) + NFCchampionship2info.get(4) + "\n"; }
+			upcoming += AFCchampionship1info.get(0) + AFCchampionship1info.get(4) + " vs. " + AFCchampionship2info.get(0) + AFCchampionship2info.get(4) + 					"\n";
+			upcoming += NFCchampionship1info.get(0) + NFCchampionship1info.get(4) + " vs. " + NFCchampionship2info.get(0) + NFCchampionship2info.get(4) + 					"\n"; }
 		
 		if (round == 3){
 			currentRound += "SUPER BOWL \n\n"; 
@@ -462,27 +535,35 @@ public class FinalProject{
 			
 			String AFC3vs6 = AFCseed3info.get(0) + AFCseed3info.get(4) + " vs. " + AFCseed6info.get(0) + AFCseed6info.get(4) + "\n Winner: ";
 			if (opponentAFCseed2.equals(AFCseed3)){
-				AFC3vs6 += AFCseed3info.get(0) + "\n"; }
+				AFC3vs6 += AFCseed3info.get(0) + " ";
+				AFC3vs6 += simScore(AFCseed3, AFCseed6, 0) + "\n"; }
 			else{
-				AFC3vs6 += AFCseed6info.get(0) + "\n"; }
+				AFC3vs6 += AFCseed6info.get(0) + " "; 
+				AFC3vs6 += simScore(AFCseed3, AFCseed6, 1) + "\n"; }
 				
 			String AFC4vs5 =  AFCseed4info.get(0) + AFCseed4info.get(4) + " vs. " + AFCseed5info.get(0) + AFCseed5info.get(4) + "\n Winner: ";	
 			if (opponentAFCseed1.equals(AFCseed4) || opponentAFCseed2.equals(AFCseed4)){
-				AFC4vs5 += AFCseed4info.get(0) + "\n"; }
+				AFC4vs5 += AFCseed4info.get(0) + " "; 
+				AFC4vs5 += simScore(AFCseed4, AFCseed5, 0) + "\n"; }
 			else{
-				AFC4vs5 += AFCseed5info.get(0) + "\n"; }
+				AFC4vs5 += AFCseed5info.get(0) + " "; 
+				AFC4vs5 += simScore(AFCseed4, AFCseed5, 1) + "\n"; }
 				
 			String NFC3vs6 = NFCseed3info.get(0) + NFCseed3info.get(4) + " vs. " + NFCseed6info.get(0) + NFCseed6info.get(4) + "\n Winner: ";
 			if (opponentNFCseed2.equals(NFCseed3)){
-				NFC3vs6 += NFCseed3info.get(0) + "\n"; }
+				NFC3vs6 += NFCseed3info.get(0) + " ";
+				NFC3vs6 += simScore(NFCseed3, NFCseed6, 0) + "\n"; }
 			else{
-				NFC3vs6 += NFCseed6info.get(0) + "\n"; }
+				NFC3vs6 += NFCseed6info.get(0) + " ";
+				NFC3vs6 += simScore(NFCseed3, NFCseed6, 1) + "\n"; }
 				
 			String NFC4vs5 = NFCseed4info.get(0) + NFCseed4info.get(4) + " vs. " + NFCseed5info.get(0) + NFCseed5info.get(4) + "\n Winner: ";	
 			if (opponentNFCseed1.equals(NFCseed4) || opponentNFCseed2.equals(NFCseed4)){
-				NFC4vs5 += NFCseed4info.get(0) + "\n"; }
+				NFC4vs5 += NFCseed4info.get(0) + " "; 
+				NFC4vs5 += simScore(NFCseed4, NFCseed5, 0) + "\n"; }
 			else{
-				NFC4vs5 += NFCseed5info.get(0) + "\n"; }
+				NFC4vs5 += NFCseed5info.get(0) + " "; 
+				NFC4vs5 += simScore(NFCseed4, NFCseed5, 1) + "\n"; }
 				
 			answer += AFC3vs6 + AFC4vs5 + NFC3vs6 + NFC4vs5;
 		}
@@ -492,27 +573,35 @@ public class FinalProject{
 			
 			String AFC1 = AFCseed1info.get(0) + AFCseed1info.get(4) + " vs. " + opponentAFCseed1info.get(0) + opponentAFCseed1info.get(4) + "\n Winner: ";
 			if (AFCchampionship1.equals(AFCseed1)){
-				AFC1 += AFCseed1info.get(0) + "\n"; }
+				AFC1 += AFCseed1info.get(0) + " "; 
+				AFC1 += simScore(AFCseed1, opponentAFCseed1, 0) + "\n"; }
 			else{
-				AFC1 += opponentAFCseed1info.get(0) + "\n"; }
+				AFC1 += opponentAFCseed1info.get(0) + " "; 
+				AFC1 += simScore(AFCseed1, opponentAFCseed1, 1) + "\n"; }
 				
 			String AFC2 = AFCseed2info.get(0) + AFCseed2info.get(4) + " vs. " + opponentAFCseed2info.get(0) + opponentAFCseed2info.get(4) + "\n Winner: ";
 			if (AFCchampionship2.equals(AFCseed2)){
-				AFC2 += AFCseed2info.get(0) + "\n"; }
+				AFC2 += AFCseed2info.get(0) + " "; 
+				AFC2 += simScore(AFCseed2, opponentAFCseed2, 0) + "\n"; }
 			else{
-				AFC2 += opponentAFCseed2info.get(0) + "\n"; }
+				AFC2 += opponentAFCseed2info.get(0) + " "; 
+				AFC2 += simScore(AFCseed2, opponentAFCseed2, 1) + "\n"; }
 				
 			String NFC1 = NFCseed1info.get(0) + NFCseed1info.get(4) + " vs. " + opponentNFCseed1info.get(0) + opponentNFCseed1info.get(4) + "\n Winner: ";
 			if (NFCchampionship1.equals(NFCseed1)){
-				NFC1 += NFCseed1info.get(0) + "\n"; }
+				NFC1 += NFCseed1info.get(0) + " "; 
+				NFC1 += simScore(NFCseed1, opponentNFCseed1, 0) + "\n"; }
 			else{
-				NFC1 += opponentNFCseed1info.get(0) + "\n"; }
+				NFC1 += opponentNFCseed1info.get(0) + " ";
+				NFC1 += simScore(NFCseed1, opponentNFCseed1, 1) + "\n"; }
 				
 			String NFC2 = NFCseed2info.get(0) + NFCseed2info.get(4) + " vs. " + opponentNFCseed2info.get(0) + opponentNFCseed2info.get(4) + "\n Winner: ";
 			if (NFCchampionship2.equals(NFCseed2)){
-				NFC2 += NFCseed2info.get(0) + "\n"; }
+				NFC2 += NFCseed2info.get(0) + " "; 
+				NFC2 += simScore(NFCseed2, opponentNFCseed2, 0) + "\n"; }
 			else{
-				NFC2 += opponentNFCseed2info.get(0) + "\n"; }
+				NFC2 += opponentNFCseed2info.get(0) + " ";
+				NFC2 += simScore(NFCseed2, opponentNFCseed2, 1) + "\n"; }
 				
 			answer += AFC1 + AFC2 + NFC1 + NFC2;
 		}
@@ -521,17 +610,21 @@ public class FinalProject{
 		if (round == 2){
 			simConferenceChampionships();
 			
-			String AFCchampionship = AFCchampionship1info.get(0) + AFCchampionship1info.get(4) + " vs. " + AFCchampionship2info.get(0) + AFCchampionship2info.get(4) + "\n Winner: ";
+			String AFCchampionship = AFCchampionship1info.get(0) + AFCchampionship1info.get(4) + " vs. " + AFCchampionship2info.get(0) + 					AFCchampionship2info.get(4) + "\n Winner: ";
 			if (AFCchampion.equals(AFCchampionship1)){
-				AFCchampionship += AFCchampionship1info.get(0) + "\n"; }
+				AFCchampionship += AFCchampionship1info.get(0) + " "; 
+				AFCchampionship += simScore(AFCchampionship1, AFCchampionship2, 0) + "\n"; }
 			else{
-				AFCchampionship += AFCchampionship2info.get(0) + "\n"; }
+				AFCchampionship += AFCchampionship2info.get(0) + " ";
+				AFCchampionship += simScore(AFCchampionship1, AFCchampionship2, 1) + "\n"; }
 				
-			String NFCchampionship = NFCchampionship1info.get(0) + NFCchampionship1info.get(4) + " vs. " + NFCchampionship2info.get(0) + NFCchampionship2info.get(4) + "\n Winner: ";
+			String NFCchampionship = NFCchampionship1info.get(0) + NFCchampionship1info.get(4) + " vs. " + NFCchampionship2info.get(0) + 					NFCchampionship2info.get(4) + "\n Winner: ";
 			if (NFCchampion.equals(NFCchampionship1)){
-				NFCchampionship += NFCchampionship1info.get(0) + "\n"; }
+				NFCchampionship += NFCchampionship1info.get(0) + " ";
+				NFCchampionship += simScore(NFCchampionship1, NFCchampionship2, 0) + "\n"; }
 			else{
-				NFCchampionship += NFCchampionship2info.get(0) + "\n"; }
+				NFCchampionship += NFCchampionship2info.get(0) + " "; 
+				NFCchampionship += simScore(NFCchampionship1, NFCchampionship2, 1) + "\n";}
 				
 			answer += AFCchampionship + NFCchampionship;
 		}
@@ -541,9 +634,11 @@ public class FinalProject{
 			
 			String superBowl = AFCchampionInfo.get(0) + AFCchampionInfo.get(4) + " vs. " + NFCchampionInfo.get(0) + NFCchampionInfo.get(4) + "\n Super Bowl Champion: ";
 			if (AFCchampion.equals(SuperBowlChampion)){
-				superBowl += AFCchampionInfo.get(0); }
+				superBowl += AFCchampionInfo.get(0) + " "; 
+				superBowl += simScore(AFCchampion, NFCchampion, 0) + "\n"; }
 			else{
-				superBowl += NFCchampionInfo.get(0); }
+				superBowl += NFCchampionInfo.get(0) + " ";
+				superBowl += simScore(AFCchampion, NFCchampion, 1) + "\n"; }
 				
 			answer += superBowl;
 		}
@@ -551,6 +646,8 @@ public class FinalProject{
 		return answer;
 	}
 	
+	
+
 	public static void main (String[] args){
 		List<Integer> NewEnglandPatriots = Arrays.asList(3, 1, 8, 2, 7, 2, 3, 1, 8, 3, 3, 2, 19, 8, 8, 16, 22, 5, 23, 12);
 		List<Integer> KansasCityChiefs = Arrays.asList(2, 4, 3, 7, 15, 15, 13, 7, 30, 15, 13, 11, 20, 16, 17, 12, 4, 23, 24, 28); 
@@ -714,6 +811,38 @@ public class FinalProject{
 		Results:
 		New England Patriots (1) vs. Dallas Cowboys (1)
 		Super Bowl Champion: New England Patriots */
+
+		/** sample scores
+		Results: 
+		Pittsburgh Steelers (3) vs. Miami Dolphins (6)
+ 		Winner: Pittsburgh Steelers 27-24
+		Houston Texans (4) vs. Oakland Raiders (5)
+		 Winner: Houston Texans 31-27
+		Seattle Seahawks (3) vs. Detroit Lions (6)
+		 Winner: Seattle Seahawks 34-31
+		Green Bay Packers (4) vs. New York Giants (5)
+		 Winner: Green Bay Packers 28-10
+
+		Results: 
+		New England Patriots (1) vs. Houston Texans (4)
+ 		Winner: New England Patriots 28-27
+		Kansas City Chiefs (2) vs. Pittsburgh Steelers (3)
+ 		Winner: Pittsburgh Steelers 34-27
+		Dallas Cowboys (1) vs. Green Bay Packers (4)
+		 Winner: Green Bay Packers 28-21
+		Atlanta Falcons (2) vs. Seattle Seahawks (3)
+ 		Winner: Seattle Seahawks 45-31
+
+		Results: 
+		New England Patriots (1) vs. Pittsburgh Steelers (3)
+		 Winner: Pittsburgh Steelers 34-31
+		Green Bay Packers (4) vs. Seattle Seahawks (3)
+ 		Winner: Green Bay Packers 28-14
+
+		Results: 
+		Pittsburgh Steelers (3) vs. Green Bay Packers (4)
+ 		Super Bowl Champion: Pittsburgh Steelers 34-31 */ 
+
 		
 	}
 	
