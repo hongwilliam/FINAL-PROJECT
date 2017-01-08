@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.File;
 
 public class FinalProject{
 
@@ -36,8 +37,16 @@ public class FinalProject{
 	16: Pass Defense Efficiency
 	17: Rush Defense Efficiency
 	18: D-Line Pass Rushing
-	19: D-Line Run Stuffing */
+	19: D-Line Run Stuffing 
+	20: Final Stat Grade */
 
+	/** Indexing format for the List<String> of info
+	0: Team name
+	1: Regular season record
+	2: Offensive ranking (regular season)
+	3: Defensive ranking (regular season)
+	4: Seed number */
+	
 	/** Point distrubtion for key stats (sum rounded to nearest hundredth)
 	20 points: Turnover Differential
 	15 points: Point Differential
@@ -69,7 +78,6 @@ public class FinalProject{
 		double totalRounded = Math.round(total * 100.0) / 100.0; 
 		return totalRounded;
 	}
-	
 	
 	public static double matchupAdvantage(List<Integer> teamA, List<Integer> teamB){
 		double advantageA = 0.0, advantageB = 0.0;
@@ -137,7 +145,7 @@ public class FinalProject{
 	public static double statAdvantage(List<Integer> teamA, List<Integer> teamB){
 		//if teamA has the stat advantage, the return value will be pos
 		//if teamB has the stat advantage, the return value will be neg
-		double advantage = convertRawToScore(teamA) - convertRawToScore(teamB);
+		double advantage = teamA.get(20) - teamB.get(20);
 		double advantageRounded = Math.round(advantage * 100.0) / 100.0; 
 		return advantageRounded;
 	}
@@ -289,6 +297,13 @@ public class FinalProject{
 			return 0; }
 		else{
 			return 1; }
+	}
+	
+	public static String probabilityPreview (List<Integer> teamA, List<Integer> teamB, List<String> A, List<String> B){
+		String answer = "Probability: ";
+		int probabilityA = probabilityGame(teamA, teamB);
+		answer += A.get(0) + " " + probabilityA + "%, " + B.get(0) + " " + (100 - probabilityA) + "%";
+		return answer;
 	}
 	
 	public static void simWildCardRound (){
@@ -644,48 +659,54 @@ public class FinalProject{
 		return answer;
 		
 	}
-	/** Indexing format for the List<String> of info
-	0: Team name
-	1: Regular season record
-	2: Offensive ranking (regular season)
-	3: Defensive ranking (regular season)
-	4: Seed number */
+
 	
 	public static String playoffPicture(){
 		String answer = "", currentRound = "\nROUND: ", AFC = "AFC \n", NFC = "NFC \n", upcoming = "Upcoming games: \n";
 		if (round == 0){
 			currentRound += "Wild Card Round \n\n";
 			upcoming += AFCseed3info.get(0) + AFCseed3info.get(4) +
-				" vs. " + AFCseed6info.get(0) + AFCseed6info.get(4) + "\n";
+				" vs. " + AFCseed6info.get(0) + AFCseed6info.get(4) + "\n" 
+				+ probabilityPreview(AFCseed3, AFCseed6, AFCseed3info, AFCseed6info) + "\n\n";
 			upcoming += AFCseed4info.get(0) + AFCseed4info.get(4) +
-				" vs. " + AFCseed5info.get(0) + AFCseed5info.get(4) + "\n";
+				" vs. " + AFCseed5info.get(0) + AFCseed5info.get(4) + "\n"
+				+ probabilityPreview(AFCseed4, AFCseed5, AFCseed4info, AFCseed5info) + "\n\n";
 			upcoming += NFCseed3info.get(0) + NFCseed3info.get(4) + 
-				" vs. " + NFCseed6info.get(0) + NFCseed6info.get(4) + "\n";
+				" vs. " + NFCseed6info.get(0) + NFCseed6info.get(4) + "\n"
+				+ probabilityPreview(NFCseed3, NFCseed6, NFCseed3info, NFCseed6info) + "\n\n";
 			upcoming += NFCseed4info.get(0) + NFCseed4info.get(4) + 
-				" vs. " + NFCseed5info.get(0) + NFCseed5info.get(4) + "\n"; }
+				" vs. " + NFCseed5info.get(0) + NFCseed5info.get(4) + "\n"
+				+ probabilityPreview(NFCseed4, NFCseed5, NFCseed4info, NFCseed5info) + "\n\n"; }
 		
 		if (round == 1){
 			currentRound += "Divisional Round \n\n";
 			upcoming += AFCseed1info.get(0) + AFCseed1info.get(4) + " vs. " 
-				+ opponentAFCseed1info.get(0) + opponentAFCseed1info.get(4) + "\n";
+				+ opponentAFCseed1info.get(0) + opponentAFCseed1info.get(4) + "\n"
+				+ probabilityPreview(AFCseed1, opponentAFCseed1, AFCseed1info, opponentAFCseed1info) + "\n\n";
 			upcoming += AFCseed2info.get(0) + AFCseed2info.get(4) + " vs. " 
-				+ opponentAFCseed2info.get(0) + opponentAFCseed2info.get(4) + "\n";
+				+ opponentAFCseed2info.get(0) + opponentAFCseed2info.get(4) + "\n"
+				+ probabilityPreview(AFCseed2, opponentAFCseed2, AFCseed2info, opponentAFCseed2info) + "\n\n";
 			upcoming += NFCseed1info.get(0) + NFCseed1info.get(4) + " vs. " 
-				+ opponentNFCseed1info.get(0) + opponentNFCseed1info.get(4) + "\n";
+				+ opponentNFCseed1info.get(0) + opponentNFCseed1info.get(4) + "\n"
+				+ probabilityPreview(NFCseed1, opponentNFCseed1, NFCseed1info, opponentNFCseed1info) + "\n\n";
 			upcoming += NFCseed2info.get(0) + NFCseed2info.get(4) + " vs. " 
-				+ opponentNFCseed2info.get(0) + opponentNFCseed2info.get(4) + "\n";	}
+				+ opponentNFCseed2info.get(0) + opponentNFCseed2info.get(4) + "\n"
+				+ probabilityPreview(NFCseed2, opponentNFCseed2, NFCseed2info, opponentNFCseed2info) + "\n\n"; }
 		
 		if (round == 2){
 			currentRound += "Conference Championships \n\n"; 
 			upcoming += AFCchampionship1info.get(0) + AFCchampionship1info.get(4) + 
-				" vs. " + AFCchampionship2info.get(0) + AFCchampionship2info.get(4) +  "\n";
+				" vs. " + AFCchampionship2info.get(0) + AFCchampionship2info.get(4) +  "\n"
+				+ probabilityPreview(AFCchampionship1, AFCchampionship2, AFCchampionship1info, AFCchampionship2info) + "\n\n";
 			upcoming += NFCchampionship1info.get(0) + NFCchampionship1info.get(4) +
-				" vs. " + NFCchampionship2info.get(0) + NFCchampionship2info.get(4) + 	"\n"; }
+				" vs. " + NFCchampionship2info.get(0) + NFCchampionship2info.get(4) + 	"\n"
+				+ probabilityPreview(NFCchampionship1, NFCchampionship2, NFCchampionship1info, NFCchampionship2info) + "\n\n"; }
 		
 		if (round == 3){
 			currentRound += "SUPER BOWL \n\n"; 
 			upcoming += AFCchampionInfo.get(0) + AFCchampionInfo.get(4) +
-				" vs. " + NFCchampionInfo.get(0) + NFCchampionInfo.get(4) + "\n"; }
+				" vs. " + NFCchampionInfo.get(0) + NFCchampionInfo.get(4) + "\n"
+				+ probabilityPreview(AFCchampion, NFCchampion, AFCchampionInfo, NFCchampionInfo) + "\n\n"; }
 		
 		AFC += "1) " + AFCseed1info.get(0) + AFCseed1info.get(1) + "\n" 
 			+ "Offense: " + AFCseed1info.get(2) + "     Defense: " + AFCseed1info.get(3) + "\n\n";
@@ -713,7 +734,11 @@ public class FinalProject{
 		NFC += "6) " + NFCseed6info.get(0) + NFCseed6info.get(1) + "\n"
 			+ "Offense: " + NFCseed6info.get(2) + "     Defense: " + NFCseed6info.get(3) + "\n\n";
 		
-		answer += currentRound + AFC + NFC + upcoming;
+		if (round == 0){
+			answer += currentRound + AFC + NFC + upcoming; }
+		else{
+			answer += currentRound + upcoming; }
+		
 		return answer;
 	}
 	
@@ -726,37 +751,37 @@ public class FinalProject{
 				" vs. " + AFCseed6info.get(0) + AFCseed6info.get(4) + "\n Winner: ";
 			if (opponentAFCseed2.equals(AFCseed3)){
 				AFC3vs6 += AFCseed3info.get(0) + " ";
-				AFC3vs6 += simScore(AFCseed3, AFCseed6, 0) + "\n"; }
+				AFC3vs6 += simScore(AFCseed3, AFCseed6, 0) + "\n\n"; }
 			else{
 				AFC3vs6 += AFCseed6info.get(0) + " "; 
-				AFC3vs6 += simScore(AFCseed3, AFCseed6, 1) + "\n"; }
+				AFC3vs6 += simScore(AFCseed3, AFCseed6, 1) + "\n\n"; }
 				
 			String AFC4vs5 =  AFCseed4info.get(0) + AFCseed4info.get(4) +
 				" vs. " + AFCseed5info.get(0) + AFCseed5info.get(4) + "\n Winner: ";	
 			if (opponentAFCseed1.equals(AFCseed4) || opponentAFCseed2.equals(AFCseed4)){
 				AFC4vs5 += AFCseed4info.get(0) + " "; 
-				AFC4vs5 += simScore(AFCseed4, AFCseed5, 0) + "\n"; }
+				AFC4vs5 += simScore(AFCseed4, AFCseed5, 0) + "\n\n"; }
 			else{
 				AFC4vs5 += AFCseed5info.get(0) + " "; 
-				AFC4vs5 += simScore(AFCseed4, AFCseed5, 1) + "\n"; }
+				AFC4vs5 += simScore(AFCseed4, AFCseed5, 1) + "\n\n"; }
 				
 			String NFC3vs6 = NFCseed3info.get(0) + NFCseed3info.get(4) + 
 				" vs. " + NFCseed6info.get(0) + NFCseed6info.get(4) + "\n Winner: ";
 			if (opponentNFCseed2.equals(NFCseed3)){
 				NFC3vs6 += NFCseed3info.get(0) + " ";
-				NFC3vs6 += simScore(NFCseed3, NFCseed6, 0) + "\n"; }
+				NFC3vs6 += simScore(NFCseed3, NFCseed6, 0) + "\n\n"; }
 			else{
 				NFC3vs6 += NFCseed6info.get(0) + " ";
-				NFC3vs6 += simScore(NFCseed3, NFCseed6, 1) + "\n"; }
+				NFC3vs6 += simScore(NFCseed3, NFCseed6, 1) + "\n\n"; }
 				
 			String NFC4vs5 = NFCseed4info.get(0) + NFCseed4info.get(4) +
 				" vs. " + NFCseed5info.get(0) + NFCseed5info.get(4) + "\n Winner: ";	
 			if (opponentNFCseed1.equals(NFCseed4) || opponentNFCseed2.equals(NFCseed4)){
 				NFC4vs5 += NFCseed4info.get(0) + " "; 
-				NFC4vs5 += simScore(NFCseed4, NFCseed5, 0) + "\n"; }
+				NFC4vs5 += simScore(NFCseed4, NFCseed5, 0) + "\n\n"; }
 			else{
 				NFC4vs5 += NFCseed5info.get(0) + " "; 
-				NFC4vs5 += simScore(NFCseed4, NFCseed5, 1) + "\n"; }
+				NFC4vs5 += simScore(NFCseed4, NFCseed5, 1) + "\n\n"; }
 				
 			answer += AFC3vs6 + AFC4vs5 + NFC3vs6 + NFC4vs5;
 		}
@@ -768,37 +793,37 @@ public class FinalProject{
 				" vs. " + opponentAFCseed1info.get(0) + opponentAFCseed1info.get(4) + "\n Winner: ";
 			if (AFCchampionship1.equals(AFCseed1)){
 				AFC1 += AFCseed1info.get(0) + " "; 
-				AFC1 += simScore(AFCseed1, opponentAFCseed1, 0) + "\n"; }
+				AFC1 += simScore(AFCseed1, opponentAFCseed1, 0) + "\n\n"; }
 			else{
 				AFC1 += opponentAFCseed1info.get(0) + " "; 
-				AFC1 += simScore(AFCseed1, opponentAFCseed1, 1) + "\n"; }
+				AFC1 += simScore(AFCseed1, opponentAFCseed1, 1) + "\n\n"; }
 				
 			String AFC2 = AFCseed2info.get(0) + AFCseed2info.get(4) +
 				" vs. " + opponentAFCseed2info.get(0) + opponentAFCseed2info.get(4) + "\n Winner: ";
 			if (AFCchampionship2.equals(AFCseed2)){
 				AFC2 += AFCseed2info.get(0) + " "; 
-				AFC2 += simScore(AFCseed2, opponentAFCseed2, 0) + "\n"; }
+				AFC2 += simScore(AFCseed2, opponentAFCseed2, 0) + "\n\n"; }
 			else{
 				AFC2 += opponentAFCseed2info.get(0) + " "; 
-				AFC2 += simScore(AFCseed2, opponentAFCseed2, 1) + "\n"; }
+				AFC2 += simScore(AFCseed2, opponentAFCseed2, 1) + "\n\n"; }
 				
 			String NFC1 = NFCseed1info.get(0) + NFCseed1info.get(4) +
 				" vs. " + opponentNFCseed1info.get(0) + opponentNFCseed1info.get(4) + "\n Winner: ";
 			if (NFCchampionship1.equals(NFCseed1)){
 				NFC1 += NFCseed1info.get(0) + " "; 
-				NFC1 += simScore(NFCseed1, opponentNFCseed1, 0) + "\n"; }
+				NFC1 += simScore(NFCseed1, opponentNFCseed1, 0) + "\n\n"; }
 			else{
 				NFC1 += opponentNFCseed1info.get(0) + " ";
-				NFC1 += simScore(NFCseed1, opponentNFCseed1, 1) + "\n"; }
+				NFC1 += simScore(NFCseed1, opponentNFCseed1, 1) + "\n\n"; }
 				
 			String NFC2 = NFCseed2info.get(0) + NFCseed2info.get(4) +
 				" vs. " + opponentNFCseed2info.get(0) + opponentNFCseed2info.get(4) + "\n Winner: ";
 			if (NFCchampionship2.equals(NFCseed2)){
 				NFC2 += NFCseed2info.get(0) + " "; 
-				NFC2 += simScore(NFCseed2, opponentNFCseed2, 0) + "\n"; }
+				NFC2 += simScore(NFCseed2, opponentNFCseed2, 0) + "\n\n"; }
 			else{
 				NFC2 += opponentNFCseed2info.get(0) + " ";
-				NFC2 += simScore(NFCseed2, opponentNFCseed2, 1) + "\n"; }
+				NFC2 += simScore(NFCseed2, opponentNFCseed2, 1) + "\n\n"; }
 				
 			answer += AFC1 + AFC2 + NFC1 + NFC2;
 		}
@@ -811,19 +836,19 @@ public class FinalProject{
 				" vs. " + AFCchampionship2info.get(0) + AFCchampionship2info.get(4) + "\n Winner: ";
 			if (AFCchampion.equals(AFCchampionship1)){
 				AFCchampionship += AFCchampionship1info.get(0) + " "; 
-				AFCchampionship += simScore(AFCchampionship1, AFCchampionship2, 0) + "\n"; }
+				AFCchampionship += simScore(AFCchampionship1, AFCchampionship2, 0) + "\n\n"; }
 			else{
 				AFCchampionship += AFCchampionship2info.get(0) + " ";
-				AFCchampionship += simScore(AFCchampionship1, AFCchampionship2, 1) + "\n"; }
+				AFCchampionship += simScore(AFCchampionship1, AFCchampionship2, 1) + "\n\n"; }
 				
 			String NFCchampionship = NFCchampionship1info.get(0) + NFCchampionship1info.get(4) +
 				" vs. " + NFCchampionship2info.get(0) + NFCchampionship2info.get(4) + "\n Winner: ";
 			if (NFCchampion.equals(NFCchampionship1)){
 				NFCchampionship += NFCchampionship1info.get(0) + " ";
-				NFCchampionship += simScore(NFCchampionship1, NFCchampionship2, 0) + "\n"; }
+				NFCchampionship += simScore(NFCchampionship1, NFCchampionship2, 0) + "\n\n"; }
 			else{
 				NFCchampionship += NFCchampionship2info.get(0) + " "; 
-				NFCchampionship += simScore(NFCchampionship1, NFCchampionship2, 1) + "\n";}
+				NFCchampionship += simScore(NFCchampionship1, NFCchampionship2, 1) + "\n\n";}
 				
 			answer += AFCchampionship + NFCchampionship;
 		}
@@ -832,13 +857,15 @@ public class FinalProject{
 			simSuperBowl();
 			
 			String superBowl = AFCchampionInfo.get(0) + AFCchampionInfo.get(4) +
-				" vs. " + NFCchampionInfo.get(0) + NFCchampionInfo.get(4) + "\n Super Bowl Champion: ";
+				" vs. " + NFCchampionInfo.get(0) + NFCchampionInfo.get(4) + "\n Winner: ";
 			if (AFCchampion.equals(SuperBowlChampion)){
 				superBowl += AFCchampionInfo.get(0) + " "; 
-				superBowl += simScore(AFCchampion, NFCchampion, 0) + "\n"; }
+				superBowl += simScore(AFCchampion, NFCchampion, 0) + "\n\n";
+				superBowl += "SUPER BOWL CHAMPS: The " + AFCchampionInfo.get(0) + "!";}
 			else{
 				superBowl += NFCchampionInfo.get(0) + " ";
-				superBowl += simScore(AFCchampion, NFCchampion, 1) + "\n"; }
+				superBowl += simScore(AFCchampion, NFCchampion, 1) + "\n\n";
+				superBowl += "SUPER BOWL CHAMPS: The " + NFCchampionInfo.get(0) + "!";}
 				
 			answer += superBowl;
 		}
@@ -847,12 +874,12 @@ public class FinalProject{
 	}
 	
 	public static void main (String[] args){
-		List<Integer> NewEnglandPatriots = Arrays.asList(3, 1, 8, 2, 7, 2, 3, 1, 8, 3, 3, 2, 19, 8, 8, 16, 22, 5, 23, 12);
-		List<Integer> KansasCityChiefs = Arrays.asList(2, 4, 3, 7, 15, 15, 13, 7, 30, 15, 13, 11, 20, 16, 17, 12, 4, 23, 24, 28); 
-		List<Integer> PittsburghSteelers = Arrays.asList(9, 5, 14, 3, 13, 11, 11, 10, 12, 11, 9, 8, 4, 3, 2, 9, 13, 9, 17, 13); 
-		List<Integer> HoustonTexans = Arrays.asList(26, 26, 7, 29, 4, 30, 29, 11, 31, 32, 30, 30, 27, 9, 15, 11, 9, 17, 25, 16);
-		List<Integer> OaklandRaiders = Arrays.asList(1, 11, 19, 8, 32, 9, 7, 20, 14, 16, 7, 4, 12, 1, 10, 22, 23, 21, 27, 27);
-		List<Integer> MiamiDolphins = Arrays.asList(13, 24, 17, 15, 12, 8, 17, 18, 15, 6, 14, 18, 15, 23, 21, 17, 14, 19, 31, 20);
+		List<Integer> NewEnglandPatriots = Arrays.asList(3, 1, 8, 2, 7, 2, 3, 1, 8, 3, 3, 2, 19, 8, 8, 16, 22, 5, 23, 12, 97);
+		List<Integer> KansasCityChiefs = Arrays.asList(2, 4, 3, 7, 15, 15, 13, 7, 30, 15, 13, 11, 20, 16, 17, 12, 4, 23, 24, 28, 72); 
+		List<Integer> PittsburghSteelers = Arrays.asList(9, 5, 14, 3, 13, 11, 11, 10, 12, 11, 9, 8, 4, 3, 2, 9, 13, 9, 17, 13, 68); 
+		List<Integer> HoustonTexans = Arrays.asList(26, 26, 7, 29, 4, 30, 29, 11, 31, 32, 30, 30, 27, 9, 15, 11, 9, 17, 25, 16, 36);
+		List<Integer> OaklandRaiders = Arrays.asList(1, 11, 19, 8, 32, 9, 7, 20, 14, 16, 7, 4, 12, 1, 10, 22, 23, 21, 27, 27, 34);
+		List<Integer> MiamiDolphins = Arrays.asList(13, 24, 17, 15, 12, 8, 17, 18, 15, 6, 14, 18, 15, 23, 21, 17, 14, 19, 31, 20, 56);
 		
 		List<String> NewEnglandPatriotsInfo = Arrays.asList("New England Patriots", " (14-2)", "3rd", "1st", " (1)");
 		List<String> KansasCityChiefsInfo = Arrays.asList("Kansas City Chiefs", " (12-4)", "13th", "7th", " (2)");
@@ -861,12 +888,12 @@ public class FinalProject{
 		List<String> OaklandRaidersInfo = Arrays.asList("Oakland Raiders", " (12-4)", "7th", "20th", " (5)");
 		List<String> MiamiDolphinsInfo = Arrays.asList("Miami Dolphins", " (10-6)", "17th", "18th", " (6)");
 		
-		List<Integer> DallasCowboys = Arrays.asList(10, 3, 24, 1, 14, 3, 5, 5, 3, 5, 2, 3, 2, 11, 3, 18, 19, 8, 10, 11);
-		List<Integer> AtlantaFalcons = Arrays.asList(4, 2, 22, 4, 11, 1, 1, 27, 9, 1, 1, 1, 8, 22, 9, 27, 24, 28, 22, 24);
-		List<Integer> SeattleSeahawks = Arrays.asList(16, 6, 9, 10, 16, 13, 18, 3, 27, 7, 18, 16, 21, 25, 26, 4, 11, 2, 13, 10);
-		List<Integer> GreenBayPackers = Arrays.asList(6, 8, 26, 6, 31, 5, 4, 21, 10, 18, 6, 9, 9, 14, 22, 19, 20, 12, 4, 9);
-		List<Integer> NewYorkGiants = Arrays.asList(22, 12, 2, 12, 6, 20, 26, 2, 19, 21, 21, 21, 24, 4, 25, 2, 3, 4, 29, 17); 
-		List<Integer> DetroitLions = Arrays.asList(20, 21, 32, 27, 26, 14, 20, 13, 17, 14, 17, 13, 26, 18, 31, 32, 32, 22, 21, 19); 
+		List<Integer> DallasCowboys = Arrays.asList(10, 3, 24, 1, 14, 3, 5, 5, 3, 5, 2, 3, 2, 11, 3, 18, 19, 8, 10, 11, 71);
+		List<Integer> AtlantaFalcons = Arrays.asList(4, 2, 22, 4, 11, 1, 1, 27, 9, 1, 1, 1, 8, 22, 9, 27, 24, 28, 22, 24, 73);
+		List<Integer> SeattleSeahawks = Arrays.asList(16, 6, 9, 10, 16, 13, 18, 3, 27, 7, 18, 16, 21, 25, 26, 4, 11, 2, 13, 10, 65);
+		List<Integer> GreenBayPackers = Arrays.asList(6, 8, 26, 6, 31, 5, 4, 21, 10, 18, 6, 9, 9, 14, 22, 19, 20, 12, 4, 9, 62);
+		List<Integer> NewYorkGiants = Arrays.asList(22, 12, 2, 12, 6, 20, 26, 2, 19, 21, 21, 21, 24, 4, 25, 2, 3, 4, 29, 17, 70); 
+		List<Integer> DetroitLions = Arrays.asList(20, 21, 32, 27, 26, 14, 20, 13, 17, 14, 17, 13, 26, 18, 31, 32, 32, 22, 21, 19, 35); 
 		
 		List<String> DallasCowboysInfo = Arrays.asList("Dallas Cowboys", " (13-3)", "5th", "5th", " (1)");
 		List<String> AtlantaFalconsInfo = Arrays.asList("Atlanta Falcons", " (11-5)", "1st", "27th", " (2)");
@@ -875,19 +902,20 @@ public class FinalProject{
 		List<String> NewYorkGiantsInfo = Arrays.asList("New York Giants", " (11-5)", "26th", "2nd", " (5)");
 		List<String> DetroitLionsInfo = Arrays.asList("Detroit Lions", " (9-7)", "20th", "13th", " (6)");
 		
-		System.out.println(convertRawToScore(NewEnglandPatriots)); //91.25
-		System.out.println(convertRawToScore(KansasCityChiefs)); //76.88
-		System.out.println(convertRawToScore(PittsburghSteelers)); //73.28
-		System.out.println(convertRawToScore(HoustonTexans)); //35.63
-		System.out.println(convertRawToScore(OaklandRaiders)); //64.22
+		/** System.out.println(convertRawToScore(NewEnglandPatriots)); //91.25 -> 96.25 (+5)
+		System.out.println(convertRawToScore(KansasCityChiefs)); //76.88 -> 71.88 (-5)
+		System.out.println(convertRawToScore(PittsburghSteelers)); //73.28 -> 68.28 (-5)
+		System.out.println(convertRawToScore(HoustonTexans)); //35.63 
+		System.out.println(convertRawToScore(OaklandRaiders)); //64.22 -> 34.22 (-30)
 		System.out.println(convertRawToScore(MiamiDolphins)); //56.09
 		
-		System.out.println(convertRawToScore(DallasCowboys)); //75.78
-		System.out.println(convertRawToScore(AtlantaFalcons)); //78.44
+		System.out.println(convertRawToScore(DallasCowboys)); //75.78 -> 70.78 (-5)
+		System.out.println(convertRawToScore(AtlantaFalcons)); //78.44 -> 73.44 (-5)
 		System.out.println(convertRawToScore(SeattleSeahawks)); //65.31
 		System.out.println(convertRawToScore(GreenBayPackers)); //62.03
-		System.out.println(convertRawToScore(NewYorkGiants)); //60.31
-		System.out.println(convertRawToScore(DetroitLions)); //34.84
+		System.out.println(convertRawToScore(NewYorkGiants)); //60.31 -> 70.31 (+10)
+		System.out.println(convertRawToScore(DetroitLions)); //34.84 */
+
 	
 		/** this is using the default playoff tournament; the feature to customize will come later
 			AFC 				NFC
@@ -925,7 +953,21 @@ public class FinalProject{
 		NFCseed6 = DetroitLions;
 		NFCseed6info= DetroitLionsInfo;
 		
+		//wild card 
 		System.out.println(playoffPicture());
+		System.out.println(simResults(round));
+		
+		//divisional
+		System.out.println(playoffPicture());
+		System.out.println(simResults(round));
+		
+		//conference championship
+		System.out.println(playoffPicture());
+		System.out.println(simResults(round));
+		
+		//super bowl
+		System.out.println(playoffPicture());
+		System.out.println(simResults(round)); 
 		
 		/** Sample playoff picture
 		ROUND: Wild Card Round
@@ -970,44 +1012,95 @@ public class FinalProject{
 
 		Upcoming games:
 		Pittsburgh Steelers (3) vs. Miami Dolphins (6)
+		Probability: Pittsburgh Steelers 70%, Miami Dolphins 30%
+
 		Houston Texans (4) vs. Oakland Raiders (5)
+		Probability: Houston Texans 40%, Oakland Raiders 60%
+
 		Seattle Seahawks (3) vs. Detroit Lions (6)
-		Green Bay Packers (4) vs. New York Giants (5) */
-		
-		System.out.println(simResults(round));
-		System.out.println(simResults(round));
-		System.out.println(simResults(round));
-		System.out.println(simResults(round)); 
-		
-		/** Sample playoff simulation
-		Pittsburgh Steelers (3) vs. Miami Dolphins (6)
-		Winner: Pittsburgh Steelers 24-13
-		Houston Texans (4) vs. Oakland Raiders (5)
-		Winner: Oakland Raiders 35-3
-		Seattle Seahawks (3) vs. Detroit Lions (6)
-		Winner: Seattle Seahawks 21-7
+		Probability: Seattle Seahawks 83%, Detroit Lions 17%
+
 		Green Bay Packers (4) vs. New York Giants (5)
-		Winner: Green Bay Packers 17-10
+		Probability: Houston Texans 42%, Oakland Raiders 58%
+
 
 		Results:
-		New England Patriots (1) vs. Oakland Raiders (5)
-		Winner: New England Patriots 24-13
+		Pittsburgh Steelers (3) vs. Miami Dolphins (6)
+		Winner: Pittsburgh Steelers 28-3
+
+		Houston Texans (4) vs. Oakland Raiders (5)
+		Winner: Houston Texans 24-3
+
+		Seattle Seahawks (3) vs. Detroit Lions (6)
+		Winner: Seattle Seahawks 16-7
+
+		Green Bay Packers (4) vs. New York Giants (5)
+		Winner: New York Giants 17-10
+
+
+
+		ROUND: Divisional Round
+
+		Upcoming games:
+		New England Patriots (1) vs. Houston Texans (4)
+		Probability: New England Patriots 94%, Houston Texans 6%
+
 		Kansas City Chiefs (2) vs. Pittsburgh Steelers (3)
-		Winner: Pittsburgh Steelers 24-7
-		Dallas Cowboys (1) vs. Green Bay Packers (4)
-		Winner: Dallas Cowboys 24-10
+		Probability: Kansas City Chiefs 43%, Pittsburgh Steelers 57%
+
+		Dallas Cowboys (1) vs. New York Giants (5)
+		Probability: Dallas Cowboys 55%, New York Giants 45%
+
 		Atlanta Falcons (2) vs. Seattle Seahawks (3)
-		Winner: Atlanta Falcons 13-10
+		Probability: Atlanta Falcons 55%, Seattle Seahawks 45%
+
+
+		Results:
+		New England Patriots (1) vs. Houston Texans (4)
+		Winner: New England Patriots 27-3
+
+		Kansas City Chiefs (2) vs. Pittsburgh Steelers (3)
+		Winner: Pittsburgh Steelers 20-17
+
+		Dallas Cowboys (1) vs. New York Giants (5)
+		Winner: New York Giants 21-10
+
+		Atlanta Falcons (2) vs. Seattle Seahawks (3)
+		Winner: Atlanta Falcons 17-10
+
+
+
+		ROUND: Conference Championships
+
+		Upcoming games:
+		New England Patriots (1) vs. Pittsburgh Steelers (3)
+		Probability: New England Patriots 70%, Pittsburgh Steelers 30%
+
+		New York Giants (5) vs. Atlanta Falcons (2)
+		Probability: New York Giants 52%, Atlanta Falcons 48%
+
 
 		Results:
 		New England Patriots (1) vs. Pittsburgh Steelers (3)
-		Winner: New England Patriots 20-14
-		Dallas Cowboys (1) vs. Atlanta Falcons (2)
-		Winner: Dallas Cowboys 20-14
+		Winner: New England Patriots 17-7
 
+		New York Giants (5) vs. Atlanta Falcons (2)
+		Winner: New York Giants 20-7
+
+
+
+		ROUND: SUPER BOWL
+
+		Upcoming games:
+		New England Patriots (1) vs. New York Giants (5)
+		Probability: New England Patriots 75%, New York Giants 25%
+
+	
 		Results:
-		New England Patriots (1) vs. Dallas Cowboys (1)
-		Super Bowl Champion: New England Patriots 14-9
+		New England Patriots (1) vs. New York Giants (5)
+		Winner: New England Patriots 17-3
+
+		SUPER BOWL CHAMPS: The New England Patriots!
 		*/
 		
 	}
