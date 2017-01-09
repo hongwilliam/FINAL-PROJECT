@@ -873,6 +873,701 @@ public class FinalProject{
 		return answer;
 	}
 	
+	public static String qbStats(List<Integer> stats, List<Integer> opp){
+
+		String answer = ""; 
+	
+		//base stats
+		double yds = stats.get(3) / (stats.get(2) + 0.0);
+		double td = stats.get(4) / (stats.get(2) + 0.0);
+		double comp = stats.get(5) / (stats.get(2) + 0.0);
+		double att = stats.get(6) / (stats.get(2) + 0.0);
+		double inter = stats.get(7) / (stats.get(2) + 0.0);
+		int rating = stats.get(8);
+		int finalInt = 0;
+	
+		//adjustment from madden rating 
+		if (rating >= 87){
+			yds *= 1.25;
+			td *= 1.25;
+			comp *= 1.25;
+			att *= 1.25;
+			inter *= 0.75; }
+		
+		if (rating >= 79 && rating <= 86){
+			yds *= 1.1;
+			td *= 1.1;
+			comp *= 1.1;
+			att *= 1.1;
+			inter *= 0.9; }
+	
+		if (rating <= 75){
+			yds *= 0.75;
+			td *= 0.75;
+			comp *= 0.75;
+			att *= 0.75;
+			inter *= 1.25; }
+	
+		//vs opposing def
+		int def = opp.get(7);
+		if (def >= 1 && def <= 8){
+			yds *= 0.75;
+			td *= 0.75;
+			comp *= 0.75;
+			att *= 0.75;
+			inter *= 1.25; }
+		
+		if (def >= 17 && def <= 24){
+			yds *= 1.1;
+			td *= 1.1;
+			comp *= 1.1;
+			att *= 1.1;
+			inter *= 0.9; }
+		
+		if (def >= 25 && def <= 32){
+			yds *= 1.25;
+			td *= 1.25;
+			comp *= 1.25;
+			att *= 1.25;
+			inter *= 0.75; }
+		
+		//randomizer
+		double chance = Math.random() * 100; 
+		if (chance < 20){
+			yds *= 0.8; 
+			td *= 0.8;
+			comp *= 0.8;
+			att *= 0.8;
+			inter *= 1.2; }
+		
+		if (chance < 40 && chance > 20){
+			yds *= 0.9; 
+			td *= 0.9;
+			comp *= 0.9;
+			att *= 0.9;
+			inter *= 1.1; }
+		
+		if (chance < 60 && chance > 40){
+			yds *= 1.1; 
+			td *= 1.1;
+			comp *= 1.1;
+			att *= 1.1;
+			inter *= 0.9; }
+		
+		if (chance < 80 && chance > 60){
+			yds *= 1.2; 
+			td *= 1.2;
+			comp *= 1.2;
+			att *= 1.2;
+			inter *= 0.8; }
+		
+		//adjusting interceptions
+		double turnover = Math.random() * 100;
+		if (inter <= 1){
+			if (turnover < (inter * 100) ){
+				finalInt = 1; }
+		}
+	
+		if (inter > 1){
+			double base = Math.floor(inter);
+			finalInt += base; 
+			double rem = inter - base; 
+			if (turnover < (rem * 100) ){
+				finalInt += 1; }
+		}
+
+		int finalYds = (int) Math.round(yds);
+		int finalTd = (int) Math.round(td);
+		int finalComp = (int) Math.round(comp);
+		int finalAtt = (int) Math.round(att);
+	
+		
+		answer += finalYds + " Yards, " + finalTd + " Touchdowns, " + finalComp + " Completions, " + finalAtt + " Attempts, " + 
+			finalInt + " Interceptions";
+		
+		return answer;
+		
+		}
+		
+	public static String rbStats(List<Integer> stats, List<Integer> opp){
+
+		String answer = ""; 
+	
+		//base stats
+		double yds = stats.get(3) / (stats.get(2) + 0.0);
+		double td = stats.get(4) / (stats.get(2) + 0.0);
+		double car = stats.get(5) / stats.get(2);
+		double fum = stats.get(6) / (stats.get(2) + 0.0);
+		int rating = stats.get(7);
+		int finalFum = 0;
+		
+		//adjustment from madden rating 
+		if (rating >= 87){
+			yds *= 1.25;
+			td *= 1.25;
+			fum *= 0.75; }
+		
+		if (rating >= 82 && rating <= 86){
+			yds *= 1.1;
+			td *= 1.1;
+			fum *= 0.9; }
+	
+		if (rating <= 79){
+			yds *= 0.75;
+			td *= 0.75;
+			fum *= 1.25; }
+			
+		//vs opposing def
+		int def = opp.get(7);
+		if (def >= 1 && def <= 8){
+			yds *= 0.75;
+			td *= 0.75;
+			fum *= 1.25; }
+		
+		if (def >= 17 && def <= 24){
+			yds *= 1.1;
+			td *= 1.1;
+			fum *= 0.9; }
+		
+		if (def >= 25 && def <= 32){
+			yds *= 1.25;
+			td *= 1.25;
+			fum *= 0.75; }
+			
+		//randomizer
+		double chance = Math.random() * 100; 
+		if (chance < 20){
+			yds *= 0.8; 
+			td *= 0.8;
+			fum *= 1.2; }
+		
+		if (chance < 40 && chance > 20){
+			yds *= 0.9; 
+			td *= 0.9;
+			fum *= 1.1; }
+		
+		if (chance < 60 && chance > 40){
+			yds *= 1.1; 
+			td *= 1.1;
+			fum *= 0.9; }
+		
+		if (chance < 80 && chance > 60){
+			yds *= 1.2; 
+			td *= 1.2;
+			fum *= 0.8; }
+			
+		//adjusting fumbles
+		double turnover = Math.random() * 100;
+		if (fum <= 1){
+			if (turnover < (fum * 100) ){
+				finalFum = 1; }
+		}
+	
+		if (fum > 1){
+			double base = Math.floor(fum);
+			finalFum += base; 
+			double rem = fum - base; 
+			if (turnover < (rem * 100) ){
+				finalFum += 1; }
+		}
+		
+		int finalYds = (int) Math.round(yds);
+		int finalTd = (int) Math.round(td);
+		int finalCar = (int) Math.round(car);
+	
+		
+		answer += finalYds + " Total Yards, " + finalTd + " Total Touchdowns, " + finalCar + " Carries, " + 
+			finalFum + " Fumbles";
+		
+		return answer;
+		
+	}
+	
+	public static String wrteStats(List<Integer> stats, List<Integer> opp){
+
+		String answer = ""; 
+	
+		//base stats
+		double yds = stats.get(3) / (stats.get(2) + 0.0);
+		double td = stats.get(4) / (stats.get(2) + 0.0);
+		double rec = stats.get(5) / (stats.get(2) + 0.0);
+		int rating = stats.get(6);
+		
+		//adjustment from madden rating 
+		if (rating >= 90){
+			yds *= 1.25;
+			td *= 1.25;
+			rec *= 1.25; }
+		
+		if (rating >= 83 && rating <= 89){
+			yds *= 1.1;
+			td *= 1.1;
+			rec *= 1.1; }
+	
+		if (rating <= 77){
+			yds *= 0.75;
+			td *= 0.75;
+			rec *= 0.75; }
+			
+		//vs opposing def
+		int def = opp.get(7);
+		if (def >= 1 && def <= 8){
+			yds *= 0.75;
+			td *= 0.75;
+			rec *= 0.75; }
+		
+		if (def >= 17 && def <= 24){
+			yds *= 1.1;
+			td *= 1.1;
+			rec *= 1.1; }
+		
+		if (def >= 25 && def <= 32){
+			yds *= 1.25;
+			td *= 1.25;
+			rec *= 1.25; }
+			
+		//randomizer
+		double chance = Math.random() * 100; 
+		if (chance < 20){
+			yds *= 0.8; 
+			td *= 0.8;
+			rec *= 1.2; }
+		
+		if (chance < 40 && chance > 20){
+			yds *= 0.9; 
+			td *= 0.9;
+			rec *= 0.9; }
+		
+		if (chance < 60 && chance > 40){
+			yds *= 1.1; 
+			td *= 1.1;
+			rec *= 1.1; }
+		
+		if (chance < 80 && chance > 60){
+			yds *= 1.2; 
+			td *= 1.2;
+			rec *= 1.1; }
+			
+		
+		int finalYds = (int) Math.round(yds);
+		int finalTd = (int) Math.round(td);
+		int finalRec = (int) Math.round(rec);
+	
+		
+		answer += finalYds + " Total Yards, " + finalTd + " Total Touchdowns, " + finalRec + " Receptions";
+		
+		return answer;
+		
+	}
+	
+	public static String lbStats(List<Integer> stats, List<Integer> opp){
+
+		String answer = "";
+		double tak = stats.get(3) / (stats.get(2) + 0.0);
+		double sak = stats.get(4) / (stats.get(2) + 0.0);
+		double ff = stats.get(5) / (stats.get(2) + 0.0);
+		double pick = stats.get(6) / (stats.get(2) + 0.0);
+		double pd = stats.get(7) / (stats.get(2) + 0.0);
+		int rating = stats.get(8);
+		
+		double finalSak = 0, finalFF= 0, finalPick = 0, finalPD = 0;
+	
+		//adjustment from madden rating 
+		if (rating >= 88){
+			tak *= 1.25;
+			sak *= 1.25;
+			ff *= 1.25;
+			pick *= 1.25;
+			pd *= 1.25; }
+		
+		if (rating >= 82 && rating <= 87){
+			tak *= 1.1;
+			sak *= 1.1;
+			ff *= 1.1;
+			pick *= 1.1;
+			pd *= 1.1; }
+	
+		if (rating <= 76){
+			tak *= 0.75;
+			sak *= 0.75;
+			ff *= 0.75;
+			pick *= 0.75;
+			pd *= 0.75; }
+			
+		//vs opposing off
+		int off = opp.get(6);
+		if (off >= 1 && off <= 8){
+			tak *= 0.75;
+			sak *= 0.75;
+			ff *= 0.75;
+			pick *= 0.75;
+			pd *= 0.75; }
+		
+		if (off >= 17 && off <= 24){
+			tak *= 1.1;
+			sak *= 1.1;
+			ff *= 1.1;
+			pick *= 1.1;
+			pd *= 1.1; }
+		
+		if (off >= 25 && off <= 32){
+			tak *= 1.25;
+			sak *= 1.25;
+			ff *= 1.25;
+			pick *= 1.25;
+			pd *= 1.25; }
+			
+		//randomizer
+		double chance = Math.random() * 100; 
+		if (chance < 20){
+			tak *= 0.8;
+			sak *= 0.8;
+			ff *= 0.8;
+			pick *= 0.8;
+			pd *= 0.8; }
+		
+		if (chance < 40 && chance > 20){
+			tak *= 0.9;
+			sak *= 0.9;
+			ff *= 0.9;
+			pick *= 0.9;
+			pd *= 0.9; }
+		
+		if (chance < 60 && chance > 40){
+			tak *= 1.1;
+			sak *= 1.1;
+			ff *= 1.1;
+			pick *= 1.1;
+			pd *= 1.1; }
+		
+		if (chance < 80 && chance > 60){
+			tak *= 1.2;
+			sak *= 1.2;
+			ff *= 1.2;
+			pick *= 1.2;
+			pd *= 1.2; }
+		
+		//adjusting sacks
+		if (sak <= 1){
+			if (chance < (sak * 100) ){
+				finalSak = 1; }
+		}
+	
+		if (sak > 1){
+			double base1 = Math.floor(sak);
+			finalSak += base1; 
+			double rem1 = sak - base1; 
+			if (chance < (rem1 * 100) ){
+				finalSak += 1; }
+		}
+		
+		//adjusting forced fumbles
+		if (ff <= 1){
+			if (chance < (ff * 100) ){
+				finalFF = 1; }
+		}
+	
+		if (ff > 1){
+			double base2 = Math.floor(ff);
+			finalFF += base2; 
+			double rem2 = ff - base2; 
+			if (chance < (rem2 * 100) ){
+				finalFF += 1; }
+		}
+		
+		//adjusting interceptions
+		if (pick <= 1){
+			if (chance < (pick * 100) ){
+				finalPick = 1; }
+		}
+	
+		if (pick > 1){
+			double base3 = Math.floor(pick);
+			finalFF += base3; 
+			double rem3 = pick - base3; 
+			if (chance < (rem3 * 100) ){
+				finalPick += 1; }
+		}
+		
+		//adjusting passes defended
+		if (pd <= 1){
+			if (chance < (pd * 100) ){
+				finalPD= 1; }
+		}
+	
+		if (pd > 1){
+			double base4 = Math.floor(pd);
+			finalPD += base4; 
+			double rem4 = pd - base4; 
+			if (chance < (rem4 * 100) ){
+				finalPD += 1; }
+		}
+	
+		int adjTak = (int) Math.round(tak);
+		int adjSak = (int) Math.round(finalSak);
+		int adjFF = (int) Math.round(finalFF);
+		int adjPick = (int) Math.round(finalPick);
+		int adjPD = (int) Math.round(finalPD);
+		
+		answer += adjTak + " Tackles";
+		if (adjSak > 0){
+			answer += ", " + adjSak + " Sacks"; }
+			
+		if (adjFF > 0){
+			answer += ", " + adjFF + " Forced Fumbles"; }
+			
+		if (adjPick > 0){
+			answer += ", " + adjPick + " Interceptions"; }
+			
+		if (adjPD > 0){
+			answer += ", " + adjPD + " Passes Defended"; }
+		
+		return answer;
+	}
+	
+	public static String dlStats(List<Integer> stats, List<Integer> opp){
+		String answer = "";
+		
+		double tak = stats.get(3) / (stats.get(2) + 0.0);
+		double sak = stats.get(4) / (stats.get(2) + 0.0);
+		double ff = stats.get(5) / (stats.get(2) + 0.0);
+		int rating = stats.get(6);
+		
+		double finalSak = 0, finalFF= 0; 
+		//adjustment from madden rating 
+		if (rating >= 88){
+			tak *= 1.25;
+			sak *= 1.25;
+			ff *= 1.25; }
+		
+		if (rating >= 82 && rating <= 87){
+			tak *= 1.1;
+			sak *= 1.1;
+			ff *= 1.1; }
+	
+		if (rating <= 77){
+			tak *= 0.75;
+			sak *= 0.75;
+			ff *= 0.75; }
+			
+		//vs opposing off
+		int off = opp.get(6);
+		if (off >= 1 && off <= 8){
+			tak *= 0.75;
+			sak *= 0.75;
+			ff *= 0.75; }
+		
+		if (off >= 17 && off <= 24){
+			tak *= 1.1;
+			sak *= 1.1;
+			ff *= 1.1; }
+		
+		if (off >= 25 && off <= 32){
+			tak *= 1.25;
+			sak *= 1.25;
+			ff *= 1.25; }
+			
+		//randomizer
+		double chance = Math.random() * 100; 
+		if (chance < 20){
+			tak *= 0.8;
+			sak *= 0.8;
+			ff *= 0.8; }
+		
+		if (chance < 40 && chance > 20){
+			tak *= 0.9;
+			sak *= 0.9;
+			ff *= 0.9; }
+		
+		if (chance < 60 && chance > 40){
+			tak *= 1.1;
+			sak *= 1.1;
+			ff *= 1.1; }
+		
+		if (chance < 80 && chance > 60){
+			tak *= 1.2;
+			sak *= 1.2;
+			ff *= 1.2; }
+		
+		//adjusting sacks
+		if (sak <= 1){
+			if (chance < (sak * 100) ){
+				finalSak = 1; }
+		}
+	
+		if (sak > 1){
+			double base1 = Math.floor(sak);
+			finalSak += base1; 
+			double rem1 = sak - base1; 
+			if (chance < (rem1 * 100) ){
+				finalSak += 1; }
+		}
+		
+		//adjusting forced fumbles
+		if (ff <= 1){
+			if (chance < (ff * 100) ){
+				finalFF = 1; }
+		}
+	
+		if (ff > 1){
+			double base2 = Math.floor(ff);
+			finalFF += base2; 
+			double rem2 = ff - base2; 
+			if (chance < (rem2 * 100) ){
+				finalFF += 1; }
+		}
+		
+		int adjTak = (int) Math.round(tak);
+		int adjSak = (int) Math.round(finalSak);
+		int adjFF = (int) Math.round(finalFF);
+		
+		answer += adjTak + " Tackles";
+		if (adjSak > 0){
+			answer += ", " + adjSak + " Sacks"; }
+			
+		if (adjFF > 0){
+			answer += ", " + adjFF + " Forced Fumbles"; }
+		
+		return answer;
+	}
+	
+	public static String dbStats(List<Integer> stats, List<Integer> opp){
+		String answer = "";
+		
+		double tak = stats.get(3) / (stats.get(2) + 0.0);
+		double pick = stats.get(4) / (stats.get(2) + 0.0);
+		double pd = stats.get(5) / (stats.get(2) + 0.0);
+		double ff = stats.get(6) / (stats.get(2) + 0.0);
+		int rating = stats.get(6);
+		
+		double finalPick = 0, finalPD = 0, finalFF= 0; 
+		//adjustment from madden rating 
+		if (rating >= 89){
+			tak *= 1.25;
+			pick *= 1.25;
+			pd *= 1.25;
+			ff *= 1.25; }
+		
+		if (rating >= 83 && rating <= 88){
+			tak *= 1.1;
+			pick *= 1.1;
+			pd *= 1.1;
+			ff *= 1.1; }
+	
+		if (rating <= 79){
+			tak *= 0.75;
+			pick *= 0.75;
+			pd *= 0.75;
+			ff *= 0.75;}
+			
+		//vs opposing off
+		int off = opp.get(6);
+		if (off >= 1 && off <= 8){
+			tak *= 0.75;
+			pick *= 0.75;
+			pd *= 0.75;
+			ff *= 0.75;}
+		
+		if (off >= 17 && off <= 24){
+			tak *= 1.1;
+			pick *= 1.1;
+			pd *= 1.1;
+			ff *= 1.1; }
+		
+		if (off >= 25 && off <= 32){
+			tak *= 1.25;
+			pick *= 1.25;
+			pd *= 1.25;
+			ff *= 1.25; }
+			
+		//randomizer
+		double chance = Math.random() * 100; 
+		if (chance < 20){
+			tak *= 0.8;
+			pick *= 0.8;
+			pd *= 0.8;
+			ff *= 0.8; }
+		
+		if (chance < 40 && chance > 20){
+			tak *= 0.9;
+			pick *= 0.9;
+			pd *= 0.9;
+			ff *= 0.9; }
+		
+		if (chance < 60 && chance > 40){
+			tak *= 1.1;
+			pick *= 1.1;
+			pd *= 1.1;
+			ff *= 1.1; }
+		
+		if (chance < 80 && chance > 60){
+			tak *= 1.25;
+			pick *= 1.25;
+			pd *= 1.25;
+			ff *= 1.25; }
+		
+		//adjusting interceptions
+		if (pick <= 1){
+			if (chance < (pick * 100) ){
+				finalPick = 1; }
+		}
+	
+		if (pick > 1){
+			double base1 = Math.floor(pick);
+			finalPick += base1; 
+			double rem1 = pick - base1; 
+			if (chance < (rem1 * 100) ){
+				finalPick += 1; }
+		}
+		
+		//adjusting passes defended
+		if (pd <= 1){
+			if (chance < (pd * 100) ){
+				finalPD = 1; }
+		}
+	
+		if (pd > 1){
+			double base2 = Math.floor(pd);
+			finalPD += base2; 
+			double rem2 = pd - base2; 
+			if (chance < (rem2 * 100) ){
+				finalPD += 1; }
+		}
+		
+		//adjusting forced fumbles
+		if (ff <= 1){
+			if (chance < (ff * 100) ){
+				finalFF = 1; }
+		}
+	
+		if (ff > 1){
+			double base3 = Math.floor(ff);
+			finalFF += base3; 
+			double rem3 = ff - base3; 
+			if (chance < (rem3 * 100) ){
+				finalFF += 1; }
+		}
+		
+		int adjTak = (int) Math.round(tak);
+		int adjPick = (int) Math.round(finalPick);
+		int adjPD = (int) Math.round(finalPD);
+		int adjFF = (int) Math.round(finalFF);
+		
+		answer += adjTak + " Tackles";
+		if (adjPick > 0){
+			answer += ", " + adjPick + " Interceptions"; }
+		
+		if (adjPD > 0){
+			answer += ", " + adjPD + " Passes Defended"; }
+			
+		if (adjFF > 0){
+			answer += ", " + adjFF + " Forced Fumbles"; }
+		
+		return answer;
+	}
+		
+	
+	
 	public static void main (String[] args){
 		List<Integer> NewEnglandPatriots = Arrays.asList(3, 1, 8, 2, 7, 2, 3, 1, 8, 3, 3, 2, 19, 8, 8, 16, 22, 5, 23, 12, 97);
 		List<Integer> KansasCityChiefs = Arrays.asList(2, 4, 3, 7, 15, 15, 13, 7, 30, 15, 13, 11, 20, 16, 17, 12, 4, 23, 24, 28, 72); 
@@ -901,6 +1596,7 @@ public class FinalProject{
 		List<String> GreenBayPackersInfo = Arrays.asList("Green Bay Packers", " (10-6)", "4th", "21st", " (4)");
 		List<String> NewYorkGiantsInfo = Arrays.asList("New York Giants", " (11-5)", "26th", "2nd", " (5)");
 		List<String> DetroitLionsInfo = Arrays.asList("Detroit Lions", " (9-7)", "20th", "13th", " (6)");
+		
 		
 		/** System.out.println(convertRawToScore(NewEnglandPatriots)); //91.25 -> 96.25 (+5)
 		System.out.println(convertRawToScore(KansasCityChiefs)); //76.88 -> 71.88 (-5)
@@ -953,6 +1649,7 @@ public class FinalProject{
 		NFCseed6 = DetroitLions;
 		NFCseed6info= DetroitLionsInfo;
 		
+		/** 
 		//wild card 
 		System.out.println(playoffPicture());
 		System.out.println(simResults(round));
@@ -967,7 +1664,7 @@ public class FinalProject{
 		
 		//super bowl
 		System.out.println(playoffPicture());
-		System.out.println(simResults(round)); 
+		System.out.println(simResults(round));  */
 		
 		/** Sample playoff picture
 		ROUND: Wild Card Round
@@ -1021,7 +1718,7 @@ public class FinalProject{
 		Probability: Seattle Seahawks 83%, Detroit Lions 17%
 
 		Green Bay Packers (4) vs. New York Giants (5)
-		Probability: Houston Texans 42%, Oakland Raiders 58%
+		Probability: Green Bay Packers 42%, New York Giants 58%
 
 
 		Results:
@@ -1102,6 +1799,23 @@ public class FinalProject{
 
 		SUPER BOWL CHAMPS: The New England Patriots!
 		*/
+		
+		//Sample stats for wild card weekend 1/7 - 1/8
+		List<Integer> AaronRodgers = Arrays.asList(0, 0, 16, 4428, 40, 401, 610, 7, 96);
+		List<Integer> LeveonBell = Arrays.asList(0, 1, 12, 1884, 9, 261, 4, 95);
+		List<Integer> OdellBeckhamJr = Arrays.asList(0, 2, 16, 1376, 10, 101, 93);
+		
+		List<Integer> KhalilMack = Arrays.asList(1, 3, 16, 73, 11, 5, 1, 3, 98);
+		List<Integer> DamonHarrison = Arrays.asList(1, 4, 16, 86, 3, 1, 88); 
+		List<Integer> LandonCollins = Arrays.asList(1, 5, 16, 125, 5, 13, 0, 92); 
+		
+		System.out.println(qbStats(AaronRodgers, NewYorkGiants)); //311 Yards, 3 Touchdowns, 28 Completions, 43 Attempts, 1 Interceptions
+		System.out.println(rbStats(LeveonBell, MiamiDolphins)); //216 Total Yards, 1 Total Touchdowns, 21 Carries, 0 Fumbles
+		System.out.println(wrteStats(OdellBeckhamJr, GreenBayPackers)); //106 Total Yards, 1 Total Touchdowns, 8 Receptions
+		
+		System.out.println(lbStats(KhalilMack, HoustonTexans)); //7 Tackles, 1 Sacks
+		System.out.println(dlStats(DamonHarrison, GreenBayPackers)); //4 Tackles
+		System.out.println(dbStats(LandonCollins, GreenBayPackers)); //4 Tackles, 1 Passes Defended
 		
 	}
 	
