@@ -1,5 +1,6 @@
 import java.util.*;
-import java.io.File;
+import java.io.*;
+
 
 public class FinalProject{
 
@@ -16,6 +17,19 @@ public class FinalProject{
 	private static List<String> opponentAFCseed1info, opponentAFCseed2info, opponentNFCseed1info, opponentNFCseed2info;
 	private static List<String> AFCchampionship1info, AFCchampionship2info, NFCchampionship1info, NFCchampionship2info;
 	private static List<String> AFCchampionInfo, NFCchampionInfo, SuperBowlChampionInfo;
+	
+	private static List<List<Integer>> AFCseed1Stats, AFCseed2Stats, AFCseed3Stats, AFCseed4Stats, AFCseed5Stats, AFCseed6Stats;
+	private static List<List<Integer>> NFCseed1Stats, NFCseed2Stats, NFCseed3Stats, NFCseed4Stats, NFCseed5Stats, NFCseed6Stats;
+	private static List<List<Integer>> opponentAFCseed1Stats, opponentAFCseed2Stats, opponentNFCseed1Stats, opponentNFCseed2Stats;
+	private static List<List<Integer>> AFCchampionship1Stats, AFCchampionship2Stats, NFCchampionship1Stats, NFCchampionship2Stats;
+	private static List<List<Integer>> AFCchampionStats, NFCchampionStats, SuperBowlChampionStats;
+		
+	private static List<String> AFCseed1infoStats, AFCseed2infoStats, AFCseed3infoStats, AFCseed4infoStats, AFCseed5infoStats, AFCseed6infoStats;
+	private static List<String> NFCseed1infoStats, NFCseed2infoStats, NFCseed3infoStats, NFCseed4infoStats, NFCseed5infoStats, NFCseed6infoStats;
+	private static List<String> opponentAFCseed1infoStats, opponentAFCseed2infoStats, opponentNFCseed1infoStats, opponentNFCseed2infoStats;
+	private static List<String> AFCchampionship1infoStats, AFCchampionship2infoStats, NFCchampionship1infoStats, NFCchampionship2infoStats;
+	private static List<String> AFCchampionInfoStats, NFCchampionInfoStats, SuperBowlChampionInfoStats;
+
 	
 	/** Indexing format for the List<Integer> of stats
 	0: Turnover Differential
@@ -310,50 +324,74 @@ public class FinalProject{
 		int did3winAFC = 0; //will be 0 if 3 wins, 1 if 6 wins
 		if (determineWinner(AFCseed3, AFCseed6) == 0){
 			opponentAFCseed2 = AFCseed3; 
-			opponentAFCseed2info = AFCseed3info;}
+			opponentAFCseed2info = AFCseed3info;
+			opponentAFCseed2Stats = AFCseed3Stats; 
+			opponentAFCseed2infoStats = AFCseed3infoStats; }
 		else{
 			opponentAFCseed1 = AFCseed6; 
 			opponentAFCseed1info = AFCseed6info;
+			opponentAFCseed1Stats = AFCseed6Stats; 
+			opponentAFCseed1infoStats = AFCseed6infoStats;
 			did3winAFC = 1;} 
 			
 		if (determineWinner(AFCseed4, AFCseed5) == 0){
 			if (did3winAFC == 0){
 				opponentAFCseed1 = AFCseed4; 
-				opponentAFCseed1info = AFCseed4info; }
+				opponentAFCseed1info = AFCseed4info;
+				opponentAFCseed1Stats = AFCseed4Stats; 
+				opponentAFCseed1infoStats = AFCseed4infoStats;}
 			else{
 				opponentAFCseed2 = AFCseed4; 
-				opponentAFCseed2info = AFCseed4info; } }	
+				opponentAFCseed2info = AFCseed4info;
+				opponentAFCseed2Stats = AFCseed4Stats; 
+				opponentAFCseed2infoStats = AFCseed4infoStats; } }	
 		else{
 			if (did3winAFC == 0){
 				opponentAFCseed1 = AFCseed5; 
-				opponentAFCseed1info = AFCseed5info; }
+				opponentAFCseed1info = AFCseed5info; 
+				opponentAFCseed1Stats = AFCseed5Stats; 
+				opponentAFCseed1infoStats = AFCseed5infoStats; }
 			else{
 				opponentAFCseed2 = AFCseed5; 
-				opponentAFCseed2info = AFCseed5info; } }
+				opponentAFCseed2info = AFCseed5info;
+				opponentAFCseed2Stats = AFCseed5Stats; 
+				opponentAFCseed2infoStats = AFCseed5infoStats; } }
 		
 		int did3winNFC = 0; //will be 0 if 3 wins, 1 if 6 wins
 		if (determineWinner(NFCseed3, NFCseed6) == 0){
 			opponentNFCseed2 = NFCseed3; 
-			opponentNFCseed2info = NFCseed3info; }
+			opponentNFCseed2info = NFCseed3info; 
+			opponentNFCseed2Stats = NFCseed3Stats; 
+			opponentNFCseed2infoStats = NFCseed3infoStats; }
 		else{
 			opponentNFCseed1 = NFCseed6; 
 			opponentNFCseed1info = NFCseed6info;
+			opponentNFCseed1Stats = NFCseed6Stats; 
+			opponentNFCseed1infoStats = NFCseed6infoStats;
 			did3winNFC = 1;} 
 			
 		if (determineWinner(NFCseed4, NFCseed5) == 0){
 			if (did3winNFC == 0){
 				opponentNFCseed1 = NFCseed4; 
-				opponentNFCseed1info = NFCseed4info; }
+				opponentNFCseed1info = NFCseed4info;
+				opponentNFCseed1Stats = NFCseed4Stats; 
+				opponentNFCseed1infoStats = NFCseed4infoStats; }
 			else{
 				opponentNFCseed2 = NFCseed4;
-				opponentNFCseed2info= NFCseed4info; } }	
+				opponentNFCseed2info = NFCseed4info;
+				opponentNFCseed2Stats = NFCseed4Stats;
+				opponentNFCseed2infoStats = NFCseed4infoStats; } }	
 		else{
 			if (did3winNFC == 0){
 				opponentNFCseed1 = NFCseed5;
-				opponentNFCseed1info = NFCseed5info; }
+				opponentNFCseed1info = NFCseed5info; 
+				opponentNFCseed1Stats = NFCseed5Stats;
+				opponentNFCseed1infoStats = NFCseed5infoStats; }
 			else{
 				opponentNFCseed2 = NFCseed5; 
-				opponentNFCseed2info = NFCseed5info; } }
+				opponentNFCseed2info = NFCseed5info; 
+				opponentNFCseed2Stats = NFCseed5Stats; 
+				opponentNFCseed2infoStats = NFCseed5infoStats; } }
 				
 		round += 1;
 	}
@@ -361,31 +399,47 @@ public class FinalProject{
 	public static void simDivisionalRound() {
 		if (determineWinner(AFCseed1, opponentAFCseed1) == 0){
 			AFCchampionship1 = AFCseed1; 
-			AFCchampionship1info = AFCseed1info; }
+			AFCchampionship1info = AFCseed1info;
+			AFCchampionship1Stats = AFCseed1Stats; 
+			AFCchampionship1infoStats = AFCseed1infoStats; }
 		else{
 			AFCchampionship1 = opponentAFCseed1;
-			AFCchampionship1info = opponentAFCseed1info; } 
+			AFCchampionship1info = opponentAFCseed1info;
+			AFCchampionship1Stats = opponentAFCseed1Stats;
+			AFCchampionship1infoStats = opponentAFCseed1infoStats; } 
 			
 		if (determineWinner(AFCseed2, opponentAFCseed2) == 0){
 			AFCchampionship2 = AFCseed2; 
-			AFCchampionship2info = AFCseed2info; }
+			AFCchampionship2info = AFCseed2info; 
+			AFCchampionship2Stats = AFCseed2Stats; 
+			AFCchampionship2infoStats = AFCseed2infoStats; }
 		else{
 			AFCchampionship2 = opponentAFCseed2; 
-			AFCchampionship2info = opponentAFCseed2info; } 
+			AFCchampionship2info = opponentAFCseed2info; 
+			AFCchampionship2Stats = opponentAFCseed2Stats; 
+			AFCchampionship2infoStats = opponentAFCseed2infoStats; } 
 			
 		if (determineWinner(NFCseed1, opponentNFCseed1) == 0){
 			NFCchampionship1 = NFCseed1;
-			NFCchampionship1info = NFCseed1info; }
+			NFCchampionship1info = NFCseed1info;
+			NFCchampionship1Stats = NFCseed1Stats;
+			NFCchampionship1infoStats = NFCseed1infoStats; }
 		else{
 			NFCchampionship1 = opponentNFCseed1;
-			NFCchampionship1info = opponentNFCseed1info; } 
+			NFCchampionship1info = opponentNFCseed1info;
+			NFCchampionship1Stats = opponentNFCseed1Stats;
+			NFCchampionship1infoStats = opponentNFCseed1infoStats; } 
 			
 		if (determineWinner(NFCseed2, opponentNFCseed2) == 0){
 			NFCchampionship2 = NFCseed2;
-			NFCchampionship2info = NFCseed2info; }
+			NFCchampionship2info = NFCseed2info;
+			NFCchampionship2Stats = NFCseed2Stats;
+			NFCchampionship2infoStats = NFCseed2infoStats; }
 		else{
 			NFCchampionship2 = opponentNFCseed2; 
-			NFCchampionship2info = opponentNFCseed2info; } 
+			NFCchampionship2info = opponentNFCseed2info; 
+			NFCchampionship2Stats = opponentNFCseed2Stats; 
+			NFCchampionship2infoStats = opponentNFCseed2infoStats; } 
 		
 		round += 1;
 	}
@@ -393,17 +447,25 @@ public class FinalProject{
 	public static void simConferenceChampionships(){
 		if (determineWinner(AFCchampionship1, AFCchampionship2) == 0){
 			AFCchampion = AFCchampionship1;
-			AFCchampionInfo = AFCchampionship1info; }
+			AFCchampionInfo = AFCchampionship1info; 
+			AFCchampionStats = AFCchampionship1Stats;
+			AFCchampionInfoStats = AFCchampionship1infoStats; }
 		else{
 			AFCchampion = AFCchampionship2; 
-			AFCchampionInfo = AFCchampionship2info; }
+			AFCchampionInfo = AFCchampionship2info;
+			AFCchampionStats = AFCchampionship2Stats; 
+			AFCchampionInfoStats = AFCchampionship2infoStats; }
 			
 		if (determineWinner(NFCchampionship1, NFCchampionship2) == 0){
 			NFCchampion = NFCchampionship1;
-			NFCchampionInfo = NFCchampionship1info;}
+			NFCchampionInfo = NFCchampionship1info;
+			NFCchampionStats = NFCchampionship1Stats;
+			NFCchampionInfoStats = NFCchampionship1infoStats; }
 		else{
 			NFCchampion = NFCchampionship2;
-			NFCchampionInfo = NFCchampionship2info; }
+			NFCchampionInfo = NFCchampionship2info; 
+			NFCchampionStats = NFCchampionship2Stats;
+			NFCchampionInfoStats = NFCchampionship2infoStats; }
 
 		round += 1;
 	}
@@ -411,10 +473,14 @@ public class FinalProject{
 	public static void simSuperBowl(){
 		if (determineWinner(AFCchampion, NFCchampion) == 0){
 			SuperBowlChampion = AFCchampion; 
-			SuperBowlChampionInfo = AFCchampionInfo; }
+			SuperBowlChampionInfo = AFCchampionInfo;
+			SuperBowlChampionStats = AFCchampionStats; 
+			SuperBowlChampionInfoStats = AFCchampionInfoStats; }
 		else{
 			SuperBowlChampion = NFCchampion; 
-			SuperBowlChampionInfo = NFCchampionInfo; }
+			SuperBowlChampionInfo = NFCchampionInfo; 
+			SuperBowlChampionStats = NFCchampionStats; 
+			SuperBowlChampionInfoStats = NFCchampionInfoStats; }
 		
 		round = 0;
 	}
@@ -643,10 +709,10 @@ public class FinalProject{
 		}
 		
 		if (aFinal < 3){
-			aFinal = 3; }
+			aFinal = 0; }
 			
 		if (bFinal < 3){
-			bFinal = 3; }
+			bFinal = 0; }
 			
 		if (aFinal > bFinal){
 			winner = aFinal;
@@ -660,219 +726,6 @@ public class FinalProject{
 		
 	}
 
-	
-	public static String playoffPicture(){
-		String answer = "", currentRound = "\nROUND: ", AFC = "AFC \n", NFC = "NFC \n", upcoming = "Upcoming games: \n";
-		if (round == 0){
-			currentRound += "Wild Card Round \n\n";
-			upcoming += AFCseed3info.get(0) + AFCseed3info.get(4) +
-				" vs. " + AFCseed6info.get(0) + AFCseed6info.get(4) + "\n" 
-				+ probabilityPreview(AFCseed3, AFCseed6, AFCseed3info, AFCseed6info) + "\n\n";
-			upcoming += AFCseed4info.get(0) + AFCseed4info.get(4) +
-				" vs. " + AFCseed5info.get(0) + AFCseed5info.get(4) + "\n"
-				+ probabilityPreview(AFCseed4, AFCseed5, AFCseed4info, AFCseed5info) + "\n\n";
-			upcoming += NFCseed3info.get(0) + NFCseed3info.get(4) + 
-				" vs. " + NFCseed6info.get(0) + NFCseed6info.get(4) + "\n"
-				+ probabilityPreview(NFCseed3, NFCseed6, NFCseed3info, NFCseed6info) + "\n\n";
-			upcoming += NFCseed4info.get(0) + NFCseed4info.get(4) + 
-				" vs. " + NFCseed5info.get(0) + NFCseed5info.get(4) + "\n"
-				+ probabilityPreview(NFCseed4, NFCseed5, NFCseed4info, NFCseed5info) + "\n\n"; }
-		
-		if (round == 1){
-			currentRound += "Divisional Round \n\n";
-			upcoming += AFCseed1info.get(0) + AFCseed1info.get(4) + " vs. " 
-				+ opponentAFCseed1info.get(0) + opponentAFCseed1info.get(4) + "\n"
-				+ probabilityPreview(AFCseed1, opponentAFCseed1, AFCseed1info, opponentAFCseed1info) + "\n\n";
-			upcoming += AFCseed2info.get(0) + AFCseed2info.get(4) + " vs. " 
-				+ opponentAFCseed2info.get(0) + opponentAFCseed2info.get(4) + "\n"
-				+ probabilityPreview(AFCseed2, opponentAFCseed2, AFCseed2info, opponentAFCseed2info) + "\n\n";
-			upcoming += NFCseed1info.get(0) + NFCseed1info.get(4) + " vs. " 
-				+ opponentNFCseed1info.get(0) + opponentNFCseed1info.get(4) + "\n"
-				+ probabilityPreview(NFCseed1, opponentNFCseed1, NFCseed1info, opponentNFCseed1info) + "\n\n";
-			upcoming += NFCseed2info.get(0) + NFCseed2info.get(4) + " vs. " 
-				+ opponentNFCseed2info.get(0) + opponentNFCseed2info.get(4) + "\n"
-				+ probabilityPreview(NFCseed2, opponentNFCseed2, NFCseed2info, opponentNFCseed2info) + "\n\n"; }
-		
-		if (round == 2){
-			currentRound += "Conference Championships \n\n"; 
-			upcoming += AFCchampionship1info.get(0) + AFCchampionship1info.get(4) + 
-				" vs. " + AFCchampionship2info.get(0) + AFCchampionship2info.get(4) +  "\n"
-				+ probabilityPreview(AFCchampionship1, AFCchampionship2, AFCchampionship1info, AFCchampionship2info) + "\n\n";
-			upcoming += NFCchampionship1info.get(0) + NFCchampionship1info.get(4) +
-				" vs. " + NFCchampionship2info.get(0) + NFCchampionship2info.get(4) + 	"\n"
-				+ probabilityPreview(NFCchampionship1, NFCchampionship2, NFCchampionship1info, NFCchampionship2info) + "\n\n"; }
-		
-		if (round == 3){
-			currentRound += "SUPER BOWL \n\n"; 
-			upcoming += AFCchampionInfo.get(0) + AFCchampionInfo.get(4) +
-				" vs. " + NFCchampionInfo.get(0) + NFCchampionInfo.get(4) + "\n"
-				+ probabilityPreview(AFCchampion, NFCchampion, AFCchampionInfo, NFCchampionInfo) + "\n\n"; }
-		
-		AFC += "1) " + AFCseed1info.get(0) + AFCseed1info.get(1) + "\n" 
-			+ "Offense: " + AFCseed1info.get(2) + "     Defense: " + AFCseed1info.get(3) + "\n\n";
-		AFC += "2) " + AFCseed2info.get(0) + AFCseed2info.get(1) + "\n" 
-			+ "Offense: " + AFCseed2info.get(2) + "     Defense: " + AFCseed2info.get(3) + "\n\n";
-		AFC += "3) " + AFCseed3info.get(0) + AFCseed3info.get(1) + "\n" 
-			+ "Offense: " + AFCseed3info.get(2) + "     Defense: " + AFCseed3info.get(3) + "\n\n";
-		AFC += "4) " + AFCseed4info.get(0) + AFCseed4info.get(1) + "\n" 
-			+ "Offense: " + AFCseed4info.get(2) + "     Defense: " + AFCseed4info.get(3) + "\n\n";
-		AFC += "5) " + AFCseed5info.get(0) + AFCseed5info.get(1) + "\n"
-			+ "Offense: " + AFCseed5info.get(2) + "     Defense: " + AFCseed5info.get(3) + "\n\n";
-		AFC += "6) " + AFCseed6info.get(0) + AFCseed6info.get(1) + "\n"
-			+ "Offense: " + AFCseed6info.get(2) + "     Defense: " + AFCseed6info.get(3) + "\n\n";
-		
-		NFC += "1) " + NFCseed1info.get(0) + NFCseed1info.get(1) + "\n"
-			+ "Offense: " + NFCseed1info.get(2) + "     Defense: " + NFCseed1info.get(3) + "\n\n";
-		NFC += "2) " + NFCseed2info.get(0) + NFCseed2info.get(1) + "\n"
-			+ "Offense: " + NFCseed2info.get(2) + "     Defense: " + NFCseed2info.get(3) + "\n\n";
-		NFC += "3) " + NFCseed3info.get(0) + NFCseed3info.get(1) + "\n"
-			+ "Offense: " + NFCseed3info.get(2) + "     Defense: " + NFCseed3info.get(3) + "\n\n";
-		NFC += "4) " + NFCseed4info.get(0) + NFCseed4info.get(1) + "\n"
-			+ "Offense: " + NFCseed4info.get(2) + "     Defense: " + NFCseed4info.get(3) + "\n\n";
-		NFC += "5) " + NFCseed5info.get(0) + NFCseed5info.get(1) + "\n"
-			+ "Offense: " + NFCseed5info.get(2) + "     Defense: " + NFCseed5info.get(3) + "\n\n";
-		NFC += "6) " + NFCseed6info.get(0) + NFCseed6info.get(1) + "\n"
-			+ "Offense: " + NFCseed6info.get(2) + "     Defense: " + NFCseed6info.get(3) + "\n\n";
-		
-		if (round == 0){
-			answer += currentRound + AFC + NFC + upcoming; }
-		else{
-			answer += currentRound + upcoming; }
-		
-		return answer;
-	}
-	
-	public static String simResults(int round){
-		String answer = "Results: \n";
-		if (round == 0){
-			simWildCardRound();
-			
-			String AFC3vs6 = AFCseed3info.get(0) + AFCseed3info.get(4) + 
-				" vs. " + AFCseed6info.get(0) + AFCseed6info.get(4) + "\n Winner: ";
-			if (opponentAFCseed2.equals(AFCseed3)){
-				AFC3vs6 += AFCseed3info.get(0) + " ";
-				AFC3vs6 += simScore(AFCseed3, AFCseed6, 0) + "\n\n"; }
-			else{
-				AFC3vs6 += AFCseed6info.get(0) + " "; 
-				AFC3vs6 += simScore(AFCseed3, AFCseed6, 1) + "\n\n"; }
-				
-			String AFC4vs5 =  AFCseed4info.get(0) + AFCseed4info.get(4) +
-				" vs. " + AFCseed5info.get(0) + AFCseed5info.get(4) + "\n Winner: ";	
-			if (opponentAFCseed1.equals(AFCseed4) || opponentAFCseed2.equals(AFCseed4)){
-				AFC4vs5 += AFCseed4info.get(0) + " "; 
-				AFC4vs5 += simScore(AFCseed4, AFCseed5, 0) + "\n\n"; }
-			else{
-				AFC4vs5 += AFCseed5info.get(0) + " "; 
-				AFC4vs5 += simScore(AFCseed4, AFCseed5, 1) + "\n\n"; }
-				
-			String NFC3vs6 = NFCseed3info.get(0) + NFCseed3info.get(4) + 
-				" vs. " + NFCseed6info.get(0) + NFCseed6info.get(4) + "\n Winner: ";
-			if (opponentNFCseed2.equals(NFCseed3)){
-				NFC3vs6 += NFCseed3info.get(0) + " ";
-				NFC3vs6 += simScore(NFCseed3, NFCseed6, 0) + "\n\n"; }
-			else{
-				NFC3vs6 += NFCseed6info.get(0) + " ";
-				NFC3vs6 += simScore(NFCseed3, NFCseed6, 1) + "\n\n"; }
-				
-			String NFC4vs5 = NFCseed4info.get(0) + NFCseed4info.get(4) +
-				" vs. " + NFCseed5info.get(0) + NFCseed5info.get(4) + "\n Winner: ";	
-			if (opponentNFCseed1.equals(NFCseed4) || opponentNFCseed2.equals(NFCseed4)){
-				NFC4vs5 += NFCseed4info.get(0) + " "; 
-				NFC4vs5 += simScore(NFCseed4, NFCseed5, 0) + "\n\n"; }
-			else{
-				NFC4vs5 += NFCseed5info.get(0) + " "; 
-				NFC4vs5 += simScore(NFCseed4, NFCseed5, 1) + "\n\n"; }
-				
-			answer += AFC3vs6 + AFC4vs5 + NFC3vs6 + NFC4vs5;
-		}
-		
-		if (round == 1){
-			simDivisionalRound();
-			
-			String AFC1 = AFCseed1info.get(0) + AFCseed1info.get(4) +
-				" vs. " + opponentAFCseed1info.get(0) + opponentAFCseed1info.get(4) + "\n Winner: ";
-			if (AFCchampionship1.equals(AFCseed1)){
-				AFC1 += AFCseed1info.get(0) + " "; 
-				AFC1 += simScore(AFCseed1, opponentAFCseed1, 0) + "\n\n"; }
-			else{
-				AFC1 += opponentAFCseed1info.get(0) + " "; 
-				AFC1 += simScore(AFCseed1, opponentAFCseed1, 1) + "\n\n"; }
-				
-			String AFC2 = AFCseed2info.get(0) + AFCseed2info.get(4) +
-				" vs. " + opponentAFCseed2info.get(0) + opponentAFCseed2info.get(4) + "\n Winner: ";
-			if (AFCchampionship2.equals(AFCseed2)){
-				AFC2 += AFCseed2info.get(0) + " "; 
-				AFC2 += simScore(AFCseed2, opponentAFCseed2, 0) + "\n\n"; }
-			else{
-				AFC2 += opponentAFCseed2info.get(0) + " "; 
-				AFC2 += simScore(AFCseed2, opponentAFCseed2, 1) + "\n\n"; }
-				
-			String NFC1 = NFCseed1info.get(0) + NFCseed1info.get(4) +
-				" vs. " + opponentNFCseed1info.get(0) + opponentNFCseed1info.get(4) + "\n Winner: ";
-			if (NFCchampionship1.equals(NFCseed1)){
-				NFC1 += NFCseed1info.get(0) + " "; 
-				NFC1 += simScore(NFCseed1, opponentNFCseed1, 0) + "\n\n"; }
-			else{
-				NFC1 += opponentNFCseed1info.get(0) + " ";
-				NFC1 += simScore(NFCseed1, opponentNFCseed1, 1) + "\n\n"; }
-				
-			String NFC2 = NFCseed2info.get(0) + NFCseed2info.get(4) +
-				" vs. " + opponentNFCseed2info.get(0) + opponentNFCseed2info.get(4) + "\n Winner: ";
-			if (NFCchampionship2.equals(NFCseed2)){
-				NFC2 += NFCseed2info.get(0) + " "; 
-				NFC2 += simScore(NFCseed2, opponentNFCseed2, 0) + "\n\n"; }
-			else{
-				NFC2 += opponentNFCseed2info.get(0) + " ";
-				NFC2 += simScore(NFCseed2, opponentNFCseed2, 1) + "\n\n"; }
-				
-			answer += AFC1 + AFC2 + NFC1 + NFC2;
-		}
-		
-		
-		if (round == 2){
-			simConferenceChampionships();
-			
-			String AFCchampionship = AFCchampionship1info.get(0) + AFCchampionship1info.get(4) +
-				" vs. " + AFCchampionship2info.get(0) + AFCchampionship2info.get(4) + "\n Winner: ";
-			if (AFCchampion.equals(AFCchampionship1)){
-				AFCchampionship += AFCchampionship1info.get(0) + " "; 
-				AFCchampionship += simScore(AFCchampionship1, AFCchampionship2, 0) + "\n\n"; }
-			else{
-				AFCchampionship += AFCchampionship2info.get(0) + " ";
-				AFCchampionship += simScore(AFCchampionship1, AFCchampionship2, 1) + "\n\n"; }
-				
-			String NFCchampionship = NFCchampionship1info.get(0) + NFCchampionship1info.get(4) +
-				" vs. " + NFCchampionship2info.get(0) + NFCchampionship2info.get(4) + "\n Winner: ";
-			if (NFCchampion.equals(NFCchampionship1)){
-				NFCchampionship += NFCchampionship1info.get(0) + " ";
-				NFCchampionship += simScore(NFCchampionship1, NFCchampionship2, 0) + "\n\n"; }
-			else{
-				NFCchampionship += NFCchampionship2info.get(0) + " "; 
-				NFCchampionship += simScore(NFCchampionship1, NFCchampionship2, 1) + "\n\n";}
-				
-			answer += AFCchampionship + NFCchampionship;
-		}
-		
-		if (round == 3){
-			simSuperBowl();
-			
-			String superBowl = AFCchampionInfo.get(0) + AFCchampionInfo.get(4) +
-				" vs. " + NFCchampionInfo.get(0) + NFCchampionInfo.get(4) + "\n Winner: ";
-			if (AFCchampion.equals(SuperBowlChampion)){
-				superBowl += AFCchampionInfo.get(0) + " "; 
-				superBowl += simScore(AFCchampion, NFCchampion, 0) + "\n\n";
-				superBowl += "SUPER BOWL CHAMPS: The " + AFCchampionInfo.get(0) + "!";}
-			else{
-				superBowl += NFCchampionInfo.get(0) + " ";
-				superBowl += simScore(AFCchampion, NFCchampion, 1) + "\n\n";
-				superBowl += "SUPER BOWL CHAMPS: The " + NFCchampionInfo.get(0) + "!";}
-				
-			answer += superBowl;
-		}
-			
-		return answer;
-	}
-	
 	public static String qbStats(List<Integer> stats, List<Integer> opp){
 
 		String answer = ""; 
@@ -1565,8 +1418,314 @@ public class FinalProject{
 		
 		return answer;
 	}
+	
+	public static String teamStats(List<List<Integer>> teamStats, List<String> teamPlayers, List<Integer> opp){
+		String answer = "", qb = "", rb = "", wr = "", flex = "", d1 = "", d2 = "", d3 = "", d4 = "";
+		List<Integer> QB = teamStats.get(0), RB = teamStats.get(1), WR = teamStats.get(2), FLEX = teamStats.get(3), 
+			D1 = teamStats.get(4), D2 = teamStats.get(5), D3 = teamStats.get(6), D4 = teamStats.get(7);
+			
+		qb += teamPlayers.get(0) + ": " + qbStats(QB, opp) + "\n";
+		rb += teamPlayers.get(1) + ": " + rbStats(RB, opp) + "\n";
+		wr += teamPlayers.get(2) + ": " + wrteStats(WR, opp) + "\n";
+		flex += teamPlayers.get(3) + ": "; 
+		if (FLEX.get(1) == 1){
+			flex += rbStats(FLEX, opp) + "\n"; }
+		else{
+			flex += wrteStats(FLEX, opp) + "\n"; }
+			
+		d1 += teamPlayers.get(4) + ": ";
+		d2 += teamPlayers.get(5) + ": ";
+		d3 += teamPlayers.get(6) + ": ";
+		d4 += teamPlayers.get(7) + ": ";
+		
+		if (D1.get(1) == 3){
+			d1 += lbStats(D1, opp) + "\n"; }
+		else{
+			if (D1.get(1) == 4){
+				d1 += dlStats(D1, opp) + "\n"; }
+			else{
+				d1 += dbStats(D1, opp) + "\n"; }
+			
+		}
+		
+		if (D2.get(1) == 3){
+			d1 += lbStats(D2, opp) + "\n"; }
+		else{
+			if (D2.get(1) == 4){
+				d2 += dlStats(D2, opp) + "\n"; }
+			else{
+				d2 += dbStats(D2, opp) + "\n"; }
+			
+		}
+		
+		if (D3.get(1) == 3){
+			d3 += lbStats(D3, opp) + "\n"; }
+		else{
+			if (D1.get(1) == 4){
+				d3 += dlStats(D3, opp) + "\n"; }
+			else{
+				d3 += dbStats(D3, opp) + "\n"; }
+			
+		}
+		
+		if (D4.get(1) == 3){
+			d4 += lbStats(D4, opp) + "\n"; }
+		else{
+			if (D4.get(1) == 4){
+				d4 += dlStats(D4, opp) + "\n"; }
+			else{
+				d4 += dbStats(D4, opp) + "\n"; }
+			
+		}
+		
+		answer += qb + rb + wr + flex + d1 + d2 + d3 + d4 + "\n\n";
+		return answer; 
+	}
+	
+	public static String playoffPicture(){
+		String answer = "", currentRound = "\nROUND: ", AFC = "AFC \n", NFC = "NFC \n", upcoming = "Upcoming games: \n";
+		if (round == 0){
+			currentRound += "Wild Card Round \n\n";
+			upcoming += AFCseed3info.get(0) + AFCseed3info.get(4) +
+				" vs. " + AFCseed6info.get(0) + AFCseed6info.get(4) + "\n" 
+				+ probabilityPreview(AFCseed3, AFCseed6, AFCseed3info, AFCseed6info) + "\n\n";
+			upcoming += AFCseed4info.get(0) + AFCseed4info.get(4) +
+				" vs. " + AFCseed5info.get(0) + AFCseed5info.get(4) + "\n"
+				+ probabilityPreview(AFCseed4, AFCseed5, AFCseed4info, AFCseed5info) + "\n\n";
+			upcoming += NFCseed3info.get(0) + NFCseed3info.get(4) + 
+				" vs. " + NFCseed6info.get(0) + NFCseed6info.get(4) + "\n"
+				+ probabilityPreview(NFCseed3, NFCseed6, NFCseed3info, NFCseed6info) + "\n\n";
+			upcoming += NFCseed4info.get(0) + NFCseed4info.get(4) + 
+				" vs. " + NFCseed5info.get(0) + NFCseed5info.get(4) + "\n"
+				+ probabilityPreview(NFCseed4, NFCseed5, NFCseed4info, NFCseed5info) + "\n\n"; }
+		
+		if (round == 1){
+			currentRound += "Divisional Round \n\n";
+			upcoming += AFCseed1info.get(0) + AFCseed1info.get(4) + " vs. " 
+				+ opponentAFCseed1info.get(0) + opponentAFCseed1info.get(4) + "\n"
+				+ probabilityPreview(AFCseed1, opponentAFCseed1, AFCseed1info, opponentAFCseed1info) + "\n\n";
+			upcoming += AFCseed2info.get(0) + AFCseed2info.get(4) + " vs. " 
+				+ opponentAFCseed2info.get(0) + opponentAFCseed2info.get(4) + "\n"
+				+ probabilityPreview(AFCseed2, opponentAFCseed2, AFCseed2info, opponentAFCseed2info) + "\n\n";
+			upcoming += NFCseed1info.get(0) + NFCseed1info.get(4) + " vs. " 
+				+ opponentNFCseed1info.get(0) + opponentNFCseed1info.get(4) + "\n"
+				+ probabilityPreview(NFCseed1, opponentNFCseed1, NFCseed1info, opponentNFCseed1info) + "\n\n";
+			upcoming += NFCseed2info.get(0) + NFCseed2info.get(4) + " vs. " 
+				+ opponentNFCseed2info.get(0) + opponentNFCseed2info.get(4) + "\n"
+				+ probabilityPreview(NFCseed2, opponentNFCseed2, NFCseed2info, opponentNFCseed2info) + "\n\n"; }
+		
+		if (round == 2){
+			currentRound += "Conference Championships \n\n"; 
+			upcoming += AFCchampionship1info.get(0) + AFCchampionship1info.get(4) + 
+				" vs. " + AFCchampionship2info.get(0) + AFCchampionship2info.get(4) +  "\n"
+				+ probabilityPreview(AFCchampionship1, AFCchampionship2, AFCchampionship1info, AFCchampionship2info) + "\n\n";
+			upcoming += NFCchampionship1info.get(0) + NFCchampionship1info.get(4) +
+				" vs. " + NFCchampionship2info.get(0) + NFCchampionship2info.get(4) + 	"\n"
+				+ probabilityPreview(NFCchampionship1, NFCchampionship2, NFCchampionship1info, NFCchampionship2info) + "\n\n"; }
+		
+		if (round == 3){
+			currentRound += "SUPER BOWL \n\n"; 
+			upcoming += AFCchampionInfo.get(0) + AFCchampionInfo.get(4) +
+				" vs. " + NFCchampionInfo.get(0) + NFCchampionInfo.get(4) + "\n"
+				+ probabilityPreview(AFCchampion, NFCchampion, AFCchampionInfo, NFCchampionInfo) + "\n\n"; }
+		
+		AFC += "1) " + AFCseed1info.get(0) + AFCseed1info.get(1) + "\n" 
+			+ "Offense: " + AFCseed1info.get(2) + "     Defense: " + AFCseed1info.get(3) + "\n\n";
+		AFC += "2) " + AFCseed2info.get(0) + AFCseed2info.get(1) + "\n" 
+			+ "Offense: " + AFCseed2info.get(2) + "     Defense: " + AFCseed2info.get(3) + "\n\n";
+		AFC += "3) " + AFCseed3info.get(0) + AFCseed3info.get(1) + "\n" 
+			+ "Offense: " + AFCseed3info.get(2) + "     Defense: " + AFCseed3info.get(3) + "\n\n";
+		AFC += "4) " + AFCseed4info.get(0) + AFCseed4info.get(1) + "\n" 
+			+ "Offense: " + AFCseed4info.get(2) + "     Defense: " + AFCseed4info.get(3) + "\n\n";
+		AFC += "5) " + AFCseed5info.get(0) + AFCseed5info.get(1) + "\n"
+			+ "Offense: " + AFCseed5info.get(2) + "     Defense: " + AFCseed5info.get(3) + "\n\n";
+		AFC += "6) " + AFCseed6info.get(0) + AFCseed6info.get(1) + "\n"
+			+ "Offense: " + AFCseed6info.get(2) + "     Defense: " + AFCseed6info.get(3) + "\n\n";
+		
+		NFC += "1) " + NFCseed1info.get(0) + NFCseed1info.get(1) + "\n"
+			+ "Offense: " + NFCseed1info.get(2) + "     Defense: " + NFCseed1info.get(3) + "\n\n";
+		NFC += "2) " + NFCseed2info.get(0) + NFCseed2info.get(1) + "\n"
+			+ "Offense: " + NFCseed2info.get(2) + "     Defense: " + NFCseed2info.get(3) + "\n\n";
+		NFC += "3) " + NFCseed3info.get(0) + NFCseed3info.get(1) + "\n"
+			+ "Offense: " + NFCseed3info.get(2) + "     Defense: " + NFCseed3info.get(3) + "\n\n";
+		NFC += "4) " + NFCseed4info.get(0) + NFCseed4info.get(1) + "\n"
+			+ "Offense: " + NFCseed4info.get(2) + "     Defense: " + NFCseed4info.get(3) + "\n\n";
+		NFC += "5) " + NFCseed5info.get(0) + NFCseed5info.get(1) + "\n"
+			+ "Offense: " + NFCseed5info.get(2) + "     Defense: " + NFCseed5info.get(3) + "\n\n";
+		NFC += "6) " + NFCseed6info.get(0) + NFCseed6info.get(1) + "\n"
+			+ "Offense: " + NFCseed6info.get(2) + "     Defense: " + NFCseed6info.get(3) + "\n\n";
+		
+		if (round == 0){
+			answer += currentRound + AFC + NFC + upcoming; }
+		else{
+			answer += currentRound + upcoming; }
+		
+		return answer;
+	}
+	
+	public static String simResults(int round){
+		String answer = "Results: \n";
+		if (round == 0){
+			simWildCardRound();
+			
+			String AFC3vs6 = AFCseed3info.get(0) + AFCseed3info.get(4) + 
+				" vs. " + AFCseed6info.get(0) + AFCseed6info.get(4) + "\n Winner: ";
+			if (opponentAFCseed2.equals(AFCseed3)){
+				AFC3vs6 += AFCseed3info.get(0) + " ";
+				AFC3vs6 += simScore(AFCseed3, AFCseed6, 0) + "\n\n"; }
+			else{
+				AFC3vs6 += AFCseed6info.get(0) + " "; 
+				AFC3vs6 += simScore(AFCseed3, AFCseed6, 1) + "\n\n"; }
+				
+			String AFC4vs5 =  AFCseed4info.get(0) + AFCseed4info.get(4) +
+				" vs. " + AFCseed5info.get(0) + AFCseed5info.get(4) + "\n Winner: ";	
+			if (opponentAFCseed1.equals(AFCseed4) || opponentAFCseed2.equals(AFCseed4)){
+				AFC4vs5 += AFCseed4info.get(0) + " "; 
+				AFC4vs5 += simScore(AFCseed4, AFCseed5, 0) + "\n\n"; }
+			else{
+				AFC4vs5 += AFCseed5info.get(0) + " "; 
+				AFC4vs5 += simScore(AFCseed4, AFCseed5, 1) + "\n\n"; }
+				
+			String NFC3vs6 = NFCseed3info.get(0) + NFCseed3info.get(4) + 
+				" vs. " + NFCseed6info.get(0) + NFCseed6info.get(4) + "\n Winner: ";
+			if (opponentNFCseed2.equals(NFCseed3)){
+				NFC3vs6 += NFCseed3info.get(0) + " ";
+				NFC3vs6 += simScore(NFCseed3, NFCseed6, 0) + "\n\n"; }
+			else{
+				NFC3vs6 += NFCseed6info.get(0) + " ";
+				NFC3vs6 += simScore(NFCseed3, NFCseed6, 1) + "\n\n"; }
+				
+			String NFC4vs5 = NFCseed4info.get(0) + NFCseed4info.get(4) +
+				" vs. " + NFCseed5info.get(0) + NFCseed5info.get(4) + "\n Winner: ";	
+			if (opponentNFCseed1.equals(NFCseed4) || opponentNFCseed2.equals(NFCseed4)){
+				NFC4vs5 += NFCseed4info.get(0) + " "; 
+				NFC4vs5 += simScore(NFCseed4, NFCseed5, 0) + "\n\n"; }
+			else{
+				NFC4vs5 += NFCseed5info.get(0) + " "; 
+				NFC4vs5 += simScore(NFCseed4, NFCseed5, 1) + "\n\n"; }
+				
+			answer += AFC3vs6 + AFC4vs5 + NFC3vs6 + NFC4vs5;
+		}
+		
+		if (round == 1){
+			simDivisionalRound();
+			
+			String AFC1 = AFCseed1info.get(0) + AFCseed1info.get(4) +
+				" vs. " + opponentAFCseed1info.get(0) + opponentAFCseed1info.get(4) + "\n Winner: ";
+			if (AFCchampionship1.equals(AFCseed1)){
+				AFC1 += AFCseed1info.get(0) + " "; 
+				AFC1 += simScore(AFCseed1, opponentAFCseed1, 0) + "\n\n"; }
+			else{
+				AFC1 += opponentAFCseed1info.get(0) + " "; 
+				AFC1 += simScore(AFCseed1, opponentAFCseed1, 1) + "\n\n"; }
+				
+			String AFC2 = AFCseed2info.get(0) + AFCseed2info.get(4) +
+				" vs. " + opponentAFCseed2info.get(0) + opponentAFCseed2info.get(4) + "\n Winner: ";
+			if (AFCchampionship2.equals(AFCseed2)){
+				AFC2 += AFCseed2info.get(0) + " "; 
+				AFC2 += simScore(AFCseed2, opponentAFCseed2, 0) + "\n\n"; }
+			else{
+				AFC2 += opponentAFCseed2info.get(0) + " "; 
+				AFC2 += simScore(AFCseed2, opponentAFCseed2, 1) + "\n\n"; }
+				
+			String NFC1 = NFCseed1info.get(0) + NFCseed1info.get(4) +
+				" vs. " + opponentNFCseed1info.get(0) + opponentNFCseed1info.get(4) + "\n Winner: ";
+			if (NFCchampionship1.equals(NFCseed1)){
+				NFC1 += NFCseed1info.get(0) + " "; 
+				NFC1 += simScore(NFCseed1, opponentNFCseed1, 0) + "\n\n"; }
+			else{
+				NFC1 += opponentNFCseed1info.get(0) + " ";
+				NFC1 += simScore(NFCseed1, opponentNFCseed1, 1) + "\n\n"; }
+				
+			String NFC2 = NFCseed2info.get(0) + NFCseed2info.get(4) +
+				" vs. " + opponentNFCseed2info.get(0) + opponentNFCseed2info.get(4) + "\n Winner: ";
+			if (NFCchampionship2.equals(NFCseed2)){
+				NFC2 += NFCseed2info.get(0) + " "; 
+				NFC2 += simScore(NFCseed2, opponentNFCseed2, 0) + "\n\n"; }
+			else{
+				NFC2 += opponentNFCseed2info.get(0) + " ";
+				NFC2 += simScore(NFCseed2, opponentNFCseed2, 1) + "\n\n"; }
+				
+			answer += AFC1 + AFC2 + NFC1 + NFC2;
+		}
+		
+		
+		if (round == 2){
+			simConferenceChampionships();
+			
+			String AFCchampionship = AFCchampionship1info.get(0) + AFCchampionship1info.get(4) +
+				" vs. " + AFCchampionship2info.get(0) + AFCchampionship2info.get(4) + "\n Winner: ";
+			if (AFCchampion.equals(AFCchampionship1)){
+				AFCchampionship += AFCchampionship1info.get(0) + " "; 
+				AFCchampionship += simScore(AFCchampionship1, AFCchampionship2, 0) + "\n\n"; }
+			else{
+				AFCchampionship += AFCchampionship2info.get(0) + " ";
+				AFCchampionship += simScore(AFCchampionship1, AFCchampionship2, 1) + "\n\n"; }
+				
+			String NFCchampionship = NFCchampionship1info.get(0) + NFCchampionship1info.get(4) +
+				" vs. " + NFCchampionship2info.get(0) + NFCchampionship2info.get(4) + "\n Winner: ";
+			if (NFCchampion.equals(NFCchampionship1)){
+				NFCchampionship += NFCchampionship1info.get(0) + " ";
+				NFCchampionship += simScore(NFCchampionship1, NFCchampionship2, 0) + "\n\n"; }
+			else{
+				NFCchampionship += NFCchampionship2info.get(0) + " "; 
+				NFCchampionship += simScore(NFCchampionship1, NFCchampionship2, 1) + "\n\n";}
+				
+			answer += AFCchampionship + NFCchampionship;
+		}
+		
+		if (round == 3){
+			simSuperBowl();
+			
+			String superBowl = AFCchampionInfo.get(0) + AFCchampionInfo.get(4) +
+				" vs. " + NFCchampionInfo.get(0) + NFCchampionInfo.get(4) + "\n Winner: ";
+			if (AFCchampion.equals(SuperBowlChampion)){
+				superBowl += AFCchampionInfo.get(0) + " "; 
+				superBowl += simScore(AFCchampion, NFCchampion, 0) + "\n\n";
+				superBowl += "SUPER BOWL CHAMPS: The " + AFCchampionInfo.get(0) + "!";}
+			else{
+				superBowl += NFCchampionInfo.get(0) + " ";
+				superBowl += simScore(AFCchampion, NFCchampion, 1) + "\n\n";
+				superBowl += "SUPER BOWL CHAMPS: The " + NFCchampionInfo.get(0) + "!";}
+				
+			answer += superBowl;
+		}
+			
+		return answer;
+	}
+	
+	
 		
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//this is only for improving the text file of stats 
+	public static String improve(String fileName){
+		String answer = "";
+		try{
+			Scanner scan = new Scanner(new File (fileName));
+			while(scan.hasNextLine() ){
+					String stats = scan.nextLine();
+					String player = stats.replaceAll("\\s", "");
+					answer += player + "\n"; 
+			}
+			
+			
+		}
+		catch(FileNotFoundException e){
+			System.out.println("File Not Found!");
+		}
+	return answer; 
+	}
+	
+		
 	
 	public static void main (String[] args){
 		List<Integer> NewEnglandPatriots = Arrays.asList(3, 1, 8, 2, 7, 2, 3, 1, 8, 3, 3, 2, 19, 8, 8, 16, 22, 5, 23, 12, 97);
@@ -1650,156 +1809,6 @@ public class FinalProject{
 		NFCseed6info= DetroitLionsInfo;
 		
 		/** 
-		//wild card 
-		System.out.println(playoffPicture());
-		System.out.println(simResults(round));
-		
-		//divisional
-		System.out.println(playoffPicture());
-		System.out.println(simResults(round));
-		
-		//conference championship
-		System.out.println(playoffPicture());
-		System.out.println(simResults(round));
-		
-		//super bowl
-		System.out.println(playoffPicture());
-		System.out.println(simResults(round));  */
-		
-		/** Sample playoff picture
-		ROUND: Wild Card Round
-
-		AFC
-		1) New England Patriots (14-2)
-		Offense: 3rd     Defense: 1st
-
-		2) Kansas City Chiefs (12-4)
-		Offense: 13th     Defense: 7th
-
-		3) Pittsburgh Steelers (11-5)
-		Offense: 11th     Defense: 10th
-
-		4) Houston Texans (9-7)
-		Offense: 29th     Defense: 11th
-
-		5) Oakland Raiders (12-4)
-		Offense: 7th     Defense: 20th
-
-		6) Miami Dolphins (10-6)
-		Offense: 17th     Defense: 18th
-
-		NFC
-		1) Dallas Cowboys (13-3)
-		Offense: 5th     Defense: 5th
-
-		2) Atlanta Falcons (11-5)
-		Offense: 1st     Defense: 27th
-
-		3) Seattle Seahawks (10-5-1)
-		Offense: 18th     Defense: 3rd
-
-		4) Green Bay Packers (10-6)
-		Offense: 4th     Defense: 21st
-
-		5) New York Giants (11-5)
-		Offense: 26th     Defense: 2nd
-
-		6) Detroit Lions (9-7)
-		Offense: 20th     Defense: 13th
-
-		Upcoming games:
-		Pittsburgh Steelers (3) vs. Miami Dolphins (6)
-		Probability: Pittsburgh Steelers 70%, Miami Dolphins 30%
-
-		Houston Texans (4) vs. Oakland Raiders (5)
-		Probability: Houston Texans 40%, Oakland Raiders 60%
-
-		Seattle Seahawks (3) vs. Detroit Lions (6)
-		Probability: Seattle Seahawks 83%, Detroit Lions 17%
-
-		Green Bay Packers (4) vs. New York Giants (5)
-		Probability: Green Bay Packers 42%, New York Giants 58%
-
-
-		Results:
-		Pittsburgh Steelers (3) vs. Miami Dolphins (6)
-		Winner: Pittsburgh Steelers 28-3
-
-		Houston Texans (4) vs. Oakland Raiders (5)
-		Winner: Houston Texans 24-3
-
-		Seattle Seahawks (3) vs. Detroit Lions (6)
-		Winner: Seattle Seahawks 16-7
-
-		Green Bay Packers (4) vs. New York Giants (5)
-		Winner: New York Giants 17-10
-
-
-
-		ROUND: Divisional Round
-
-		Upcoming games:
-		New England Patriots (1) vs. Houston Texans (4)
-		Probability: New England Patriots 94%, Houston Texans 6%
-
-		Kansas City Chiefs (2) vs. Pittsburgh Steelers (3)
-		Probability: Kansas City Chiefs 43%, Pittsburgh Steelers 57%
-
-		Dallas Cowboys (1) vs. New York Giants (5)
-		Probability: Dallas Cowboys 55%, New York Giants 45%
-
-		Atlanta Falcons (2) vs. Seattle Seahawks (3)
-		Probability: Atlanta Falcons 55%, Seattle Seahawks 45%
-
-
-		Results:
-		New England Patriots (1) vs. Houston Texans (4)
-		Winner: New England Patriots 27-3
-
-		Kansas City Chiefs (2) vs. Pittsburgh Steelers (3)
-		Winner: Pittsburgh Steelers 20-17
-
-		Dallas Cowboys (1) vs. New York Giants (5)
-		Winner: New York Giants 21-10
-
-		Atlanta Falcons (2) vs. Seattle Seahawks (3)
-		Winner: Atlanta Falcons 17-10
-
-
-
-		ROUND: Conference Championships
-
-		Upcoming games:
-		New England Patriots (1) vs. Pittsburgh Steelers (3)
-		Probability: New England Patriots 70%, Pittsburgh Steelers 30%
-
-		New York Giants (5) vs. Atlanta Falcons (2)
-		Probability: New York Giants 52%, Atlanta Falcons 48%
-
-
-		Results:
-		New England Patriots (1) vs. Pittsburgh Steelers (3)
-		Winner: New England Patriots 17-7
-
-		New York Giants (5) vs. Atlanta Falcons (2)
-		Winner: New York Giants 20-7
-
-
-
-		ROUND: SUPER BOWL
-
-		Upcoming games:
-		New England Patriots (1) vs. New York Giants (5)
-		Probability: New England Patriots 75%, New York Giants 25%
-
-	
-		Results:
-		New England Patriots (1) vs. New York Giants (5)
-		Winner: New England Patriots 17-3
-
-		SUPER BOWL CHAMPS: The New England Patriots!
-		*/
-		
 		//Sample stats for wild card weekend 1/7 - 1/8
 		List<Integer> AaronRodgers = Arrays.asList(0, 0, 16, 4428, 40, 401, 610, 7, 96);
 		List<Integer> LeveonBell = Arrays.asList(0, 1, 12, 1884, 9, 261, 4, 95);
@@ -1815,8 +1824,162 @@ public class FinalProject{
 		
 		System.out.println(lbStats(KhalilMack, HoustonTexans)); //7 Tackles, 1 Sacks
 		System.out.println(dlStats(DamonHarrison, GreenBayPackers)); //4 Tackles
-		System.out.println(dbStats(LandonCollins, GreenBayPackers)); //4 Tackles, 1 Passes Defended
+		System.out.println(dbStats(LandonCollins, GreenBayPackers)); //4 Tackles, 1 Passes Defended */
 		
-	}
-	
+		
+		List<List<Integer>> stats = new ArrayList<List<Integer>>();
+		List<List<Integer>> NewEnglandPatriotsStats = new ArrayList<List<Integer>>();
+		List<List<Integer>> KansasCityChiefsStats = new ArrayList<List<Integer>>();
+		List<List<Integer>> PittsburghSteelersStats = new ArrayList<List<Integer>>();
+		List<List<Integer>> HoustonTexansStats = new ArrayList<List<Integer>>();
+		List<List<Integer>> OaklandRaidersStats = new ArrayList<List<Integer>>();
+		List<List<Integer>> MiamiDolphinsStats = new ArrayList<List<Integer>>();
+		
+		List<List<Integer>> DallasCowboysStats = new ArrayList<List<Integer>>();
+		List<List<Integer>> AtlantaFalconsStats = new ArrayList<List<Integer>>();
+		List<List<Integer>> SeattleSeahawksStats = new ArrayList<List<Integer>>();
+		List<List<Integer>> GreenBayPackersStats = new ArrayList<List<Integer>>();
+		List<List<Integer>> NewYorkGiantsStats = new ArrayList<List<Integer>>();
+		List<List<Integer>> DetroitLionsStats = new ArrayList<List<Integer>>();
+      
+		try{
+			Scanner scan = new Scanner(new File ("Stats.txt"));
+			while(scan.hasNextLine() ){
+					String player = scan.nextLine();
+					List<String> playerStats = new ArrayList<String>(Arrays.asList(player.split(",")));
+					List<Integer> intStats = new ArrayList<Integer>();
+					int elements = playerStats.size(), i = 0;
+					while(i < elements){
+						intStats.add(Integer.valueOf(playerStats.get(i)));
+						i += 1; }
+					stats.add(intStats); }
+			
+		}
+		catch(FileNotFoundException e){
+			System.out.println("File Not Found!"); }
+		
+		int x = 0;
+		while (x < stats.size() ){
+			List<Integer> player = stats.get(x);
+			if (x <= 7){
+				NewEnglandPatriotsStats.add(player); }
+			if (x >= 8 && x <= 15){
+				KansasCityChiefsStats.add(player); }
+			if (x >= 16 && x <= 23){
+				PittsburghSteelersStats.add(player); }
+			if (x >= 24 && x <= 31){
+				HoustonTexansStats.add(player); }
+			if (x >= 32 && x <= 39){
+				OaklandRaidersStats.add(player); }
+			if (x >= 40 && x <= 47){
+				MiamiDolphinsStats.add(player); }
+			
+			
+			if (x >= 48 && x <= 55){
+				DallasCowboysStats.add(player); }
+			if (x >= 56 && x <= 63){
+				AtlantaFalconsStats.add(player); }
+			if (x >= 64 && x <= 71){
+				SeattleSeahawksStats.add(player); }
+			if (x >= 72 && x <= 79){
+				GreenBayPackersStats.add(player); }
+			if (x >= 80 && x <= 87){
+				NewYorkGiantsStats.add(player); }
+			if (x >= 88 && x <= 95){
+				DetroitLionsStats.add(player); }
+			
+			x += 1;
+		}
+		
+		
+		List<String> players = new ArrayList<String>();
+		List<String> NewEnglandPatriotsRoster = new ArrayList<String>();
+		List<String> KansasCityChiefsRoster = new ArrayList<String>();
+		List<String> PittsburghSteelersRoster = new ArrayList<String>();
+		List<String> HoustonTexansRoster = new ArrayList<String>();
+		List<String> OaklandRaidersRoster = new ArrayList<String>();
+		List<String> MiamiDolphinsRoster = new ArrayList<String>();
+		
+		List<String> DallasCowboysRoster = new ArrayList<String>();
+		List<String> AtlantaFalconsRoster = new ArrayList<String>();
+		List<String> SeattleSeahawksRoster = new ArrayList<String>();
+		List<String> GreenBayPackersRoster = new ArrayList<String>();
+		List<String> NewYorkGiantsRoster = new ArrayList<String>();
+		List<String> DetroitLionsRoster = new ArrayList<String>(); 
+      
+		try{
+			Scanner scan = new Scanner(new File ("Rosters.txt"));
+			while(scan.hasNextLine() ){
+					String playerInfo = scan.nextLine();
+					players.add(playerInfo); }
+			
+		}
+		catch(FileNotFoundException e){
+			System.out.println("File Not Found!"); }
+		
+		int y = 0;
+		while (y < players.size() ){
+			String playerName = players.get(y);
+			if (y <= 7){
+				NewEnglandPatriotsRoster.add(playerName); }
+			if (y >= 8 && y <= 15){
+				KansasCityChiefsRoster.add(playerName); }
+			if (y >= 16 && y <= 23){
+				PittsburghSteelersRoster.add(playerName); }
+			if (y >= 24 && y <= 31){
+				HoustonTexansRoster.add(playerName); }
+			if (y >= 32 && y <= 39){
+				OaklandRaidersRoster.add(playerName); }
+			if (y >= 40 && y <= 47){
+				MiamiDolphinsRoster.add(playerName); }
+			
+			
+			if (y >= 48 && y <= 55){
+				DallasCowboysRoster.add(playerName); }
+			if (y >= 56 && y <= 63){
+				AtlantaFalconsRoster.add(playerName); }
+			if (y >= 64 && y <= 71){
+				SeattleSeahawksRoster.add(playerName); }
+			if (y >= 72 && y <= 79){
+				GreenBayPackersRoster.add(playerName); }
+			if (y >= 80 && y <= 87){
+				NewYorkGiantsRoster.add(playerName); }
+			if (y >= 88 && y <= 95){
+				DetroitLionsRoster.add(playerName); }
+				
+			y += 1;
+		}
+		
+		/** only for testing purposes
+		System.out.println(NewEnglandPatriotsRoster.toString());
+		System.out.println(KansasCityChiefsRoster.toString());
+		System.out.println(PittsburghSteelersRoster.toString());
+		System.out.println(HoustonTexansRoster.toString());
+		System.out.println(OaklandRaidersRoster.toString());
+		System.out.println(MiamiDolphinsRoster.toString());
+		
+		System.out.println(DallasCowboysRoster.toString());
+		System.out.println(AtlantaFalconsRoster.toString());
+		System.out.println(SeattleSeahawksRoster.toString());
+		System.out.println(GreenBayPackersRoster.toString());
+		System.out.println(NewYorkGiantsRoster.toString());
+		System.out.println(DetroitLionsRoster.toString());
+		
+		System.out.println(NewEnglandPatriotsStats.toString());
+		System.out.println(KansasCityChiefsStats.toString());
+		System.out.println(PittsburghSteelersStats.toString());
+		System.out.println(HoustonTexansStats.toString());
+		System.out.println(OaklandRaidersStats.toString());
+		System.out.println(MiamiDolphinsStats.toString());
+		
+		System.out.println(DallasCowboysStats.toString());
+		System.out.println(AtlantaFalconsStats.toString());
+		System.out.println(SeattleSeahawksStats.toString());
+		System.out.println(GreenBayPackersStats.toString());
+		System.out.println(NewYorkGiantsStats.toString());
+		System.out.println(DetroitLionsStats.toString()); */ 
+		
+		System.out.println(teamStats(NewYorkGiantsStats, NewYorkGiantsRoster, GreenBayPackers)); 
+	} 
 }
+	
