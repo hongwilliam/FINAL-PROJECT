@@ -1576,6 +1576,8 @@ public class FinalProject{
 			else{
 				AFC3vs6 += AFCseed6info.get(0) + " "; 
 				AFC3vs6 += simScore(AFCseed3, AFCseed6, 1) + "\n\n"; }
+			AFC3vs6 += AFCseed3info.get(0) + ": \n" + teamStats(AFCseed3Stats, AFCseed3infoStats, AFCseed6);
+			AFC3vs6 += AFCseed6info.get(0) + ": \n" + teamStats(AFCseed6Stats, AFCseed6infoStats, AFCseed3);
 				
 			String AFC4vs5 =  AFCseed4info.get(0) + AFCseed4info.get(4) +
 				" vs. " + AFCseed5info.get(0) + AFCseed5info.get(4) + "\n Winner: ";	
@@ -1585,6 +1587,8 @@ public class FinalProject{
 			else{
 				AFC4vs5 += AFCseed5info.get(0) + " "; 
 				AFC4vs5 += simScore(AFCseed4, AFCseed5, 1) + "\n\n"; }
+			AFC4vs5 += AFCseed4info.get(0) + ": \n" + teamStats(AFCseed4Stats, AFCseed4infoStats, AFCseed5);
+			AFC4vs5 += AFCseed5info.get(0) + ": \n" + teamStats(AFCseed5Stats, AFCseed5infoStats, AFCseed4);
 				
 			String NFC3vs6 = NFCseed3info.get(0) + NFCseed3info.get(4) + 
 				" vs. " + NFCseed6info.get(0) + NFCseed6info.get(4) + "\n Winner: ";
@@ -1594,7 +1598,9 @@ public class FinalProject{
 			else{
 				NFC3vs6 += NFCseed6info.get(0) + " ";
 				NFC3vs6 += simScore(NFCseed3, NFCseed6, 1) + "\n\n"; }
-				
+			NFC3vs6 += NFCseed3info.get(0) + ": \n" + teamStats(NFCseed3Stats, NFCseed3infoStats, NFCseed6);
+			NFC3vs6 += NFCseed6info.get(0) + ": \n" + teamStats(NFCseed6Stats, NFCseed6infoStats, NFCseed3);
+			
 			String NFC4vs5 = NFCseed4info.get(0) + NFCseed4info.get(4) +
 				" vs. " + NFCseed5info.get(0) + NFCseed5info.get(4) + "\n Winner: ";	
 			if (opponentNFCseed1.equals(NFCseed4) || opponentNFCseed2.equals(NFCseed4)){
@@ -1603,6 +1609,8 @@ public class FinalProject{
 			else{
 				NFC4vs5 += NFCseed5info.get(0) + " "; 
 				NFC4vs5 += simScore(NFCseed4, NFCseed5, 1) + "\n\n"; }
+			NFC4vs5 += NFCseed4info.get(0) + ": \n" + teamStats(NFCseed4Stats, NFCseed4infoStats, NFCseed5);
+			NFC4vs5 += NFCseed5info.get(0) + ": \n" + teamStats(NFCseed5Stats, NFCseed5infoStats, NFCseed4);
 				
 			answer += AFC3vs6 + AFC4vs5 + NFC3vs6 + NFC4vs5;
 		}
@@ -1618,6 +1626,8 @@ public class FinalProject{
 			else{
 				AFC1 += opponentAFCseed1info.get(0) + " "; 
 				AFC1 += simScore(AFCseed1, opponentAFCseed1, 1) + "\n\n"; }
+			AFC1 += AFCseed1info.get(0) + ": \n" + teamStats(AFCseed1Stats, AFCseed1infoStats, opponentAFCseed1);
+			AFC1 += opponentAFCseed1info.get(0) + ": \n" + teamStats(opponentAFCseed1Stats, opponentAFCseed1infoStats, AFCseed1);
 				
 			String AFC2 = AFCseed2info.get(0) + AFCseed2info.get(4) +
 				" vs. " + opponentAFCseed2info.get(0) + opponentAFCseed2info.get(4) + "\n Winner: ";
@@ -1627,6 +1637,8 @@ public class FinalProject{
 			else{
 				AFC2 += opponentAFCseed2info.get(0) + " "; 
 				AFC2 += simScore(AFCseed2, opponentAFCseed2, 1) + "\n\n"; }
+			AFC2 += AFCseed2info.get(0) + ": \n" + teamStats(AFCseed2Stats, AFCseed2infoStats, opponentAFCseed2);
+			AFC2 += opponentAFCseed2info.get(0) + ": \n" + teamStats(opponentAFCseed2Stats, opponentAFCseed2infoStats, AFCseed2);
 				
 			String NFC1 = NFCseed1info.get(0) + NFCseed1info.get(4) +
 				" vs. " + opponentNFCseed1info.get(0) + opponentNFCseed1info.get(4) + "\n Winner: ";
@@ -1636,7 +1648,9 @@ public class FinalProject{
 			else{
 				NFC1 += opponentNFCseed1info.get(0) + " ";
 				NFC1 += simScore(NFCseed1, opponentNFCseed1, 1) + "\n\n"; }
-				
+			NFC1 += NFCseed1info.get(0) + ": \n" + teamStats(NFCseed1Stats, NFCseed1infoStats, opponentNFCseed1);
+			NFC1 += opponentNFCseed1info.get(0) + ": \n" + teamStats(opponentNFCseed1Stats, opponentNFCseed1infoStats, NFCseed1);	
+			
 			String NFC2 = NFCseed2info.get(0) + NFCseed2info.get(4) +
 				" vs. " + opponentNFCseed2info.get(0) + opponentNFCseed2info.get(4) + "\n Winner: ";
 			if (NFCchampionship2.equals(NFCseed2)){
@@ -1645,6 +1659,8 @@ public class FinalProject{
 			else{
 				NFC2 += opponentNFCseed2info.get(0) + " ";
 				NFC2 += simScore(NFCseed2, opponentNFCseed2, 1) + "\n\n"; }
+			NFC2 += NFCseed2info.get(0) + ": \n" + teamStats(NFCseed2Stats, NFCseed2infoStats, opponentNFCseed2);
+			NFC2 += opponentNFCseed2info.get(0) + ": \n" + teamStats(opponentNFCseed2Stats, opponentNFCseed2infoStats, NFCseed2);
 				
 			answer += AFC1 + AFC2 + NFC1 + NFC2;
 		}
@@ -1661,6 +1677,8 @@ public class FinalProject{
 			else{
 				AFCchampionship += AFCchampionship2info.get(0) + " ";
 				AFCchampionship += simScore(AFCchampionship1, AFCchampionship2, 1) + "\n\n"; }
+			AFCchampionship += AFCchampionship1info.get(0) + ": \n" + teamStats(AFCchampionship1Stats, AFCchampionship1infoStats, AFCchampionship2);
+			AFCchampionship += AFCchampionship2info.get(0) + ": \n" + teamStats(AFCchampionship2Stats, AFCchampionship2infoStats, AFCchampionship1);
 				
 			String NFCchampionship = NFCchampionship1info.get(0) + NFCchampionship1info.get(4) +
 				" vs. " + NFCchampionship2info.get(0) + NFCchampionship2info.get(4) + "\n Winner: ";
@@ -1670,7 +1688,9 @@ public class FinalProject{
 			else{
 				NFCchampionship += NFCchampionship2info.get(0) + " "; 
 				NFCchampionship += simScore(NFCchampionship1, NFCchampionship2, 1) + "\n\n";}
-				
+			NFCchampionship += NFCchampionship1info.get(0) + ": \n" + teamStats(NFCchampionship1Stats, NFCchampionship1infoStats, NFCchampionship2);
+			NFCchampionship += NFCchampionship2info.get(0) + ": \n" + teamStats(NFCchampionship2Stats, NFCchampionship2infoStats, NFCchampionship1);
+			
 			answer += AFCchampionship + NFCchampionship;
 		}
 		
@@ -1682,10 +1702,14 @@ public class FinalProject{
 			if (AFCchampion.equals(SuperBowlChampion)){
 				superBowl += AFCchampionInfo.get(0) + " "; 
 				superBowl += simScore(AFCchampion, NFCchampion, 0) + "\n\n";
+				superBowl += AFCchampionInfo.get(0) + ": \n" + teamStats(AFCchampionStats, AFCchampionInfoStats, NFCchampion);
+				superBowl += NFCchampionInfo.get(0) + ": \n" + teamStats(NFCchampionStats, NFCchampionInfoStats, AFCchampion);
 				superBowl += "SUPER BOWL CHAMPS: The " + AFCchampionInfo.get(0) + "!";}
 			else{
 				superBowl += NFCchampionInfo.get(0) + " ";
 				superBowl += simScore(AFCchampion, NFCchampion, 1) + "\n\n";
+				superBowl += AFCchampionInfo.get(0) + ": \n" + teamStats(AFCchampionStats, AFCchampionInfoStats, NFCchampion);
+				superBowl += NFCchampionInfo.get(0) + ": \n" + teamStats(NFCchampionStats, NFCchampionInfoStats, AFCchampion);
 				superBowl += "SUPER BOWL CHAMPS: The " + NFCchampionInfo.get(0) + "!";}
 				
 			answer += superBowl;
@@ -1693,20 +1717,8 @@ public class FinalProject{
 			
 		return answer;
 	}
-	
-	
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//this is only for improving the text file of stats 
+
+	//this is only for improving the text file of stats and rosters
 	public static String improve(String fileName){
 		String answer = "";
 		try{
@@ -1728,12 +1740,12 @@ public class FinalProject{
 		
 	
 	public static void main (String[] args){
-		List<Integer> NewEnglandPatriots = Arrays.asList(3, 1, 8, 2, 7, 2, 3, 1, 8, 3, 3, 2, 19, 8, 8, 16, 22, 5, 23, 12, 97);
-		List<Integer> KansasCityChiefs = Arrays.asList(2, 4, 3, 7, 15, 15, 13, 7, 30, 15, 13, 11, 20, 16, 17, 12, 4, 23, 24, 28, 72); 
-		List<Integer> PittsburghSteelers = Arrays.asList(9, 5, 14, 3, 13, 11, 11, 10, 12, 11, 9, 8, 4, 3, 2, 9, 13, 9, 17, 13, 68); 
+		List<Integer> NewEnglandPatriots = Arrays.asList(3, 1, 8, 2, 7, 2, 3, 1, 8, 3, 3, 2, 19, 8, 8, 16, 22, 5, 23, 12, 101);
+		List<Integer> KansasCityChiefs = Arrays.asList(2, 4, 3, 7, 15, 15, 13, 7, 30, 15, 13, 11, 20, 16, 17, 12, 4, 23, 24, 28, 67); 
+		List<Integer> PittsburghSteelers = Arrays.asList(9, 5, 14, 3, 13, 11, 11, 10, 12, 11, 9, 8, 4, 3, 2, 9, 13, 9, 17, 13, 63); 
 		List<Integer> HoustonTexans = Arrays.asList(26, 26, 7, 29, 4, 30, 29, 11, 31, 32, 30, 30, 27, 9, 15, 11, 9, 17, 25, 16, 36);
-		List<Integer> OaklandRaiders = Arrays.asList(1, 11, 19, 8, 32, 9, 7, 20, 14, 16, 7, 4, 12, 1, 10, 22, 23, 21, 27, 27, 34);
-		List<Integer> MiamiDolphins = Arrays.asList(13, 24, 17, 15, 12, 8, 17, 18, 15, 6, 14, 18, 15, 23, 21, 17, 14, 19, 31, 20, 56);
+		List<Integer> OaklandRaiders = Arrays.asList(1, 11, 19, 8, 32, 9, 7, 20, 14, 16, 7, 4, 12, 1, 10, 22, 23, 21, 27, 27, 24);
+		List<Integer> MiamiDolphins = Arrays.asList(13, 24, 17, 15, 12, 8, 17, 18, 15, 6, 14, 18, 15, 23, 21, 17, 14, 19, 31, 20, 26);
 		
 		List<String> NewEnglandPatriotsInfo = Arrays.asList("New England Patriots", " (14-2)", "3rd", "1st", " (1)");
 		List<String> KansasCityChiefsInfo = Arrays.asList("Kansas City Chiefs", " (12-4)", "13th", "7th", " (2)");
@@ -1742,10 +1754,10 @@ public class FinalProject{
 		List<String> OaklandRaidersInfo = Arrays.asList("Oakland Raiders", " (12-4)", "7th", "20th", " (5)");
 		List<String> MiamiDolphinsInfo = Arrays.asList("Miami Dolphins", " (10-6)", "17th", "18th", " (6)");
 		
-		List<Integer> DallasCowboys = Arrays.asList(10, 3, 24, 1, 14, 3, 5, 5, 3, 5, 2, 3, 2, 11, 3, 18, 19, 8, 10, 11, 71);
-		List<Integer> AtlantaFalcons = Arrays.asList(4, 2, 22, 4, 11, 1, 1, 27, 9, 1, 1, 1, 8, 22, 9, 27, 24, 28, 22, 24, 73);
-		List<Integer> SeattleSeahawks = Arrays.asList(16, 6, 9, 10, 16, 13, 18, 3, 27, 7, 18, 16, 21, 25, 26, 4, 11, 2, 13, 10, 65);
-		List<Integer> GreenBayPackers = Arrays.asList(6, 8, 26, 6, 31, 5, 4, 21, 10, 18, 6, 9, 9, 14, 22, 19, 20, 12, 4, 9, 62);
+		List<Integer> DallasCowboys = Arrays.asList(10, 3, 24, 1, 14, 3, 5, 5, 3, 5, 2, 3, 2, 11, 3, 18, 19, 8, 10, 11, 66);
+		List<Integer> AtlantaFalcons = Arrays.asList(4, 2, 22, 4, 11, 1, 1, 27, 9, 1, 1, 1, 8, 22, 9, 27, 24, 28, 22, 24, 68);
+		List<Integer> SeattleSeahawks = Arrays.asList(16, 6, 9, 10, 16, 13, 18, 3, 27, 7, 18, 16, 21, 25, 26, 4, 11, 2, 13, 10, 75);
+		List<Integer> GreenBayPackers = Arrays.asList(6, 8, 26, 6, 31, 5, 4, 21, 10, 18, 6, 9, 9, 14, 22, 19, 20, 12, 4, 9, 72);
 		List<Integer> NewYorkGiants = Arrays.asList(22, 12, 2, 12, 6, 20, 26, 2, 19, 21, 21, 21, 24, 4, 25, 2, 3, 4, 29, 17, 70); 
 		List<Integer> DetroitLions = Arrays.asList(20, 21, 32, 27, 26, 14, 20, 13, 17, 14, 17, 13, 26, 18, 31, 32, 32, 22, 21, 19, 35); 
 		
@@ -1756,21 +1768,21 @@ public class FinalProject{
 		List<String> NewYorkGiantsInfo = Arrays.asList("New York Giants", " (11-5)", "26th", "2nd", " (5)");
 		List<String> DetroitLionsInfo = Arrays.asList("Detroit Lions", " (9-7)", "20th", "13th", " (6)");
 		
-		
-		/** System.out.println(convertRawToScore(NewEnglandPatriots)); //91.25 -> 96.25 (+5)
-		System.out.println(convertRawToScore(KansasCityChiefs)); //76.88 -> 71.88 (-5)
-		System.out.println(convertRawToScore(PittsburghSteelers)); //73.28 -> 68.28 (-5)
+		//these stat grades are only for reference
+		//adjustments were made for injuries, current win streak, and experience in postseason
+		/** System.out.println(convertRawToScore(NewEnglandPatriots)); //91.25 -> 101.25 (+10)
+		System.out.println(convertRawToScore(KansasCityChiefs)); //76.88 -> 66.88 (-10)
+		System.out.println(convertRawToScore(PittsburghSteelers)); //73.28 -> 63.28 (-10)
 		System.out.println(convertRawToScore(HoustonTexans)); //35.63 
-		System.out.println(convertRawToScore(OaklandRaiders)); //64.22 -> 34.22 (-30)
-		System.out.println(convertRawToScore(MiamiDolphins)); //56.09
+		System.out.println(convertRawToScore(OaklandRaiders)); //64.22 -> 24.22 (-40)
+		System.out.println(convertRawToScore(MiamiDolphins)); //56.09 -> 26.09 (-30)
 		
-		System.out.println(convertRawToScore(DallasCowboys)); //75.78 -> 70.78 (-5)
-		System.out.println(convertRawToScore(AtlantaFalcons)); //78.44 -> 73.44 (-5)
-		System.out.println(convertRawToScore(SeattleSeahawks)); //65.31
-		System.out.println(convertRawToScore(GreenBayPackers)); //62.03
-		System.out.println(convertRawToScore(NewYorkGiants)); //60.31 -> 70.31 (+10)
+		System.out.println(convertRawToScore(DallasCowboys)); //75.78 -> 65.78 (-10)
+		System.out.println(convertRawToScore(AtlantaFalcons)); //78.44 -> 68.44 (-10)
+		System.out.println(convertRawToScore(SeattleSeahawks)); //65.31 -> 75.31 (+10)
+		System.out.println(convertRawToScore(GreenBayPackers)); //62.03 -> 72.03 (+10)
+		System.out.println(convertRawToScore(NewYorkGiants)); //60.31 
 		System.out.println(convertRawToScore(DetroitLions)); //34.84 */
-
 	
 		/** this is using the default playoff tournament; the feature to customize will come later
 			AFC 				NFC
@@ -1782,51 +1794,32 @@ public class FinalProject{
 		6) Dolphins				Lions */
 		
 		AFCseed1 = NewEnglandPatriots;
-		AFCseed1info= NewEnglandPatriotsInfo;
+		AFCseed1info = NewEnglandPatriotsInfo;
 		AFCseed2 = KansasCityChiefs;
-		AFCseed2info= KansasCityChiefsInfo;
+		AFCseed2info = KansasCityChiefsInfo;
 		AFCseed3 = PittsburghSteelers;
-		AFCseed3info= PittsburghSteelersInfo;
+		AFCseed3info = PittsburghSteelersInfo;
 		AFCseed4 = HoustonTexans;
-		AFCseed4info= HoustonTexansInfo;
+		AFCseed4info = HoustonTexansInfo;
 		AFCseed5 = OaklandRaiders;
-		AFCseed5info= OaklandRaidersInfo;
+		AFCseed5info = OaklandRaidersInfo;
 		AFCseed6 = MiamiDolphins;
-		AFCseed6info= MiamiDolphinsInfo;
+		AFCseed6info = MiamiDolphinsInfo;
 		
 		
 		NFCseed1 = DallasCowboys;
-		NFCseed1info= DallasCowboysInfo;
+		NFCseed1info = DallasCowboysInfo;
 		NFCseed2 = AtlantaFalcons;
-		NFCseed2info= AtlantaFalconsInfo;
+		NFCseed2info = AtlantaFalconsInfo;
 		NFCseed3 = SeattleSeahawks;
-		NFCseed3info= SeattleSeahawksInfo;
+		NFCseed3info = SeattleSeahawksInfo;
 		NFCseed4 = GreenBayPackers;
-		NFCseed4info= GreenBayPackersInfo;
+		NFCseed4info = GreenBayPackersInfo;
 		NFCseed5 = NewYorkGiants;
-		NFCseed5info= NewYorkGiantsInfo;
+		NFCseed5info = NewYorkGiantsInfo;
 		NFCseed6 = DetroitLions;
-		NFCseed6info= DetroitLionsInfo;
-		
-		/** 
-		//Sample stats for wild card weekend 1/7 - 1/8
-		List<Integer> AaronRodgers = Arrays.asList(0, 0, 16, 4428, 40, 401, 610, 7, 96);
-		List<Integer> LeveonBell = Arrays.asList(0, 1, 12, 1884, 9, 261, 4, 95);
-		List<Integer> OdellBeckhamJr = Arrays.asList(0, 2, 16, 1376, 10, 101, 93);
-		
-		List<Integer> KhalilMack = Arrays.asList(1, 3, 16, 73, 11, 5, 1, 3, 98);
-		List<Integer> DamonHarrison = Arrays.asList(1, 4, 16, 86, 3, 1, 88); 
-		List<Integer> LandonCollins = Arrays.asList(1, 5, 16, 125, 5, 13, 0, 92); 
-		
-		System.out.println(qbStats(AaronRodgers, NewYorkGiants)); //311 Yards, 3 Touchdowns, 28 Completions, 43 Attempts, 1 Interceptions
-		System.out.println(rbStats(LeveonBell, MiamiDolphins)); //216 Total Yards, 1 Total Touchdowns, 21 Carries, 0 Fumbles
-		System.out.println(wrteStats(OdellBeckhamJr, GreenBayPackers)); //106 Total Yards, 1 Total Touchdowns, 8 Receptions
-		
-		System.out.println(lbStats(KhalilMack, HoustonTexans)); //7 Tackles, 1 Sacks
-		System.out.println(dlStats(DamonHarrison, GreenBayPackers)); //4 Tackles
-		System.out.println(dbStats(LandonCollins, GreenBayPackers)); //4 Tackles, 1 Passes Defended */
-		
-		
+		NFCseed6info = DetroitLionsInfo;
+	
 		List<List<Integer>> stats = new ArrayList<List<Integer>>();
 		List<List<Integer>> NewEnglandPatriotsStats = new ArrayList<List<Integer>>();
 		List<List<Integer>> KansasCityChiefsStats = new ArrayList<List<Integer>>();
@@ -1891,7 +1884,6 @@ public class FinalProject{
 			x += 1;
 		}
 		
-		
 		List<String> players = new ArrayList<String>();
 		List<String> NewEnglandPatriotsRoster = new ArrayList<String>();
 		List<String> KansasCityChiefsRoster = new ArrayList<String>();
@@ -1950,7 +1942,34 @@ public class FinalProject{
 			y += 1;
 		}
 		
-		/** only for testing purposes
+		AFCseed1Stats = NewEnglandPatriotsStats;
+		AFCseed1infoStats= NewEnglandPatriotsRoster;
+		AFCseed2Stats = KansasCityChiefsStats;
+		AFCseed2infoStats = KansasCityChiefsRoster;
+		AFCseed3Stats = PittsburghSteelersStats;
+		AFCseed3infoStats = PittsburghSteelersRoster;
+		AFCseed4Stats = HoustonTexansStats;
+		AFCseed4infoStats = HoustonTexansRoster;
+		AFCseed5Stats = OaklandRaidersStats;
+		AFCseed5infoStats = OaklandRaidersRoster;
+		AFCseed6Stats = MiamiDolphinsStats;
+		AFCseed6infoStats = MiamiDolphinsRoster;
+		
+		
+		NFCseed1Stats = DallasCowboysStats;
+		NFCseed1infoStats = DallasCowboysRoster;
+		NFCseed2Stats = AtlantaFalconsStats;
+		NFCseed2infoStats = AtlantaFalconsRoster;
+		NFCseed3Stats = SeattleSeahawksStats;
+		NFCseed3infoStats = SeattleSeahawksRoster;
+		NFCseed4Stats = GreenBayPackersStats;
+		NFCseed4infoStats = GreenBayPackersRoster;
+		NFCseed5Stats = NewYorkGiantsStats;
+		NFCseed5infoStats = NewYorkGiantsRoster;
+		NFCseed6Stats = DetroitLionsStats;
+		NFCseed6infoStats = DetroitLionsRoster;
+		
+		/** 
 		System.out.println(NewEnglandPatriotsRoster.toString());
 		System.out.println(KansasCityChiefsRoster.toString());
 		System.out.println(PittsburghSteelersRoster.toString());
@@ -1977,9 +1996,17 @@ public class FinalProject{
 		System.out.println(SeattleSeahawksStats.toString());
 		System.out.println(GreenBayPackersStats.toString());
 		System.out.println(NewYorkGiantsStats.toString());
-		System.out.println(DetroitLionsStats.toString()); */ 
+		System.out.println(DetroitLionsStats.toString());  */
 		
-		System.out.println(teamStats(NewYorkGiantsStats, NewYorkGiantsRoster, GreenBayPackers)); 
+		System.out.println(playoffPicture());
+		System.out.println(simResults(round));
+		System.out.println(playoffPicture());
+		System.out.println(simResults(round));
+		System.out.println(playoffPicture());
+		System.out.println(simResults(round));
+		System.out.println(playoffPicture());
+		System.out.println(simResults(round));
+			
 	} 
 }
 	
