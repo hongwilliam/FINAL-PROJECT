@@ -32,7 +32,9 @@ public class FinalProject{
 	private static List<String> opponentAFCseed1infoStats, opponentAFCseed2infoStats, opponentNFCseed1infoStats, opponentNFCseed2infoStats;
 	private static List<String> AFCchampionship1infoStats, AFCchampionship2infoStats, NFCchampionship1infoStats, NFCchampionship2infoStats;
 	private static List<String> AFCchampionInfoStats, NFCchampionInfoStats, SuperBowlChampionInfoStats;
-
+	
+	private static String WCR, DIVR, CCR, SBR;
+	
 	
 	/** Indexing format for the List<Integer> of stats
 	0: Turnover Differential
@@ -395,8 +397,6 @@ public class FinalProject{
 				opponentNFCseed2info = NFCseed5info; 
 				opponentNFCseed2Stats = NFCseed5Stats; 
 				opponentNFCseed2infoStats = NFCseed5infoStats; } }
-				
-		round += 1;
 	}
 	
 	public static void simDivisionalRound() {
@@ -443,8 +443,6 @@ public class FinalProject{
 			NFCchampionship2info = opponentNFCseed2info; 
 			NFCchampionship2Stats = opponentNFCseed2Stats; 
 			NFCchampionship2infoStats = opponentNFCseed2infoStats; } 
-		
-		round += 1;
 	}
 	
 	public static void simConferenceChampionships(){
@@ -469,8 +467,6 @@ public class FinalProject{
 			NFCchampionInfo = NFCchampionship2info; 
 			NFCchampionStats = NFCchampionship2Stats;
 			NFCchampionInfoStats = NFCchampionship2infoStats; }
-
-		round += 1;
 	}
 	
 	public static void simSuperBowl(){
@@ -484,11 +480,8 @@ public class FinalProject{
 			SuperBowlChampionInfo = NFCchampionInfo; 
 			SuperBowlChampionStats = NFCchampionStats; 
 			SuperBowlChampionInfoStats = NFCchampionInfoStats; }
-		
-		round = 0;
 	}
 
-	//0 - yds, 1 - tds, 2 - interceptions
 	public static List<Integer> qbStats(List<Integer> stats, List<Integer> opp){
 
 		List<Integer> results = new ArrayList<Integer>();
@@ -601,7 +594,6 @@ public class FinalProject{
 		
 	}
 		
-	//0 - yds, 1 - tds, 2 - carries, 3 - fumbles
 	public static List<Integer> rbStats(List<Integer> stats, List<Integer> opp){
 	
 		List<Integer> results = new ArrayList<Integer>();
@@ -712,7 +704,6 @@ public class FinalProject{
 		
 	}
 	
-	//0 - yds, 1 - tds, 2 - receptions
 	public static List<Integer> wrteStats(List<Integer> stats, List<Integer> opp){
 
 		List<Integer> results = new ArrayList<Integer>();
@@ -801,7 +792,6 @@ public class FinalProject{
 		
 	}
 	
-	//0 - tackles, 1 - sacks, 2 - forced fum, 3 - picks, 4 - PD
 	public static List<Integer> lbStats(List<Integer> stats, List<Integer> opp){
 
 		List<Integer> results = new ArrayList<Integer>();
@@ -961,7 +951,6 @@ public class FinalProject{
 		return results;
 	}
 	
-	//0 - tackles, 1 - sacks, 2 - forced fum
 	public static List<Integer> dlStats(List<Integer> stats, List<Integer> opp){
 		
 		List<Integer> results = new ArrayList<Integer>();
@@ -1066,7 +1055,6 @@ public class FinalProject{
 		return results;
 	}
 	
-	//0 - tackles, 1 - picks, 2 - PD, 3 - forced fum
 	public static List<Integer> dbStats(List<Integer> stats, List<Integer> opp){
 		List<Integer> results = new ArrayList<Integer>();
 		
@@ -1537,57 +1525,166 @@ public class FinalProject{
 		String teamASTATS = "", qbAS = "", rbAS = "", wrAS = "", flexAS = "", d1AS = "", d2AS = "", d3AS = "", d4AS = "";
 		String teamBSTATS = "", qbBS = "", rbBS = "", wrBS = "", flexBS = "", d1BS = "", d2BS = "", d3BS = "", d4BS = "";
 		
-		int ASCORE = ApassingTD + ArushingTD;
-		int BSCORE = BpassingTD + BrushingTD;
+		int ATD = ApassingTD + ArushingTD;
+		int BTD = BpassingTD + BrushingTD;
+		int ASCORE = 0, BSCORE = 0; 
 		
 		if (win == 0){
-			if (ASCORE < BSCORE){
-				int diffA = BSCORE - ASCORE;
+			if (ATD < BTD){
+				int diffA = BTD - ATD;
 				if (diffA == 1){
 					ApassingTD += 1;
-					ArecTD += 1; }
+					ArecTD += 1; 
+					ATD += 1; }
 				if (diffA == 2){
 					ApassingTD += 1;
 					ArecTD += 1;
-					ArushingTD += 1; }
+					ArushingTD += 1; 
+					ATD += 2; }
 				if (diffA == 3){
 					ApassingTD += 2;
 					ArecTD += 2;
-					ArushingTD += 1; }
+					ArushingTD += 1; 
+					ATD += 3; }
 				if (diffA == 4){
 					ApassingTD += 2;
 					ArecTD += 1;
 					AflexTD += 1;
-					ArushingTD += 2; }
+					ArushingTD += 2;
+					ATD += 4; }
 			}
 		}
 		
 		if (win == 1){
-			if (BSCORE < ASCORE){
-				int diffB = ASCORE - BSCORE;
+			if (BTD < ATD){
+				int diffB = ATD - BTD;
 				if (diffB == 1){
 					BpassingTD += 1;
-					BrecTD += 1; }
+					BrecTD += 1;
+					BTD += 1; }
 				if (diffB == 2){
 					BpassingTD += 1;
 					BrecTD += 1;
-					BrushingTD += 1; }
+					BrushingTD += 1; 
+					BTD += 2; }
 				if (diffB == 3){
 					BpassingTD += 2;
 					BrecTD += 2;
-					BrushingTD += 1; }
+					BrushingTD += 1; 
+					BTD += 3; }
 				if (diffB == 4){
 					BpassingTD += 2;
 					BrecTD += 1;
 					BflexTD += 1;
-					BrushingTD += 2; }
+					BrushingTD += 2;
+					BTD += 4; }
 			}
 		}
 		
-		ASCORE *= 7;
-		BSCORE *= 7;
-		if (ASCORE == BSCORE){
+		if (win == 0){
+			if (ATD == BTD){
 				ASCORE += 3; }
+		}
+		if (win == 1){
+			if (ATD == BTD){
+				BSCORE += 3; }
+		}
+		
+		double chance = Math.random() * 100;
+		//random extra touchdown
+		if (chance < 50){
+			ArushingTD += 1;
+			BrushingTD += 1;
+			ATD += 1;
+			BTD += 1; }
+		else{
+			if (chance < 75){
+				ASCORE += 3;
+				BSCORE += 3; }
+		}
+		
+		ATD *= 7;
+		BTD *= 7;
+		ASCORE += ATD;
+		BSCORE += BTD; 
+		
+		if (win == 0){
+			if (ASCORE < BSCORE){
+				int diff = BSCORE - ASCORE;
+				if (diff >= 28){
+					ApassingTD += 2;
+					ArecTD += 1;
+					AflexTD += 1;
+					ArushingTD += 2;
+					ASCORE += diff; }
+				else{	
+					if (diff >= 21){
+						ApassingTD += 2;
+						ArecTD += 1;
+						AflexTD += 1;
+						ArushingTD += 1;
+						ASCORE += diff; }
+					else{
+						if (diff >= 14){
+							ApassingTD += 1;
+							AflexTD += 1;
+							ArushingTD += 1;
+							ASCORE += diff; }
+						else{
+							if (diff >= 7){
+								ApassingTD += 2;
+								ArecTD += 1;
+								AflexTD += 1;
+								ArushingTD += 1;
+								ASCORE += diff; }
+							else{
+								ASCORE += diff; }
+						}
+					}
+				}
+			}
+			if (ASCORE == BSCORE){
+				ASCORE += 3; }
+		}
+		
+		if (win == 1){
+			if (BSCORE < ASCORE){
+				int diff = ASCORE - BSCORE;
+				if (diff >= 28){
+					BpassingTD += 2;
+					BrecTD += 1;
+					BflexTD += 1;
+					BrushingTD += 2;
+					BSCORE += diff; }
+				else{	
+					if (diff >= 21){
+						BpassingTD += 2;
+						BrecTD += 1;
+						BflexTD += 1;
+						BrushingTD += 1;
+						BSCORE += diff; }
+					else{
+						if (diff >= 14){
+							BpassingTD += 1;
+							BflexTD += 1;
+							BrushingTD += 1;
+							BSCORE += diff; }
+						else{
+							if (diff >= 7){
+								BpassingTD += 2;
+								BrecTD += 1;
+								BflexTD += 1;
+								BrushingTD += 1;
+								BSCORE += diff; }
+							else{
+								BSCORE += diff; }
+						}
+					}
+				}
+			}
+			if (ASCORE == BSCORE){
+				BSCORE += 3; }
+		}
 		
 		//all offensive players
 		qbAS += aRoster.get(0) + ": " + aQB.get(0) + " Yards, " + ApassingTD + 
@@ -1611,12 +1708,12 @@ public class FinalProject{
 		if (aFLEXstat.get(1) == 1){
 			if (AflexTD > 0){
 				flexAS += AflexTD + " Touchdowns, "; }
-			flexAS += aFLEX.get(2) + " Carries \n\n"; 
+			flexAS += aFLEX.get(2) + " Carries \n"; 
 		}
 		else{
 			if (AflexTD > 0){
 				flexAS += AflexTD + " Touchdowns, "; }
-			flexAS += aFLEX.get(2) + " Receptions \n\n";
+			flexAS += aFLEX.get(2) + " Receptions \n";
 			
 		}
 		
@@ -1640,12 +1737,12 @@ public class FinalProject{
 		if (bFLEXstat.get(1) == 1){
 			if (BflexTD > 0){
 				flexBS += BflexTD + " Touchdowns, "; }
-			flexBS += bFLEX.get(2) + " Carries \n\n";
+			flexBS += bFLEX.get(2) + " Carries \n";
 		}
 		else{
 			if (BflexTD > 0){
 				flexBS += BflexTD + " Touchdowns, "; }
-			flexBS += bFLEX.get(2) + " Receptions \n\n";
+			flexBS += bFLEX.get(2) + " Receptions \n";
 		}
 		
 		//all defensive players
@@ -1902,62 +1999,16 @@ public class FinalProject{
 			
 		answer += teamASTATS + teamBSTATS; 
 		if (win == 0){
-			answer += "Winner: " + aTeamInfo.get(0) + " " + ASCORE + "-" + BSCORE; }
+			answer += "Winner: " + aTeamInfo.get(0) + " " + ASCORE + "-" + BSCORE + "\n"; }
 		else{
-			answer += "Winner: " + bTeamInfo.get(0) + " " + BSCORE + "-" + ASCORE; }
+			answer += "Winner: " + bTeamInfo.get(0) + " " + BSCORE + "-" + ASCORE + "\n"; }
 		
-		
-	
 		return answer; 
 	}
 	
-	public static String playoffPicture(){
-		String answer = "", currentRound = "\nROUND: ", AFC = "AFC \n", NFC = "NFC \n", upcoming = "Upcoming games: \n";
-		if (round == 0){
-			currentRound += "Wild Card Round \n\n";
-			upcoming += AFCseed3info.get(0) + AFCseed3info.get(4) +
-				" vs. " + AFCseed6info.get(0) + AFCseed6info.get(4) + "\n" 
-				+ probabilityPreview(AFCseed3, AFCseed6, AFCseed3info, AFCseed6info) + "\n\n";
-			upcoming += AFCseed4info.get(0) + AFCseed4info.get(4) +
-				" vs. " + AFCseed5info.get(0) + AFCseed5info.get(4) + "\n"
-				+ probabilityPreview(AFCseed4, AFCseed5, AFCseed4info, AFCseed5info) + "\n\n";
-			upcoming += NFCseed3info.get(0) + NFCseed3info.get(4) + 
-				" vs. " + NFCseed6info.get(0) + NFCseed6info.get(4) + "\n"
-				+ probabilityPreview(NFCseed3, NFCseed6, NFCseed3info, NFCseed6info) + "\n\n";
-			upcoming += NFCseed4info.get(0) + NFCseed4info.get(4) + 
-				" vs. " + NFCseed5info.get(0) + NFCseed5info.get(4) + "\n"
-				+ probabilityPreview(NFCseed4, NFCseed5, NFCseed4info, NFCseed5info) + "\n\n"; }
-		
-		if (round == 1){
-			currentRound += "Divisional Round \n\n";
-			upcoming += AFCseed1info.get(0) + AFCseed1info.get(4) + " vs. " 
-				+ opponentAFCseed1info.get(0) + opponentAFCseed1info.get(4) + "\n"
-				+ probabilityPreview(AFCseed1, opponentAFCseed1, AFCseed1info, opponentAFCseed1info) + "\n\n";
-			upcoming += AFCseed2info.get(0) + AFCseed2info.get(4) + " vs. " 
-				+ opponentAFCseed2info.get(0) + opponentAFCseed2info.get(4) + "\n"
-				+ probabilityPreview(AFCseed2, opponentAFCseed2, AFCseed2info, opponentAFCseed2info) + "\n\n";
-			upcoming += NFCseed1info.get(0) + NFCseed1info.get(4) + " vs. " 
-				+ opponentNFCseed1info.get(0) + opponentNFCseed1info.get(4) + "\n"
-				+ probabilityPreview(NFCseed1, opponentNFCseed1, NFCseed1info, opponentNFCseed1info) + "\n\n";
-			upcoming += NFCseed2info.get(0) + NFCseed2info.get(4) + " vs. " 
-				+ opponentNFCseed2info.get(0) + opponentNFCseed2info.get(4) + "\n"
-				+ probabilityPreview(NFCseed2, opponentNFCseed2, NFCseed2info, opponentNFCseed2info) + "\n\n"; }
-		
-		if (round == 2){
-			currentRound += "Conference Championships \n\n"; 
-			upcoming += AFCchampionship1info.get(0) + AFCchampionship1info.get(4) + 
-				" vs. " + AFCchampionship2info.get(0) + AFCchampionship2info.get(4) +  "\n"
-				+ probabilityPreview(AFCchampionship1, AFCchampionship2, AFCchampionship1info, AFCchampionship2info) + "\n\n";
-			upcoming += NFCchampionship1info.get(0) + NFCchampionship1info.get(4) +
-				" vs. " + NFCchampionship2info.get(0) + NFCchampionship2info.get(4) + 	"\n"
-				+ probabilityPreview(NFCchampionship1, NFCchampionship2, NFCchampionship1info, NFCchampionship2info) + "\n\n"; }
-		
-		if (round == 3){
-			currentRound += "SUPER BOWL \n\n"; 
-			upcoming += AFCchampionInfo.get(0) + AFCchampionInfo.get(4) +
-				" vs. " + NFCchampionInfo.get(0) + NFCchampionInfo.get(4) + "\n"
-				+ probabilityPreview(AFCchampion, NFCchampion, AFCchampionInfo, NFCchampionInfo) + "\n\n"; }
-		
+	public static String bracket(){
+		String AFC = "AFC \n", NFC = "NFC \n", answer = "";
+
 		AFC += "1) " + AFCseed1info.get(0) + AFCseed1info.get(1) + "\n" 
 			+ "Offense: " + AFCseed1info.get(2) + "     Defense: " + AFCseed1info.get(3) + "\n\n";
 		AFC += "2) " + AFCseed2info.get(0) + AFCseed2info.get(1) + "\n" 
@@ -1982,18 +2033,64 @@ public class FinalProject{
 		NFC += "5) " + NFCseed5info.get(0) + NFCseed5info.get(1) + "\n"
 			+ "Offense: " + NFCseed5info.get(2) + "     Defense: " + NFCseed5info.get(3) + "\n\n";
 		NFC += "6) " + NFCseed6info.get(0) + NFCseed6info.get(1) + "\n"
-			+ "Offense: " + NFCseed6info.get(2) + "     Defense: " + NFCseed6info.get(3) + "\n\n";
-		
-		if (round == 0){
-			answer += currentRound + AFC + NFC + upcoming; }
-		else{
-			answer += currentRound + upcoming; }
-		
+			+ "Offense: " + NFCseed6info.get(2) + "     Defense: " + NFCseed6info.get(3) + "\n\n";	
+			
+		answer += AFC + NFC;
 		return answer;
 	}
 	
-	public static String simResults(int round){
-		String answer = "Results: \n\n";
+	public static String playoffPicture(int rd){
+		String answer = "", currentRound = "\nROUND: ", upcoming = "Upcoming games: \n";
+		if (rd == 0){
+			currentRound += "Wild Card Round \n\n";
+			upcoming += AFCseed3info.get(0) + AFCseed3info.get(4) +
+				" vs. " + AFCseed6info.get(0) + AFCseed6info.get(4) + "\n" 
+				+ probabilityPreview(AFCseed3, AFCseed6, AFCseed3info, AFCseed6info) + "\n\n";
+			upcoming += AFCseed4info.get(0) + AFCseed4info.get(4) +
+				" vs. " + AFCseed5info.get(0) + AFCseed5info.get(4) + "\n"
+				+ probabilityPreview(AFCseed4, AFCseed5, AFCseed4info, AFCseed5info) + "\n\n";
+			upcoming += NFCseed3info.get(0) + NFCseed3info.get(4) + 
+				" vs. " + NFCseed6info.get(0) + NFCseed6info.get(4) + "\n"
+				+ probabilityPreview(NFCseed3, NFCseed6, NFCseed3info, NFCseed6info) + "\n\n";
+			upcoming += NFCseed4info.get(0) + NFCseed4info.get(4) + 
+				" vs. " + NFCseed5info.get(0) + NFCseed5info.get(4) + "\n"
+				+ probabilityPreview(NFCseed4, NFCseed5, NFCseed4info, NFCseed5info) + "\n\n"; }
+		
+		if (rd == 1){
+			currentRound += "Divisional Round \n\n";
+			upcoming += AFCseed1info.get(0) + AFCseed1info.get(4) + " vs. " 
+				+ opponentAFCseed1info.get(0) + opponentAFCseed1info.get(4) + "\n"
+				+ probabilityPreview(AFCseed1, opponentAFCseed1, AFCseed1info, opponentAFCseed1info) + "\n\n";
+			upcoming += AFCseed2info.get(0) + AFCseed2info.get(4) + " vs. " 
+				+ opponentAFCseed2info.get(0) + opponentAFCseed2info.get(4) + "\n"
+				+ probabilityPreview(AFCseed2, opponentAFCseed2, AFCseed2info, opponentAFCseed2info) + "\n\n";
+			upcoming += NFCseed1info.get(0) + NFCseed1info.get(4) + " vs. " 
+				+ opponentNFCseed1info.get(0) + opponentNFCseed1info.get(4) + "\n"
+				+ probabilityPreview(NFCseed1, opponentNFCseed1, NFCseed1info, opponentNFCseed1info) + "\n\n";
+			upcoming += NFCseed2info.get(0) + NFCseed2info.get(4) + " vs. " 
+				+ opponentNFCseed2info.get(0) + opponentNFCseed2info.get(4) + "\n"
+				+ probabilityPreview(NFCseed2, opponentNFCseed2, NFCseed2info, opponentNFCseed2info) + "\n\n"; }
+		
+		if (rd == 2){
+			currentRound += "Conference Championships \n\n"; 
+			upcoming += AFCchampionship1info.get(0) + AFCchampionship1info.get(4) + 
+				" vs. " + AFCchampionship2info.get(0) + AFCchampionship2info.get(4) +  "\n"
+				+ probabilityPreview(AFCchampionship1, AFCchampionship2, AFCchampionship1info, AFCchampionship2info) + "\n\n";
+			upcoming += NFCchampionship1info.get(0) + NFCchampionship1info.get(4) +
+				" vs. " + NFCchampionship2info.get(0) + NFCchampionship2info.get(4) + 	"\n"
+				+ probabilityPreview(NFCchampionship1, NFCchampionship2, NFCchampionship1info, NFCchampionship2info) + "\n\n"; }
+		
+		if (rd == 3){
+			currentRound += "SUPER BOWL \n\n"; 
+			upcoming += AFCchampionInfo.get(0) + AFCchampionInfo.get(4) +
+				" vs. " + NFCchampionInfo.get(0) + NFCchampionInfo.get(4) + "\n"
+				+ probabilityPreview(AFCchampion, NFCchampion, AFCchampionInfo, NFCchampionInfo) + "\n\n"; }
+	
+		answer += currentRound + upcoming; 
+		return answer;
+	}
+	
+	public static void simResults(int round){
 		if (round == 0){
 			simWildCardRound();
 			
@@ -2008,7 +2105,7 @@ public class FinalProject{
 		
 				
 			String AFC4vs5 =  AFCseed4info.get(0) + AFCseed4info.get(4) +
-				" vs. " + AFCseed5info.get(0) + AFCseed5info.get(4) + "\n";	
+				" vs. " + AFCseed5info.get(0) + AFCseed5info.get(4) + "\n\n";	
 			if (opponentAFCseed1.equals(AFCseed4) || opponentAFCseed2.equals(AFCseed4)){
 				AFC4vs5 += SSS(AFCseed4Stats, AFCseed5Stats, AFCseed4infoStats, AFCseed5infoStats, AFCseed4, AFCseed5,
 					AFCseed4info, AFCseed5info, 0) + "\n\n"; }
@@ -2017,7 +2114,7 @@ public class FinalProject{
 					AFCseed4info, AFCseed5info, 1) + "\n\n"; }
 				
 			String NFC3vs6 = NFCseed3info.get(0) + NFCseed3info.get(4) + 
-				" vs. " + NFCseed6info.get(0) + NFCseed6info.get(4) + "\n";
+				" vs. " + NFCseed6info.get(0) + NFCseed6info.get(4) + "\n\n";
 			if (opponentNFCseed2.equals(NFCseed3)){
 				NFC3vs6 += SSS(NFCseed3Stats, NFCseed6Stats, NFCseed3infoStats, NFCseed6infoStats, NFCseed3, NFCseed6,
 					NFCseed3info, NFCseed6info, 0) + "\n\n"; }
@@ -2026,7 +2123,7 @@ public class FinalProject{
 					NFCseed3info, NFCseed6info, 1) + "\n\n"; }
 			
 			String NFC4vs5 = NFCseed4info.get(0) + NFCseed4info.get(4) +
-				" vs. " + NFCseed5info.get(0) + NFCseed5info.get(4) + "\n";	
+				" vs. " + NFCseed5info.get(0) + NFCseed5info.get(4) + "\n\n";	
 			if (opponentNFCseed1.equals(NFCseed4) || opponentNFCseed2.equals(NFCseed4)){
 				NFC4vs5 += SSS(NFCseed4Stats, NFCseed5Stats, NFCseed4infoStats, NFCseed5infoStats, NFCseed4, NFCseed5,
 					NFCseed4info, NFCseed5info, 0) + "\n\n"; }
@@ -2034,14 +2131,15 @@ public class FinalProject{
 				NFC4vs5 += SSS(NFCseed4Stats, NFCseed5Stats, NFCseed4infoStats, NFCseed5infoStats, NFCseed4, NFCseed5,
 					NFCseed4info, NFCseed5info, 1) + "\n\n"; }
 				
-			answer += AFC3vs6 + AFC4vs5 + NFC3vs6 + NFC4vs5;
+			WCR = AFC3vs6 + AFC4vs5 + NFC3vs6 + NFC4vs5;
+			round += 1;
 		}
 		
 		if (round == 1){
 			simDivisionalRound();
 			
 			String AFC1 = AFCseed1info.get(0) + AFCseed1info.get(4) +
-				" vs. " + opponentAFCseed1info.get(0) + opponentAFCseed1info.get(4) + "\n";
+				" vs. " + opponentAFCseed1info.get(0) + opponentAFCseed1info.get(4) + "\n\n";
 			if (AFCchampionship1.equals(AFCseed1)){
 				AFC1 += SSS(AFCseed1Stats, opponentAFCseed1Stats, AFCseed1infoStats, opponentAFCseed1infoStats, 
 					AFCseed1, opponentAFCseed1, AFCseed1info, opponentAFCseed1info, 0) + "\n\n"; }
@@ -2050,7 +2148,7 @@ public class FinalProject{
 					AFCseed1, opponentAFCseed1, AFCseed1info, opponentAFCseed1info, 1) + "\n\n";}
 				
 			String AFC2 = AFCseed2info.get(0) + AFCseed2info.get(4) +
-				" vs. " + opponentAFCseed2info.get(0) + opponentAFCseed2info.get(4) + "\n";
+				" vs. " + opponentAFCseed2info.get(0) + opponentAFCseed2info.get(4) + "\n\n";
 			if (AFCchampionship2.equals(AFCseed2)){
 				AFC2 += SSS(AFCseed2Stats, opponentAFCseed2Stats, AFCseed2infoStats, opponentAFCseed2infoStats, 
 					AFCseed2, opponentAFCseed2, AFCseed2info, opponentAFCseed2info, 0) + "\n\n";  }
@@ -2059,7 +2157,7 @@ public class FinalProject{
 					AFCseed2, opponentAFCseed2, AFCseed2info, opponentAFCseed2info, 1) + "\n\n"; }
 				
 			String NFC1 = NFCseed1info.get(0) + NFCseed1info.get(4) +
-				" vs. " + opponentNFCseed1info.get(0) + opponentNFCseed1info.get(4) + "\n";
+				" vs. " + opponentNFCseed1info.get(0) + opponentNFCseed1info.get(4) + "\n\n";
 			if (NFCchampionship1.equals(NFCseed1)){
 				NFC1 += SSS(NFCseed1Stats, opponentNFCseed1Stats, NFCseed1infoStats, opponentNFCseed1infoStats, 
 					NFCseed1, opponentNFCseed1, NFCseed1info, opponentNFCseed1info, 0) + "\n\n";  }
@@ -2068,7 +2166,7 @@ public class FinalProject{
 					NFCseed1, opponentNFCseed1, NFCseed1info, opponentNFCseed1info, 1) + "\n\n"; }
 			
 			String NFC2 = NFCseed2info.get(0) + NFCseed2info.get(4) +
-				" vs. " + opponentNFCseed2info.get(0) + opponentNFCseed2info.get(4) + "\n";
+				" vs. " + opponentNFCseed2info.get(0) + opponentNFCseed2info.get(4) + "\n\n";
 			if (NFCchampionship2.equals(NFCseed2)){
 				NFC2 += SSS(NFCseed2Stats, opponentNFCseed2Stats, NFCseed2infoStats, opponentNFCseed2infoStats, 
 					NFCseed2, opponentNFCseed2, NFCseed2info, opponentNFCseed2info, 0) + "\n\n"; }
@@ -2076,7 +2174,8 @@ public class FinalProject{
 				NFC2 += SSS(NFCseed2Stats, opponentNFCseed2Stats, NFCseed2infoStats, opponentNFCseed2infoStats, 
 					NFCseed2, opponentNFCseed2, NFCseed2info, opponentNFCseed2info, 1) + "\n\n"; }
 				
-			answer += AFC1 + AFC2 + NFC1 + NFC2;
+			DIVR = AFC1 + AFC2 + NFC1 + NFC2;
+			round += 1;
 		}
 		
 		
@@ -2084,7 +2183,7 @@ public class FinalProject{
 			simConferenceChampionships();
 			
 			String AFCchampionship = AFCchampionship1info.get(0) + AFCchampionship1info.get(4) +
-				" vs. " + AFCchampionship2info.get(0) + AFCchampionship2info.get(4) + "\n";
+				" vs. " + AFCchampionship2info.get(0) + AFCchampionship2info.get(4) + "\n\n";
 			if (AFCchampion.equals(AFCchampionship1)){
 				AFCchampionship += SSS(AFCchampionship1Stats, AFCchampionship2Stats, AFCchampionship1infoStats, 
 					AFCchampionship2infoStats, AFCchampionship1, AFCchampionship2, AFCchampionship1info, 
@@ -2096,7 +2195,7 @@ public class FinalProject{
 
 				
 			String NFCchampionship = NFCchampionship1info.get(0) + NFCchampionship1info.get(4) +
-				" vs. " + NFCchampionship2info.get(0) + NFCchampionship2info.get(4) + "\n";
+				" vs. " + NFCchampionship2info.get(0) + NFCchampionship2info.get(4) + "\n\n";
 			if (NFCchampion.equals(NFCchampionship1)){
 				NFCchampionship += SSS(NFCchampionship1Stats, NFCchampionship2Stats, NFCchampionship1infoStats, 
 					NFCchampionship2infoStats, NFCchampionship1, NFCchampionship2, NFCchampionship1info, 
@@ -2106,14 +2205,15 @@ public class FinalProject{
 					NFCchampionship2infoStats, NFCchampionship1, NFCchampionship2, NFCchampionship1info, 
 					NFCchampionship2info, 1) + "\n\n";}
 			
-			answer += AFCchampionship + NFCchampionship;
+			CCR = AFCchampionship + NFCchampionship;
+			round += 1;
 		}
 		
 		if (round == 3){
 			simSuperBowl();
 			
 			String superBowl = AFCchampionInfo.get(0) + AFCchampionInfo.get(4) +
-				" vs. " + NFCchampionInfo.get(0) + NFCchampionInfo.get(4) + "\n";
+				" vs. " + NFCchampionInfo.get(0) + NFCchampionInfo.get(4) + "\n\n";
 			if (AFCchampion.equals(SuperBowlChampion)){
 				superBowl += SSS(AFCchampionStats, NFCchampionStats, AFCchampionInfoStats, NFCchampionInfoStats, 
 					AFCchampion, NFCchampion, AFCchampionInfo, NFCchampionInfo, 0) + "\n\n";
@@ -2123,10 +2223,9 @@ public class FinalProject{
 					AFCchampion, NFCchampion, AFCchampionInfo, NFCchampionInfo, 1) + "\n\n";
 				superBowl += "SUPER BOWL CHAMPS: The " + NFCchampionInfo.get(0) + "!"; }
 				
-			answer += superBowl;
+			SBR = superBowl;
+			round += 1;
 		}
-			
-		return answer;
 	}
 
 	//this is only for improving the text file of stats and rosters
@@ -2174,15 +2273,13 @@ public class FinalProject{
 		opponentNFCseed2Stats = nS2;
 		opponentNFCseed2infoStats = nR2; }
 		
-	
-	
 	public static void main (String[] args){
 		List<Integer> NewEnglandPatriots = Arrays.asList(3, 1, 8, 2, 7, 2, 3, 1, 8, 3, 3, 2, 19, 8, 8, 16, 22, 5, 23, 12, 101);
 		List<Integer> KansasCityChiefs = Arrays.asList(2, 4, 3, 7, 15, 15, 13, 7, 30, 15, 13, 11, 20, 16, 17, 12, 4, 23, 24, 28, 67); 
 		List<Integer> PittsburghSteelers = Arrays.asList(9, 5, 14, 3, 13, 11, 11, 10, 12, 11, 9, 8, 4, 3, 2, 9, 13, 9, 17, 13, 63); 
 		List<Integer> HoustonTexans = Arrays.asList(26, 26, 7, 29, 4, 30, 29, 11, 31, 32, 30, 30, 27, 9, 15, 11, 9, 17, 25, 16, 36);
-		List<Integer> OaklandRaiders = Arrays.asList(1, 11, 19, 8, 32, 9, 7, 20, 14, 16, 7, 4, 12, 1, 10, 22, 23, 21, 27, 27, 24);
-		List<Integer> MiamiDolphins = Arrays.asList(13, 24, 17, 15, 12, 8, 17, 18, 15, 6, 14, 18, 15, 23, 21, 17, 14, 19, 31, 20, 26);
+		List<Integer> OaklandRaiders = Arrays.asList(1, 11, 19, 8, 32, 9, 7, 20, 14, 16, 7, 4, 12, 1, 10, 22, 23, 21, 27, 27, 14);
+		List<Integer> MiamiDolphins = Arrays.asList(13, 24, 17, 15, 12, 8, 17, 18, 15, 6, 14, 18, 15, 23, 21, 17, 14, 19, 31, 20, 16);
 		
 		List<String> NewEnglandPatriotsInfo = Arrays.asList("New England Patriots", " (14-2)", "3rd", "1st", " (1)");
 		List<String> KansasCityChiefsInfo = Arrays.asList("Kansas City Chiefs", " (12-4)", "13th", "7th", " (2)");
@@ -2193,8 +2290,8 @@ public class FinalProject{
 		
 		List<Integer> DallasCowboys = Arrays.asList(10, 3, 24, 1, 14, 3, 5, 5, 3, 5, 2, 3, 2, 11, 3, 18, 19, 8, 10, 11, 66);
 		List<Integer> AtlantaFalcons = Arrays.asList(4, 2, 22, 4, 11, 1, 1, 27, 9, 1, 1, 1, 8, 22, 9, 27, 24, 28, 22, 24, 68);
-		List<Integer> SeattleSeahawks = Arrays.asList(16, 6, 9, 10, 16, 13, 18, 3, 27, 7, 18, 16, 21, 25, 26, 4, 11, 2, 13, 10, 75);
-		List<Integer> GreenBayPackers = Arrays.asList(6, 8, 26, 6, 31, 5, 4, 21, 10, 18, 6, 9, 9, 14, 22, 19, 20, 12, 4, 9, 72);
+		List<Integer> SeattleSeahawks = Arrays.asList(16, 6, 9, 10, 16, 13, 18, 3, 27, 7, 18, 16, 21, 25, 26, 4, 11, 2, 13, 10, 65);
+		List<Integer> GreenBayPackers = Arrays.asList(6, 8, 26, 6, 31, 5, 4, 21, 10, 18, 6, 9, 9, 14, 22, 19, 20, 12, 4, 9, 82);
 		List<Integer> NewYorkGiants = Arrays.asList(22, 12, 2, 12, 6, 20, 26, 2, 19, 21, 21, 21, 24, 4, 25, 2, 3, 4, 29, 17, 70); 
 		List<Integer> DetroitLions = Arrays.asList(20, 21, 32, 27, 26, 14, 20, 13, 17, 14, 17, 13, 26, 18, 31, 32, 32, 22, 21, 19, 35); 
 		
@@ -2332,24 +2429,24 @@ public class FinalProject{
 		System.out.println(convertRawToScore(KansasCityChiefs)); //76.88 -> 66.88 (-10)
 		System.out.println(convertRawToScore(PittsburghSteelers)); //73.28 -> 63.28 (-10)
 		System.out.println(convertRawToScore(HoustonTexans)); //35.63 
-		System.out.println(convertRawToScore(OaklandRaiders)); //64.22 -> 24.22 (-40)
-		System.out.println(convertRawToScore(MiamiDolphins)); //56.09 -> 26.09 (-30)
+		System.out.println(convertRawToScore(OaklandRaiders)); //64.22 -> 14.22 (-50)
+		System.out.println(convertRawToScore(MiamiDolphins)); //56.09 -> 16.09 (-40)
 		
 		System.out.println(convertRawToScore(DallasCowboys)); //75.78 -> 65.78 (-10)
 		System.out.println(convertRawToScore(AtlantaFalcons)); //78.44 -> 68.44 (-10)
-		System.out.println(convertRawToScore(SeattleSeahawks)); //65.31 -> 75.31 (+10)
-		System.out.println(convertRawToScore(GreenBayPackers)); //62.03 -> 72.03 (+10)
+		System.out.println(convertRawToScore(SeattleSeahawks)); //65.31
+		System.out.println(convertRawToScore(GreenBayPackers)); //62.03 -> 82.03 (+20)
 		System.out.println(convertRawToScore(NewYorkGiants)); //60.31 
 		System.out.println(convertRawToScore(DetroitLions)); //34.84 */
 	
-		/** this is using the default playoff tournament; the feature to customize will come later
+		/** this is using the default playoff tournament
 			AFC 				NFC
-		1) Patriots				Cowboys
-		2) Chiefs				Falcons
-		3) Steelers				Seahawks
-		4) Texans				Packers
-		5) Raiders				Giants
-		6) Dolphins				Lions */
+		1) Patriots				1) Cowboys
+		2) Chiefs				2) Falcons
+		3) Steelers				3) Seahawks
+		4) Texans				4) Packers
+		5) Raiders				5) Giants
+		6) Dolphins				6) Lions */
 		
 		AFCseed1 = NewEnglandPatriots;
 		AFCseed1info = NewEnglandPatriotsInfo;
@@ -2364,7 +2461,6 @@ public class FinalProject{
 		AFCseed6 = MiamiDolphins;
 		AFCseed6info = MiamiDolphinsInfo;
 		
-		
 		NFCseed1 = DallasCowboys;
 		NFCseed1info = DallasCowboysInfo;
 		NFCseed2 = AtlantaFalcons;
@@ -2378,8 +2474,6 @@ public class FinalProject{
 		NFCseed6 = DetroitLions;
 		NFCseed6info = DetroitLionsInfo;
 	
-		
-		
 		AFCseed1Stats = NewEnglandPatriotsStats;
 		AFCseed1infoStats= NewEnglandPatriotsRoster;
 		AFCseed2Stats = KansasCityChiefsStats;
@@ -2392,7 +2486,6 @@ public class FinalProject{
 		AFCseed5infoStats = OaklandRaidersRoster;
 		AFCseed6Stats = MiamiDolphinsStats;
 		AFCseed6infoStats = MiamiDolphinsRoster;
-		
 		
 		NFCseed1Stats = DallasCowboysStats;
 		NFCseed1infoStats = DallasCowboysRoster;
@@ -2407,50 +2500,71 @@ public class FinalProject{
 		NFCseed6Stats = DetroitLionsStats;
 		NFCseed6infoStats = DetroitLionsRoster;
 		
-		/** 
-		System.out.println(NewEnglandPatriotsRoster.toString());
-		System.out.println(KansasCityChiefsRoster.toString());
-		System.out.println(PittsburghSteelersRoster.toString());
-		System.out.println(HoustonTexansRoster.toString());
-		System.out.println(OaklandRaidersRoster.toString());
-		System.out.println(MiamiDolphinsRoster.toString());
-		
-		System.out.println(DallasCowboysRoster.toString());
-		System.out.println(AtlantaFalconsRoster.toString());
-		System.out.println(SeattleSeahawksRoster.toString());
-		System.out.println(GreenBayPackersRoster.toString());
-		System.out.println(NewYorkGiantsRoster.toString());
-		System.out.println(DetroitLionsRoster.toString());
-		
-		System.out.println(NewEnglandPatriotsStats.toString());
-		System.out.println(KansasCityChiefsStats.toString());
-		System.out.println(PittsburghSteelersStats.toString());
-		System.out.println(HoustonTexansStats.toString());
-		System.out.println(OaklandRaidersStats.toString());
-		System.out.println(MiamiDolphinsStats.toString());
-		
-		System.out.println(DallasCowboysStats.toString());
-		System.out.println(AtlantaFalconsStats.toString());
-		System.out.println(SeattleSeahawksStats.toString());
-		System.out.println(GreenBayPackersStats.toString());
-		System.out.println(NewYorkGiantsStats.toString());
-		System.out.println(DetroitLionsStats.toString());  */
-		
+		simResults(round);
+			
 		/** setCustomDivisional(HoustonTexans, HoustonTexansInfo, HoustonTexansStats, HoustonTexansRoster, 
 			PittsburghSteelers, PittsburghSteelersInfo, PittsburghSteelersStats, PittsburghSteelersRoster,
 			GreenBayPackers, GreenBayPackersInfo, GreenBayPackersStats, GreenBayPackersRoster,
 			SeattleSeahawks, SeattleSeahawksInfo, SeattleSeahawksStats, SeattleSeahawksRoster); */
-			
-		System.out.println(playoffPicture());
-		System.out.println(simResults(round));
-		//System.out.println(playoffPicture());
-		//System.out.println(simResults(round));
-		//System.out.println(playoffPicture());
-		//System.out.println(simResults(round));
-		//System.out.println(playoffPicture());
-		//System.out.println(simResults(round));
 		
+		
+		//method 1: see the 2017 playoff bracket -> java FinalProject bracket
+		if (args.length == 1){
+			String mode = args[0];
+			if (mode.equals("bracket")){
+				System.out.println(bracket()); }
+			else{
+				System.out.println("type this: java FinalProject bracket"); }
 			
-	} 
+		}
+		
+		//method 2: see the upcoming games -> java FinalProject preview	round	
+		//method 3: see the results round by round -> java FinalProject results round
+		if (args.length == 2){
+			String mode = args[0];
+			String round = args[1];
+			if (mode.equals("results")){
+				if (round.equals("0")){
+					System.out.println(WCR); }
+				else{
+					if (round.equals("1")){
+						System.out.println(DIVR); }
+					else{
+						if (round.equals("2")){
+							System.out.println(CCR); }
+						else{
+							if (round.equals("3")){
+								System.out.println(SBR); }
+							else{
+								System.out.println("Invalid input for round number"); }
+						}
+					}
+				}
+			}
+			else{
+				if (mode.equals("preview")){
+					if (round.equals("0")){
+					System.out.println(playoffPicture(0)); }
+					else{
+						if (round.equals("1")){
+							System.out.println(playoffPicture(1)); }
+						else{
+							if (round.equals("2")){
+								System.out.println(playoffPicture(2)); }
+							else{
+								if (round.equals("3")){
+									System.out.println(playoffPicture(3)); }
+								else{
+									System.out.println("Invalid input for round number"); } 
+							}
+						}
+					}
+				}
+				else{
+					System.out.println("type this: java FinalProject results/preview round#");
+				}
+			}
+			
+		} 
+	}
 }
-	
