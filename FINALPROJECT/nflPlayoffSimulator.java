@@ -2011,74 +2011,6 @@ public class nflPlayoffSimulator{
 		return SuperBowlChampionInfo.get(0);
 	}
 	
-	public static String SBtable(){
-		String head = "||______________________________________________________________________________________________||\n";
-		head += "||  		Team				||		Super Bowl Wins			|| \n";
-		head += "||______________________________________________||______________________________________________||\n";
-		String NE = "|| \tNew England Patriots \t\t\t||\t\t\t";
-		String KC = "|| \tKansas City Chiefs \t\t\t||\t\t\t";
-		String PIT = "|| \tPittsburgh Steelers \t\t\t||\t\t\t";
-		String HOU = "|| \tHouston Texans \t\t\t\t||\t\t\t";
-		String OAK = "|| \tOakland Raiders \t\t\t||\t\t\t";
-		String MIA = "|| \tMiami Dolphins \t\t\t\t||\t\t\t";
-		
-		String DAL = "|| \tDallas Cowboys \t\t\t\t||\t\t\t";
-		String ATL = "|| \tAtlanta Falcons \t\t\t||\t\t\t";
-		String SEA = "|| \tSeattle Seahawks \t\t\t||\t\t\t";
-		String GB = "|| \tGreen Bay Packers \t\t\t||\t\t\t";
-		String NYG = "|| \tNew York Giants \t\t\t||\t\t\t";
-		String DET = "|| \tDetroit Lions \t\t\t\t||\t\t\t";
-		
-		int ne = 0, kc = 0, pit = 0, hou = 0, oak = 0, mia = 0, 
-			dal = 0, atl = 0, sea = 0, gb = 0, nyg = 0, det = 0, i = 0;
-		while (i < 100){
-			String add = SBchamp();
-			if (add.equals("New England Patriots")){
-				ne += 1; }
-			if (add.equals("Kansas City Chiefs")){
-				kc += 1; }
-			if (add.equals("Pittsburgh Steelers")){
-				pit += 1; }
-			if (add.equals("Houston Texans")){
-				hou += 1; }
-			if (add.equals("Oakland Raiders")){
-				oak += 1; }
-			if (add.equals("Miami Dolphins")){
-				mia += 1; }
-				
-			if (add.equals("Dallas Cowboys")){
-				dal += 1; }
-			if (add.equals("Atlanta Falcons")){
-				atl += 1; }
-			if (add.equals("Seattle Seahawks")){
-				sea += 1; }
-			if (add.equals("Green Bay Packers")){
-				gb += 1; }
-			if (add.equals("New York Giants")){
-				nyg += 1; }
-			if (add.equals("Detroit Lions")){
-				det += 1; }
-			i += 1; }
-			
-		NE += Integer.toString(ne) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
-		KC += Integer.toString(kc) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
-		PIT += Integer.toString(pit) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
-		HOU += Integer.toString(hou) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
-		OAK += Integer.toString(oak) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
-		MIA += Integer.toString(mia) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
-		
-		DAL += Integer.toString(dal) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
-		ATL += Integer.toString(atl) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
-		SEA += Integer.toString(sea) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
-		GB += Integer.toString(gb) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
-		NYG += Integer.toString(nyg) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
-		DET += Integer.toString(det) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
-		
-		head += NE + KC + PIT + HOU + OAK + MIA + DAL + ATL + SEA + GB + NYG + DET;
-		return head;
-		
-	}
-	
 	public static String bracket(){
 		String AFC = "AFC \n", NFC = "NFC \n", answer = "";
 
@@ -2406,12 +2338,110 @@ public class nflPlayoffSimulator{
 		NFCchampionStats = nS;
 		NFCchampionInfoStats = nR; }
 		
+	public static String SBtable(){
+		String head = "||______________________________________________________________________________________________||\n";
+		head += "||  		Team				||		Super Bowl Wins			|| \n";
+		head += "||______________________________________________||______________________________________________||\n";
+		String NE = "|| \tNew England Patriots \t\t\t||\t\t\t";
+		String KC = "|| \tKansas City Chiefs \t\t\t||\t\t\t";
+		String PIT = "|| \tPittsburgh Steelers \t\t\t||\t\t\t";
+		String HOU = "|| \tHouston Texans \t\t\t\t||\t\t\t";
+		String OAK = "|| \tOakland Raiders \t\t\t||\t\t\t";
+		String MIA = "|| \tMiami Dolphins \t\t\t\t||\t\t\t";
+		
+		String DAL = "|| \tDallas Cowboys \t\t\t\t||\t\t\t";
+		String ATL = "|| \tAtlanta Falcons \t\t\t||\t\t\t";
+		String SEA = "|| \tSeattle Seahawks \t\t\t||\t\t\t";
+		String GB = "|| \tGreen Bay Packers \t\t\t||\t\t\t";
+		String NYG = "|| \tNew York Giants \t\t\t||\t\t\t";
+		String DET = "|| \tDetroit Lions \t\t\t\t||\t\t\t";
+		
+		int ne = 0, kc = 0, pit = 0, hou = 0, oak = 0, mia = 0, 
+			dal = 0, atl = 0, sea = 0, gb = 0, nyg = 0, det = 0, i = 0;
+		while (i < 100){
+			String add = SBchamp();
+			if (add.equals("New England Patriots")){
+				ne += 1; }
+			if (add.equals("Kansas City Chiefs")){
+				kc += 1; }
+			if (add.equals("Pittsburgh Steelers")){
+				pit += 1; }
+			if (add.equals("Houston Texans")){
+				hou += 1; }
+			if (add.equals("Oakland Raiders")){
+				oak += 1; }
+			if (add.equals("Miami Dolphins")){
+				mia += 1; }
+				
+			if (add.equals("Dallas Cowboys")){
+				dal += 1; }
+			if (add.equals("Atlanta Falcons")){
+				atl += 1; }
+			if (add.equals("Seattle Seahawks")){
+				sea += 1; }
+			if (add.equals("Green Bay Packers")){
+				gb += 1; }
+			if (add.equals("New York Giants")){
+				nyg += 1; }
+			if (add.equals("Detroit Lions")){
+				det += 1; }
+			i += 1; }
+			
+		NE += Integer.toString(ne) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
+		KC += Integer.toString(kc) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
+		PIT += Integer.toString(pit) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
+		HOU += Integer.toString(hou) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
+		OAK += Integer.toString(oak) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
+		MIA += Integer.toString(mia) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
+		
+		DAL += Integer.toString(dal) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
+		ATL += Integer.toString(atl) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
+		SEA += Integer.toString(sea) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
+		GB += Integer.toString(gb) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
+		NYG += Integer.toString(nyg) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
+		DET += Integer.toString(det) + "\t\t\t||\n" + "||______________________________________________||______________________________________________||\n";
+		
+		head += NE + KC + PIT + HOU + OAK + MIA + DAL + ATL + SEA + GB + NYG + DET;
+		return head;
+	}
+	
+	//this is for presentations 
+	public static String final4(){
+		
+		String NEvsATL = "New England Patriots vs. Atlanta Falcons: ";
+		String NEvsGB = "New England Patriots vs. Green Bay Packers: ";
+		String PITvsATL = "Pittsburgh Steelers vs. Atlanta Falcons: ";
+		String PITvsGB = "Pittsburgh Steelers vs. Green Bay Packers: ";
+		
+		int pf = 0, pp = 0, sf = 0, sp = 0;
+		
+		int i = 0;
+		while (i < 100){
+			simConferenceChampionships();
+			if (AFCchampionInfo.get(0).equals("New England Patriots") && NFCchampionInfo.get(0).equals("Atlanta Falcons")){
+				pf += 1; }
+			if (AFCchampionInfo.get(0).equals("New England Patriots") && NFCchampionInfo.get(0).equals("Green Bay Packers")){
+				pp += 1; }
+			if (AFCchampionInfo.get(0).equals("Pittsburgh Steelers") && NFCchampionInfo.get(0).equals("Atlanta Falcons")){
+				sf += 1; }
+			if (AFCchampionInfo.get(0).equals("Pittsburgh Steelers") && NFCchampionInfo.get(0).equals("Green Bay Packers")){
+				sp += 1; }
+			i += 1; }
+		
+		NEvsATL += Integer.toString(pf) + "%\n";
+		NEvsGB += Integer.toString(pp) + "%\n";
+		PITvsATL += Integer.toString(sf) + "%\n";
+		PITvsGB += Integer.toString(sp) + "%\n";
+		
+		return NEvsATL + NEvsGB + PITvsATL + PITvsGB;
+	}
+	
 	public static void main (String[] args){
 		List<Integer> NewEnglandPatriots = Arrays.asList(3, 1, 8, 2, 7, 2, 3, 1, 8, 3, 3, 2, 19, 8, 8, 16, 22, 5, 23, 12, 101);
 		List<Integer> KansasCityChiefs = Arrays.asList(2, 4, 3, 7, 15, 15, 13, 7, 30, 15, 13, 11, 20, 16, 17, 12, 4, 23, 24, 28, 71); 
 		List<Integer> PittsburghSteelers = Arrays.asList(9, 5, 14, 3, 13, 11, 11, 10, 12, 11, 9, 8, 4, 3, 2, 9, 13, 9, 17, 13, 68); 
 		List<Integer> HoustonTexans = Arrays.asList(26, 26, 7, 29, 4, 30, 29, 11, 31, 32, 30, 30, 27, 9, 15, 11, 9, 17, 25, 16, 36);
-		List<Integer> OaklandRaiders = Arrays.asList(1, 11, 19, 8, 32, 9, 7, 20, 14, 16, 7, 4, 12, 1, 10, 22, 23, 21, 27, 27, 14);
+		List<Integer> OaklandRaiders = Arrays.asList(1, 11, 19, 8, 32, 9, 7, 20, 14, 16, 7, 4, 12, 1, 10, 22, 23, 21, 27, 27, 4);
 		List<Integer> MiamiDolphins = Arrays.asList(13, 24, 17, 15, 12, 8, 17, 18, 15, 6, 14, 18, 15, 23, 21, 17, 14, 19, 31, 20, 16);
 		
 		List<String> NewEnglandPatriotsInfo = Arrays.asList("New England Patriots", " (14-2)", "3rd", "1st", " (1)");
@@ -2421,12 +2451,12 @@ public class nflPlayoffSimulator{
 		List<String> OaklandRaidersInfo = Arrays.asList("Oakland Raiders", " (12-4)", "7th", "20th", " (5)");
 		List<String> MiamiDolphinsInfo = Arrays.asList("Miami Dolphins", " (10-6)", "17th", "18th", " (6)");
 		
-		List<Integer> DallasCowboys = Arrays.asList(10, 3, 24, 1, 14, 3, 5, 5, 3, 5, 2, 3, 2, 11, 3, 18, 19, 8, 10, 11, 56);
-		List<Integer> AtlantaFalcons = Arrays.asList(4, 2, 22, 4, 11, 1, 1, 27, 9, 1, 1, 1, 8, 22, 9, 27, 24, 28, 22, 24, 79);
-		List<Integer> SeattleSeahawks = Arrays.asList(16, 6, 9, 10, 16, 13, 18, 3, 27, 7, 18, 16, 21, 25, 26, 4, 11, 2, 13, 10, 65);
+		List<Integer> DallasCowboys = Arrays.asList(10, 3, 24, 1, 14, 3, 5, 5, 3, 5, 2, 3, 2, 11, 3, 18, 19, 8, 10, 11, 51);
+		List<Integer> AtlantaFalcons = Arrays.asList(4, 2, 22, 4, 11, 1, 1, 27, 9, 1, 1, 1, 8, 22, 9, 27, 24, 28, 22, 24, 84);
+		List<Integer> SeattleSeahawks = Arrays.asList(16, 6, 9, 10, 16, 13, 18, 3, 27, 7, 18, 16, 21, 25, 26, 4, 11, 2, 13, 10, 60);
 		List<Integer> GreenBayPackers = Arrays.asList(6, 8, 26, 6, 31, 5, 4, 21, 10, 18, 6, 9, 9, 14, 22, 19, 20, 12, 4, 9, 87);
 		List<Integer> NewYorkGiants = Arrays.asList(22, 12, 2, 12, 6, 20, 26, 2, 19, 21, 21, 21, 24, 4, 25, 2, 3, 4, 29, 17, 60); 
-		List<Integer> DetroitLions = Arrays.asList(20, 21, 32, 27, 26, 14, 20, 13, 17, 14, 17, 13, 26, 18, 31, 32, 32, 22, 21, 19, 35); 
+		List<Integer> DetroitLions = Arrays.asList(20, 21, 32, 27, 26, 14, 20, 13, 17, 14, 17, 13, 26, 18, 31, 32, 32, 22, 21, 19, 25); 
 		
 		List<String> DallasCowboysInfo = Arrays.asList("Dallas Cowboys", " (13-3)", "5th", "5th", " (1)");
 		List<String> AtlantaFalconsInfo = Arrays.asList("Atlanta Falcons", " (11-5)", "1st", "27th", " (2)");
@@ -2555,22 +2585,6 @@ public class nflPlayoffSimulator{
 			y += 1;
 		}
 		
-		//these stat grades are only for reference
-		//adjustments were made for injuries, current win streak, and experience in postseason
-		/** System.out.println(convertRawToScore(NewEnglandPatriots)); //91.25 -> 101.25 (+10)
-		System.out.println(convertRawToScore(KansasCityChiefs)); //76.88 -> 66.88 (-10)
-		System.out.println(convertRawToScore(PittsburghSteelers)); //73.28 -> 63.28 (-10)
-		System.out.println(convertRawToScore(HoustonTexans)); //35.63 
-		System.out.println(convertRawToScore(OaklandRaiders)); //64.22 -> 14.22 (-50)
-		System.out.println(convertRawToScore(MiamiDolphins)); //56.09 -> 16.09 (-40)
-		
-		System.out.println(convertRawToScore(DallasCowboys)); //75.78 -> 65.78 (-10)
-		System.out.println(convertRawToScore(AtlantaFalcons)); //78.44 -> 68.44 (-10)
-		System.out.println(convertRawToScore(SeattleSeahawks)); //65.31
-		System.out.println(convertRawToScore(GreenBayPackers)); //62.03 -> 82.03 (+20)
-		System.out.println(convertRawToScore(NewYorkGiants)); //60.31 
-		System.out.println(convertRawToScore(DetroitLions)); //34.84 */
-	
 		/** this is the default playoff tournament
 			AFC 				NFC
 		1) Patriots				1) Cowboys
@@ -2635,22 +2649,27 @@ public class nflPlayoffSimulator{
 		//cool stuff
 		//method 1: see the 2017 playoff bracket -> java nflPlayoffSimulator 
 		//method 2: view a table of super bowl wins simulated 100x -> java nflPlayoffSimulator table
+		//method 3: view likelihoods of the 4 possible super bowl matchups -> java nflPlayoffSimulator final4
 		
 		//actual simulations
-		//method 3: view the complete results of a simulation! -> java nflPlayoffSimulator simulation
-		//method 4: view the results after the real life 1st round (presets 2nd round matchups) -> java nflPlayoffSimulator simDiv
-		//method 5: view the results after the real life 2nd round (presets semifinals) -> java nflPlayoffSimulator simCC
+		//method 4: view the complete results of a simulation! -> java nflPlayoffSimulator simulation
+		//method 5: view the results after the real life 1st round (presets 2nd round matchups) -> java nflPlayoffSimulator simDiv
+		//method 6: view the results after the real life 2nd round (presets semifinals) -> java nflPlayoffSimulator simCC
+		//method 7: view the real life results of each playoff game to compare my simulations and their accuracy! -> cat (or type for Windows) ActualResults.txt
+		
 		if (args.length == 0){
-			String instrictions = "\nHere are the instructions to run this program!\n\n";
-			instrictions += "cool stuff\n";
-			instrictions += "method 1: see the 2017 playoff bracket -> java nflPlayoffSimulator \n";
-			instrictions += "method 2: view a table of super bowl wins by team, simulated 100x -> java nflPlayoffSimulator table \n\n";
-			instrictions += "actual simulations\n";
-			instrictions += "method 3: view the complete results of an entire simulation! -> java nflPlayoffSimulator simulation\n";
-			instrictions += "method 4: use the preset matchups following the 1st round -> java nflPlayoffSimulator simDiv\n";
-			instrictions += "method 5: use the preset matchips following the 2nd round -> java nflPlayoffSimulator simCC \n";
-			instrictions += "Have fun!";
-			System.out.println(instrictions); }
+			String instructions = "\nHere are the instructions to run this program!\n\n";
+			instructions += "cool stuff\n";
+			instructions += "method 1: see the 2017 playoff bracket -> java nflPlayoffSimulator \n";
+			instructions += "method 2: view a table of super bowl wins by team, simulated 100x -> java nflPlayoffSimulator table \n";
+			instructions += "method 3: view likelihoods of the 4 possible super bowl matchups -> java nflPlayoffSimulator final4 \n\n";
+			instructions += "actual simulations\n";
+			instructions += "method 4: view the complete results of an entire simulation! -> java nflPlayoffSimulator simulation\n";
+			instructions += "method 5: use the preset matchups following the 1st round -> java nflPlayoffSimulator simDiv\n";
+			instructions += "method 6: use the preset matchips following the 2nd round -> java nflPlayoffSimulator simCC \n";
+			instructions += "method 7: view the real life results of each playoff game to compare my simulations and their accuracy! -> cat (or type for Windows) ActualResults.txt \n";
+			instructions += "Have fun!";
+			System.out.println(instructions); }
 			
 		if (args.length == 1){
 			String mode = args[0];
@@ -2679,13 +2698,23 @@ public class nflPlayoffSimulator{
 								setCustomCC(NewEnglandPatriots, NewEnglandPatriotsInfo, NewEnglandPatriotsStats, NewEnglandPatriotsRoster, 
 									PittsburghSteelers, PittsburghSteelersInfo, PittsburghSteelersStats, PittsburghSteelersRoster,
 									AtlantaFalcons, AtlantaFalconsInfo, AtlantaFalconsStats, AtlantaFalconsRoster, 
-									GreenBayPackers, GreenBayPackersInfo, GreenBayPackersStats, GreenBayPackersRoster); }
+									GreenBayPackers, GreenBayPackersInfo, GreenBayPackersStats, GreenBayPackersRoster);
+								System.out.println(simResults(round));
+								System.out.println(simResults(round)); }
 							else{
-								System.out.println("Invalid input! See the instructions"); }
+								if (mode.equals("final4")){
+									setCustomCC(NewEnglandPatriots, NewEnglandPatriotsInfo, NewEnglandPatriotsStats, NewEnglandPatriotsRoster, 
+										PittsburghSteelers, PittsburghSteelersInfo, PittsburghSteelersStats, PittsburghSteelersRoster,
+										AtlantaFalcons, AtlantaFalconsInfo, AtlantaFalconsStats, AtlantaFalconsRoster, 
+										GreenBayPackers, GreenBayPackersInfo, GreenBayPackersStats, GreenBayPackersRoster);
+									System.out.println(final4()); }
+								else{
+									System.out.println("Invalid input! See the instructions"); }
+							}
 						}
 					} 
 				}
 			}
-		}
+		} 
 	}
-}
+}	 

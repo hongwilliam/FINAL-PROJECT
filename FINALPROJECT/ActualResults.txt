@@ -1,0 +1,204 @@
+2017 NFL PLAYOFFS ACTUAL RESULTS
+Complete with scores, player stats, and projected probabilities
+
+_________________________________________________
+AFC WILD CARD ROUND (1/7/17 - 1/8/17)
+
+Pittsburgh Steelers (3) vs. Miami Dolphins (6)
+ESPN Projected Probability: Pitsburgh 76.1% 
+Winner: Pittsburgh Steelers 30-12
+
+Pittsburgh Stats:
+	Ben Roethlisberger(QB): 197 Yards, 2 Touchdowns, 2 Interceptions
+	Leveon Bell(RB): 167 Yards, 2 Touchdowns, 29 Carries
+	Antonio Brown(WR) : 124 Yards, 2 Touchdowns, 5 Receptions
+	Ladarius Green(TE): OUT (INJURY)
+	Ryan Shazier(ILB): 6 Tackles, 1 Interceptions, 1 Passes Defended
+	Lawrence Timmons(ILB): 14 Tackles, 2 Sacks
+	James Harrison(OLB): 10 Tackles, 1.5 Sacks
+	Mike Mitchell(S): 8 Tackles, 1 Sacks
+
+Miami Stats:
+	Matt Moore(QB): 289 Yards, 1 Touchdowns, 1 Interceptions
+	Jay Ajayi(RB): 33 Yards, 16 Carries
+	Jarvis Landry(WR): 102 Yards, 11 Receptions
+	DeVante Parker(WR): 55 Yards, 4 Receptions
+	Ndamukong Suh(DT) : 4 Tackles, 1 Sacks
+	Reshad Jones (S): OUT (INJURY)
+	Cameron Wake (DE): 6 Tackles
+	Kiki Alonso(ILB) : 6 Tackles
+_________________________________________________
+Houston Texans (4) vs. Oakland Raiders (5)
+ESPN Projected Probability: Houston 56.6% 
+Winner: Houston Texans 27-14
+
+Houston Stats:
+	Brock Osweiler(QB): 168 Yards, 1 Touchdowns, 0 Interceptions
+	Lamar Miller(RB): 73 Yards, 1 Touchdowns, 31 Carries
+	DeAndre Hopkins(WR): 67 Yards, 1 Touchdowns, 5 Receptions
+	CJ Fiedorowicz(TE): 35 Yards, 2 Receptions
+	Jadaveon Clowney (DE): 1 Tackles, 2 Passes Defended, 1 Interceptions
+	Quintin Demps(S): 2 Tackles 
+	Whitney Merclius (OLB): 7 Tackles, 2 Sacks, 
+	Benardrick McKinney(ILB): 7 Tackles
+
+Oakland Stats:
+	Connor Cook(QB): 161 Yards, 1 Touchdowns, 3 Interceptions
+	Latavius Murray(RB): 74 Yards, 2 Touchdowns, 13 Carries
+	Amari Cooper(WR): 10 Yards, 2 Receptions
+	Michael Crabtree(WR): 33 Yards, 2 Receptions
+	Khalil Mack(OLB): 11 Tackles
+	Bruce Irvin (OLB): 5 Tackles
+	Reggie Nelson(S): 5 Tackles
+	Malcolm Smith(OLB): 3 Tackles, 2 Passes Defended
+_________________________________________________	
+NFC WILD CARD ROUND (1/7/17 - 1/8/17)
+
+Seattle Seahawks (3) vs. Detroit Lions (6)
+ESPN Projected Probability: Seattle 79.1% 
+Winner: Seattle Seahawks 26-6
+
+Seattle Stats:
+	Russell Wilson(QB): 224 Yards, 2 Touchdowns, 0 Interceptions
+	Thomas Rawls(RB): 161 Yards, 1 Touchdowns, 27 Carries
+	Doug Baldwin(WR): 104 Yards, 1 Touchdowns, 11 Receptions
+	Jimmy Graham(TE): 37 Yards, 3 Receptions
+	Bobby Wagner(ILB): 10 Tackles, 1 Sacks, 1 Interceptions, 1 Passes Defended
+	Kam Chancellor(S): 7 Tackles, 1 Interceptions
+	Richard Sherman(CB): 5 Tackles, 1 Passes Defended
+	Michael Bennett(DE): 3 Tackles, 1 Sacks, 1 Passes Defended
+
+Detroit Stats:
+	Matthew Stafford(QB): 205 Yards, 0 Touchdowns, 0 Interceptions
+	Zach Zenner(RB) : 34 Yards, 11 Carries
+	Golden Tate(WR): 25 Yards, 3 Receptions
+	Marvin Jones(WR): 81 Yards, 4 Receptions
+	Darius Slay(CB): 2 Tackles
+	Ezekiel Ansah(DE): 9 Tackles, 2 Sacks
+	Tavon Wilson(S): 7 Tackles
+	Glover Quin(S): 6 Tackles, 1 Passes Defended	
+_________________________________________________	
+Green Bay Packers (4) vs. New York Giants (5)
+ESPN Projected Probability: Green Bay 70.1% 
+Winner: Green Bay Packers 38-13
+
+Green Bay Stats:
+	Aaron Rodgers(QB): 362 Yards, 4 Touchdowns, 0 Interceptions
+	Ty Montgomery(RB): 27 Yards, 11 Carries
+	Jordy Nelson(WR): 13 Yards, 1 Receptions -> OUT (INJURY)
+	Randall Cobb(WR): 116 Yards, 3 Touchdowns, 5 Receptions
+	Clay Matthews(OLB): 1 Tackles, 1 Sacks
+	Ha-Ha Clinton Dix(S): 2 Tackles, 2 Passes Defended
+	Morgan Burnett(S): 5 Tackles
+	Mike Daniels(DT): 4 Tackles
+
+New York Stats:
+	Eli Manning(QB): 299 Yards, 1 Touchdowns, 1 Interceptions
+	Rashad Jennings(RB): 29 Yards, 5 Carries
+	Odell Beckham Jr(WR): 28 Yards, 4 Receptions
+	Sterling Shepard(WR): 63 Yards, 4 Receptions
+	Landon Collins(S): 9 Tackles, 2 Passes Defended
+	Damon Harrison(DT): 5 Tackles
+	Janoris Jenkins(S): 1 Tackles
+	Dominique Rodgers Cromartie(CB): 1 Tackles
+_________________________________________________
+AFC DIVISIONAL ROUND (1/14/17 - 1/15/17)
+
+New England Patriots (1) vs. Houston Texans (4)
+ESPN Projected Probability: New England 88.5% 
+Winner: New England Patriots 34-16
+
+New England Stats:
+	Tom Brady(QB): 287 Yards, 2 Touchdowns, 2 Interceptions
+	Dion Lewis(RB): 41 Yards, 3 Touchdowns, 13 Carries
+	Julian Edelman(WR): 137 Yards, 8 Receptions
+	Martellus Bennett(TE): 4 Yards, 1 Receptions
+	Malcom Butler(CB): 5 Tackles
+	Devin McCourty(S): 5 Tackles, 1 Interceptions, 1 Passes Defended
+	Dont'a Hightower(ILB): 8 Tackles
+	Logan Ryan(CB): 7 Tackles, 1 Sacks, 1 Interceptions, 3 Passes Defended
+
+Houston Stats:
+	Brock Osweiler(QB): 198 Yards, 1 Touchdowns, 3 Interceptions
+	Lamar Miller(RB): 73 Yards, 19 Carries
+	DeAndre Hopkins(WR): 65 Yards, 6 Receptions
+	CJ Fiedorowicz(TE): 36 Yards, 1 Touchdowns, 3 Receptions
+	Jadaveon Clowney(DE): 2 Tackles
+	A.J. Bouye(S): 5 Tackles, 1 Interceptions, 2 Passes Defended
+	Whitney Merclius(OLB): 4 Tackles, 1 Sacks, 1 Passes Defended
+	Benardrick McKinney(ILB): 5 Tackles, 2 Passes Defended
+_________________________________________________
+Kansas City Chiefs (2) vs. Pittsbugh Steelers (3)
+ESPN Projected Probability: Kansas City 64.0%
+Winner: Pittsburgh Steelers 18-16
+
+Kansas City Stats:
+	Alex Smith(QB): 231 Yards, 1 Touchdowns, 1 Interceptions
+	Spencer Ware(RB): 98 Yards, 1 Touchdowns, 15 Carries
+	Jeremy Maclin(WR): 39 Yards, 1 Touchdowns, 5 Receptions
+	Travis Kelce(TE): 70 Yards, 8 Receptions
+	Eric Berry(S): 4 Tackles, 1 Interceptions
+	Marcus Peters(CB): 2 Tackles, 1 Passes Defended
+	Derrick Johnson(ILB): 9 Tackles
+	Dee Ford(OLB): 3 Tackles, 1 Sacks
+
+Pittsburgh Stats:
+	Ben Roethlisberger(QB): 224 Yards, 0 Touchdowns, 1 Interceptions
+	Leveon Bell(RB): 170 Yards, 30 Carries
+	Antonio Brown(WR) : 108 Yards, 6 Receptions
+	Ladarius Green(TE): OUT (INJURY)
+	Ryan Shazier(ILB): 5 Tackles, 1 Interceptions, 1 Passes Defended
+	Lawrence Timmons(ILB): 1 Tackles
+	James Harrison(OLB): 6 Tackles, 1 Sacks
+	Mike Mitchell(S): 4 Tackles
+_________________________________________________
+NFC DIVISIONAL ROUND (1/14/17 - 1/15/17)
+
+Dallas Cowboys (1) vs. Green Bay Packers (4)
+ESPN Projected Probability: Dallas 65.6% 
+Winner: Green Bay Packers 34-31
+
+Dallas Stats:
+	Dak Prescott(QB): 302 Yards, 3 Touchdowns, 1 Interceptions
+	Ezekiel Elliot(RB): 125 Yards, 22 Carries
+	Dez Bryant(WR): 132 Yards, 2 Touchdowns, 9 Receptions
+	Jason Witten(TE): 59 Yards, 1 Touchdowns, 76Receptions
+	Sean Lee(OLB): 8 Tackles
+	Byron Jones(S): 5 Tackles, 2 Passes Defended
+	Barry Church(S): 4 Tackles
+	Orlando Scandrick(CB): 3 Tackles
+
+Green Bay Stats:
+	Aaron Rodgers(QB): 356 Yards, 2 Touchdowns, 1 Interceptions
+	Ty Montgomery(RB): 47 Yards, 2 Touchdowns, 11 Carries
+	Jordy Nelson(WR): OUT (INJURY)
+	Randall Cobb(WR): 62 Yards, 7 Receptions
+	Clay Matthews(OLB): 1 Tackles
+	Ha-Ha Clinton Dix(S): 4 Tackles
+	Morgan Burnett(S): 3 Tackles
+	Mike Daniels(DT): 3 Tackles
+_________________________________________________
+Atlanta Falcons (2) vs. Seattle Seahawks (3)
+ESPN Projected Probability: Atlanta 73.9% 
+Winner: Atlanta Falcons 36-20
+
+Atlanta Stats:
+	Matt Ryan(QB): 232 Yards, 2 Touchdowns, 0 Interceptions
+	Devonta Freeman(RB): 99 Yards, 2 Touchdowns, 14 Carries
+	Julio Jones(WR): 85 Yards, 1 Touchdowns, 5 Receptions
+	Tevin Coleman(RB): 48 Yards, 1 Touchdowns, 9 Carries
+	Vic Beasley(OLB): 3 Tackles, 1 Sacks, 1 Interceptions
+	Keanu Neal(S): 7 Tackles, 1 Passes Defended
+	Desmond Trufant(CB) : 2 Tackles, 1 Passes Defended
+	Deion Jones(ILB): 7 Tackles, 1 Forced Fumbles, 1 Passes Defended
+
+Seattle Stats:
+	Russell Wilson(QB): 225 Yards, 2 Touchdowns, 2 Interceptions
+	Thomas Rawls(RB): 34 Yards, 1 Touchdowns, 11 Carries
+	Doug Baldwin(WR): 80 Yards, 1 Touchdowns, 5 Receptions
+	Jimmy Graham(TE): 22 Yards, 1 Touchdowns, 3 Receptions
+	Bobby Wagner(ILB): 8 Tackles
+	Kam Chancellor(S): 9 Tackles
+	Richard Sherman(CB): 8 Tackles
+	Michael Bennett(DE): 3 Tackles, 1 Passes Defended
+_________________________________________________
