@@ -1,5 +1,4 @@
-This project  will attempt to answer the million dollar question: Who will win this year's Super Bowl? It will accomplish this by incorporating various stats and formulas. Scores, player stats, and probabilities are the meat and bones of this terminal based project!
-Follow these instructions in the terminal upon compiling the java file (nflPlayoffSimulator.java). Enter the following into the command line to produce the desired effect
+DESCRIPTION: This project  will attempt to answer the million dollar question: Who will win this year's Super Bowl? It will accomplish this by incorporating various stats and formulas. Scores, player stats, and probabilities are the meat and bones of this terminal based project! Follow these instructions in the terminal upon compiling the java file (nflPlayoffSimulator.java). Enter the following into the command line to produce the desired effect
 
 
 Note: the text files ActualResults.txt and VegasOdds.txt are there for you to compare my simulations!
@@ -42,7 +41,7 @@ method 7: simulate the real life 2nd round and beyond -> java nflPlayoffSimulato
 
     for reference: Patriots vs Texans, Chiefs vs Steelers, Cowboys vs Packers, Falcons vs Seahawks
 
-    during the week of presentations, this method should show emulate the results of the real life 2nd round as accurately as possible
+    during the week of presentations, this method should emulate the results of the real life 2nd round accurately 
 
 method 8: simulate the real life semifinals and beyond -> java nflPlayoffSimulator simCC
   
