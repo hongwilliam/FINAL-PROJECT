@@ -3,12 +3,12 @@ DESCRIPTION: This project  will attempt to answer the million dollar question: W
 
 
 
-method 1: view the real life results of each playoff game to compare my simulations -> cat ActualResults.txt
+method 1: view the real life results of each playoff game to compare my simulations -> cat (or type for Windows) ActualResults.txt
 
     to make sure I tried my best to predict the playoffs as accurately as possible,
     refer to this text file and see how the results match
 
-method 2: view the vegas odds -> cat (or type for Windows) VegasOdds.txt
+method 2: view the vegas odds -> cat VegasOdds.txt
 
     this will give you an idea of who oddmakers gave the best chances of winning so you can compare my results 
 
@@ -18,8 +18,8 @@ method 3: view the 2017 playoff bracket -> java nflPlayoffSimulator
 
 method 4: view a table of super bowl win likelihood percentage by each team -> java nflPlayoffSimulator table
 
-    this was done by simulating the playoffs 100x and listing the amount of timess 
-    a team won the super bowl each simulation
+    this was done by simulating the playoffs 100x 
+    then it listed the amount of times a team won the super bowl each simulation
     the table should also give you a good idea of which teams should perform the best in the simulations
  
 method 5: view likelihoods of the 4 possible super bowl matchups -> java nflPlayoffSimulator final4
