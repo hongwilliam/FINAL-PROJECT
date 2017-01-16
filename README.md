@@ -3,10 +3,11 @@ DESCRIPTION: This project  will attempt to answer the million dollar question: W
 
 
 
-method 1: view the real life results of each playoff game to compare my simulations -> cat (or type for Windows) ActualResults.txt
+method 1: view the real life results of each playoff game to compare my simulations -> cat ActualResults.txt
 
-    to make sure I tried my best to predict the playoffs as accurately as possible,
+    to make sure I tried my best to predict the playoffs as accurately as possible
     refer to this text file and see how the results match
+    note: use type for windows instead of cat
 
 method 2: view the vegas odds -> cat VegasOdds.txt
 
@@ -24,8 +25,7 @@ method 4: view a table of super bowl win likelihood percentage by each team -> j
  
 method 5: view likelihoods of the 4 possible super bowl matchups -> java nflPlayoffSimulator final4
 
-    as of 1/17/17 (due date of final commit), there are 4 teams left in the playoffs, and thus
-    there are 4 possible Super Bowl matchups
+    as of 1/17/17 (due date of final commit), there are there are 4 possible Super Bowl matchups
     this method will print the probabilities of each of the 4 possible matchups occuring
   
 method 6: view the complete results of a simulation! -> java nflPlayoffSimulator simulation
