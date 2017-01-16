@@ -2660,14 +2660,15 @@ public class nflPlayoffSimulator{
 		if (args.length == 0){
 			String instructions = "\nHere are the instructions to run this program!\n\n";
 			instructions += "cool stuff\n";
-			instructions += "method 1: see the 2017 playoff bracket -> java nflPlayoffSimulator \n";
-			instructions += "method 2: view a table of super bowl wins by team, simulated 100x -> java nflPlayoffSimulator table \n";
-			instructions += "method 3: view likelihoods of the 4 possible super bowl matchups -> java nflPlayoffSimulator final4 \n\n";
+			instructions += "method 1: view the real life results of each playoff game to compare my simulations -> cat (or type for Windows) ActualResults.txt \n";
+			instructions += "method 2: view the vegas odds -> cat VegasOdds.txt\n";
+			instructions += "method 3: view the 2017 playoff bracket -> java nflPlayoffSimulator \n";
+			instructions += "method 4: view a table of super bowl wins by team, simulated 100x -> java nflPlayoffSimulator table \n";
+			instructions += "method 5: view likelihoods of the 4 possible super bowl matchups -> java nflPlayoffSimulator final4 \n\n";
 			instructions += "actual simulations\n";
-			instructions += "method 4: view the complete results of an entire simulation! -> java nflPlayoffSimulator simulation\n";
-			instructions += "method 5: use the preset matchups following the 1st round -> java nflPlayoffSimulator simDiv\n";
-			instructions += "method 6: use the preset matchips following the 2nd round -> java nflPlayoffSimulator simCC \n";
-			instructions += "method 7: view the real life results of each playoff game to compare my simulations and their accuracy! -> cat (or type for Windows) ActualResults.txt \n";
+			instructions += "method 6: view the complete results of an entire simulation! -> java nflPlayoffSimulator simulation\n";
+			instructions += "method 7: use the preset matchups for the 2nd round -> java nflPlayoffSimulator simDiv\n";
+			instructions += "method 8: use the preset matchips following the semifinals -> java nflPlayoffSimulator simCC \n";
 			instructions += "Have fun!";
 			System.out.println(instructions); }
 			
