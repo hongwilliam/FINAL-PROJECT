@@ -1,7 +1,7 @@
 DESCRIPTION: This project  will attempt to answer the million dollar question: Who will win this year's Super Bowl? It will accomplish this by incorporating various stats and formulas. Scores, player stats, and probabilities are the meat and bones of this terminal based project! Follow these instructions in the terminal upon compiling the java file (nflPlayoffSimulator.java). Enter the following into the command line to produce the desired effect
 
 
-Note: the text files ActualResults.txt and VegasOdds.txt are there for you to compare my simulations!
+
 
 method 1: view the real life results of each playoff game to compare my simulations -> cat ActualResults.txt
 
