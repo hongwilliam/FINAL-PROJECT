@@ -13,7 +13,7 @@ method 2: view the vegas odds -> cat VegasOdds.txt
 
     this will give you an idea of who oddmakers gave the best chances of winning so you can compare my results 
 
-method 3: view the 2017 playoff bracket -> java nflPlayoffSimulator
+method 3: view the 2017 playoff bracket -> java nflPlayoffSimulator bracket
 
     this is just a way to view who the 12 participating teams are 
 
@@ -53,4 +53,4 @@ method 8: simulate the real life semifinals and beyond -> java nflPlayoffSimulat
 FINAL THOUGHTS ON THE PROJECT: 
 This project can be reused during the next playoffs by inserting the proper text files of stats for next season, but we have to wait till then... While this project took a completely mathematical approach, the game of football can be very wild at times and defies logic. Players can break out of nowhere, inexpliciable plays happen, and usually dominant teams can have a bad day. Probabilities are the basis of the project. Sometimes, the underdog wins in real life! And it can very well happen in the simulations
 
--While this project is simple in idea, it was not so simple to execute. The development has been frustrating at times but was also incredibly satisfying once it was complete. I hope this project will help you better understand how important statistics and numbers are to football and how difficult it is to answer a question that professional analysts and fans alike attempt to answer every year. Hopefully this project would also help you make smart Super Bowl bets with friends and family! 
+-While this project is simple in idea, it was not so simple to execute. The development has been frustrating at times but was also incredibly satisfying once it was complete. I hope this project will help you better understand how important statistics and numbers are to football and how difficult it is to answer a question that professional analysts and fans alike attempt to answer every year.
